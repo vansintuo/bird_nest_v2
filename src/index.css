@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+
+html, body, #root {
+  height: 100%;
+}
+
+:root {
+  --ivory: #FAF7F2;
+  --cream: #F2EBE0;
+  --cream-dark: #E8DBCC;
+  --gold: #B8860B;
+  --gold-light: #C9A84C;
+  --gold-pale: #F0E6C8;
+  --brown: #2C1A0E;
+  --brown-mid: #5C3D1E;
+  --charcoal: #3A2D20;
+  --text-muted: #7A6553;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ivory);
+  color: var(--charcoal);
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ivory); }
+::-webkit-scrollbar-thumb { background: var(--cream-dark); border-radius: 3px; }
+
+/* Product card hover */
+.product-card:hover .product-img {
+  transform: scale(1.06);
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(44,26,14,0.12);
+}
+.product-card:hover .product-btn {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+
+/* Fade in animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* Bird float */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-5deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+}
+.bird-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Nav underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Process connector line */
+.process-connector {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-light), transparent);
+  margin-top: -16px;
+}

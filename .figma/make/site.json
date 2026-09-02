@@ -1,0 +1,10 @@
+{
+  "description": "Design elegant frosted glass cards with customizable blur and border effects to enhance user interfaces and visual appeal effortlessly.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
