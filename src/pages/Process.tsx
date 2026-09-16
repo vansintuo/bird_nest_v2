@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BirdDecor, GoldDivider, GoldButton, ArrowRight, useFadeIn, C, PageHero, SectionLabel } from "../shared";
 import { useNavigate } from "react-router";
+import storyImagePrim from "../images/bird_nest_prim_preview.png";
 
 const STEPS = [
   {
@@ -59,7 +60,7 @@ const STEPS = [
     subtitle: "Worthy of what's inside",
     desc: "Each product is carefully packed in our premium packaging, designed to maintain freshness and present the product beautifully. Our packaging reflects the care and craftsmanship of everything inside.",
     detail: "Elegant, hygienic packaging that protects and presents with pride.",
-    img: "https://royalpurenest.com.au/cdn/shop/files/royal-pure-nest-gift-set-signature-joyful-bottled-nest-rock-sugar-01.jpg?v=1763325510&width=1100",
+    img: storyImagePrim,
     alt: "Elegant premium product packaging",
     bg: C.cream,
   },
@@ -80,7 +81,7 @@ function StepCard({ step, index }: { step: typeof STEPS[0]; index: number }) {
             transition: "opacity 0.7s ease,transform 0.7s ease",
           }}
         >
-          <div style={{ position: "relative", borderRadius: 4, overflow: "hidden", boxShadow: "0 24px 64px rgba(44,26,14,0.14)" }}>
+          <div style={{ position: "relative", borderRadius: 4, overflow: "hidden", boxShadow: "0 24px 64px rgba(255, 255, 255, 0.14)" }}>
             <img src={step.img} alt={step.alt} style={{ width: "100%", height: 380, objectFit: "cover", display: "block" }} />
             {/* Number watermark */}
             <div style={{ position: "absolute", top: 20, left: 20, fontFamily: "'Playfair Display',serif", fontSize: 80, fontWeight: 700, color: "rgba(255,255,255,0.15)", lineHeight: 1, pointerEvents: "none" }}>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router"
+import { useNavigate } from "react-router";
 import {
   BirdDecor,
   GoldDivider,
@@ -8,8 +8,20 @@ import {
   C,
   PageHero,
   SectionLabel,
-} from "../shared"
+} from "../shared";
+import storyImagePrim from "../images/bird_nest_prim_preview.png";
+// import storyImageChia from "../images/chia_seed_info.png";
+// import storyImageGinseng from "../images/ginseng_info.png";
+// import storyImageOriginal from "../images/original_info.png";
+// import storyImagePandan from "../images/pandan_info.png";
+// import storyImageZeroSugar from "../images/zero_sugar_info.png";
 
+import storyImageChia from "../images/chia_bn.png";
+import storyImageGinseng from "../images/ginseng_bn.png";
+import storyImageOriginal from "../images/original_bn.png";
+import storyImagePandan from "../images/pandan_bn.png";
+import storyImageZeroSugar from "../images/zero_sugar_bn.png";
+import storyImageCertificate from "../images/certificate.png";
 /* =========================================================
    COMPANY INFORMATION
 ========================================================= */
@@ -31,7 +43,7 @@ const FOUNDERS = [
     description:
       "With a strong belief in craftsmanship and authenticity, our co-founder works closely with the team to ensure every Queen Birdnest product reflects our standards.",
   },
-]
+];
 
 const PRODUCTS = [
   {
@@ -39,8 +51,7 @@ const PRODUCTS = [
     subtitle: "Pure natural nourishment",
     description:
       "Carefully selected and processed edible bird's nest prepared for customers who value authenticity and premium quality.",
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdUT7BPkQOEscPkmx_FkN__e8boM-YEyQZcP3b03y_-kJ7VP4mlLZXZDUE&s=10",
+    image: storyImagePrim,
   },
   {
     title: "Ready-to-Enjoy Nest",
@@ -48,7 +59,7 @@ const PRODUCTS = [
     description:
       "Thoughtfully prepared products designed to make enjoying premium bird's nest simple and convenient.",
     image:
-      "https://subsites.chinadaily.com.cn/XMFTZ/att/20230407/1680833933324056073.jpeg",
+      "https://scontent.fpnh7-1.fna.fbcdn.net/v/t39.30808-6/480046025_1301933777815091_9038416660960061473_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx720x960&ctp=s720x960&_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEK16o5KZknTPuZjqLScdLNlGqPDgOHMTeUao8OA4cxN8-h47mzad6meMIVbOawYytTeK_8YVqXyWcJh9I5rrG7&_nc_ohc=4shy2pp9v90Q7kNvwGyw75O&_nc_oc=AdoVaY7MLPN9chWr531vhXL4Gv3Mab-XxFcigNuc62tjBdyhrIh7yQZ7M8o92cPD4yI&_nc_zt=23&_nc_ht=scontent.fpnh7-1.fna&_nc_gid=Rhh3pNE8N47DZNo6vLbMkg&_nc_ss=7b2a8&oh=00_AQIbnXcLKrX9zij2ud3PcqGW02V8qhZRntzC7j7Jloq9Ug&oe=6AB045AC",
   },
   {
     title: "Gift Collection",
@@ -56,16 +67,16 @@ const PRODUCTS = [
     description:
       "Beautifully presented Queen Birdnest products created for gifting, celebrations, and meaningful moments.",
     image:
-      "https://trulife.com.sg/wp-content/uploads/2024/11/Blog-2-Image-A-Guide-to-Enjoying-Birds-Nest-8-1024x576.png",
+      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/476054198_1294593131882489_2324238320778180359_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGcZw1jzLFfMlVaiuAPLPh6-FxWMM5xP5T4XFYwznE_lAzXPaac_WmLXV8d04oTqoN5SgtLztUcngZTYjU5ZxV4&_nc_ohc=fw5I3MZoj3AQ7kNvwEm1Oeq&_nc_oc=AdofsfRWGz0BLVQNDRmyDti_LXpgmJ8V2KJzdUtzQaxlvj6T3Y5PNNg8LskY28kqggk&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=5a9jz3xS6thcRYUgBUwm-g&_nc_ss=7b2a8&oh=00_AQLjUMXPQF1_6BcUrrUYKteJ2lml40XjtZ5e4yfl_4jjbw&oe=6AB033E5",
   },
-]
+];
 
 /* =========================================================
    COMPANY INTRO
 ========================================================= */
 
 function WhoWeAre() {
-  const { ref, visible } = useFadeIn()
+  const { ref, visible } = useFadeIn();
 
   return (
     <section
@@ -104,7 +115,7 @@ function WhoWeAre() {
             }}
           >
             <img
-              src="https://www.goldennest.com/cdn/shop/articles/golden_nest_-_Where_to_Buy_the_Best_Edible_Birds_Nest_Online.jpg?v=1753381192"
+              src="https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/474745677_1287359165939219_2118366557123665066_n.jpg?stp=dst-jpg_tt6&cstp=mx1834x2048&ctp=s1834x2048&_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEKrgjzM1zVazPxnlgdtTPl_VkHfxN0qKv9WQd_E3Soq7GpUpY6sqM_9u8WjVPSthoh8F_ebtxj5pQxsOQzbyxW&_nc_ohc=-yjqox6p7ZQQ7kNvwHadyD7&_nc_oc=Adp_kt_petLXEZOik1RPiqS8dRRJKuYZAG_o2VxeLDklSbRyTFkH0dRz1UCkBacZnkA&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=zx0-7qxSjhN_WGRjIfzaqw&_nc_ss=7b2a8&oh=00_AQLE9mgo3Isaf6t4AFgB233t5yVbSsavE_XPQB64x4B05g&oe=6AB03BE0"
               alt="Natural premium ingredients"
               style={{
                 width: "100%",
@@ -195,7 +206,7 @@ function WhoWeAre() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 /* =========================================================
@@ -203,7 +214,7 @@ function WhoWeAre() {
 ========================================================= */
 
 function OurStory() {
-  const { ref, visible } = useFadeIn()
+  const { ref, visible } = useFadeIn();
 
   return (
     <section
@@ -283,26 +294,36 @@ function OurStory() {
           {[
             {
               year: "01",
-              title: "The Beginning",
-              text: "A vision was born to create a bird's nest brand built around authenticity, care and long-term trust.",
+              img: storyImageChia,
+              title: "Chia Flavor Bird's Nest",
+              text: "Discover our latest innovation: Chia Bird's Nest, crafted with the same quality you trust and chia flavor.",
             },
             {
               year: "02",
-              title: "Building the Foundation",
-              text: "We developed relationships with responsible suppliers and focused on establishing a careful selection and processing approach.",
+              img: storyImageOriginal,
+              title: "Original Bird's Nest",
+              text: "Discover our latest innovation: Original Bird's Nest, crafted with the same quality you trust and original flavor.",
             },
             {
               year: "03",
-              title: "Growing with Purpose",
-              text: "Queen Birdnest continued to develop its products while maintaining the craftsmanship and attention to detail that shaped the company from the beginning.",
+              img: storyImageGinseng,
+              title: "Ginseng Flavor Bird's Nest",
+              text: "Discover our latest innovation: Ginseng Bird's Nest, crafted with the same quality you trust and ginseng flavor.",
             },
             {
               year: "04",
-              title: "Looking Forward",
-              text: "Today, our vision is to introduce Queen Birdnest to more families while continuing to improve quality, presentation and customer experience.",
+              img: storyImagePandan,
+              title: "Pandan Flavor Bird's Nest",
+              text: "Discover our latest innovation: Pandan Flavor Bird's Nest, crafted with the same quality you trust and pandan flavor.",
+            },
+            {
+              year: "05",
+              img: storyImageZeroSugar,
+              title: "Zero Sugar Bird's Nest",
+              text: "Discover our latest innovation: Zero Sugar Bird's Nest, crafted with the same quality you trust and zero sugar.",
             },
           ].map((item, index) => {
-            const left = index % 2 === 0
+            const left = index % 2 === 0;
 
             return (
               <div
@@ -318,6 +339,7 @@ function OurStory() {
                 <div
                   style={{
                     gridColumn: left ? 1 : 3,
+                    gridRow: 1,
                     textAlign: left ? "right" : "left",
                     padding: "0 24px",
                   }}
@@ -358,6 +380,7 @@ function OurStory() {
                 <div
                   style={{
                     gridColumn: 2,
+                    gridRow: 1,
                     width: 14,
                     height: 14,
                     borderRadius: "50%",
@@ -368,8 +391,35 @@ function OurStory() {
                     zIndex: 2,
                   }}
                 />
+
+                <div
+                  style={{
+                    gridColumn: left ? 3 : 1,
+                    gridRow: 1,
+                    padding: "0 24px",
+                  }}
+                  className="story-item-media"
+                >
+                  <div
+                    style={{
+                      overflow: "hidden",
+                      borderRadius: 4,
+                      // boxShadow: "0 20px 48px rgba(44,26,14,.14)",
+                    }}
+                  >
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        display: "block",
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
-            )
+            );
           })}
         </div>
       </div>
@@ -395,10 +445,17 @@ function OurStory() {
             grid-column:1!important;
             grid-row:1!important;
           }
+
+          .story-item > div.story-item-media{
+            grid-column:2!important;
+            grid-row:2!important;
+            padding:0 0 0 20px!important;
+            margin-top:20px;
+          }
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 /* =========================================================
@@ -406,7 +463,7 @@ function OurStory() {
 ========================================================= */
 
 function CoFounders() {
-  const { ref, visible } = useFadeIn()
+  const { ref, visible } = useFadeIn();
 
   return (
     <section
@@ -543,7 +600,7 @@ function CoFounders() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 /* =========================================================
@@ -650,7 +707,7 @@ function MissionVision() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 /* =========================================================
@@ -658,8 +715,8 @@ function MissionVision() {
 ========================================================= */
 
 function Products() {
-  const { ref, visible } = useFadeIn()
-  const navigate = useNavigate()
+  const { ref, visible } = useFadeIn();
+  const navigate = useNavigate();
 
   return (
     <section
@@ -790,7 +847,6 @@ function Products() {
             </div>
           ))}
         </div>
-
       </div>
 
       <style>{`
@@ -809,7 +865,7 @@ function Products() {
         }
       `}</style>
     </section>
-  )
+  );
 }
 
 /* =========================================================
@@ -834,7 +890,7 @@ function OurValues() {
       title: "Trust",
       text: "We build our relationships through honesty, responsibility and long-term commitment.",
     },
-  ]
+  ];
 
   return (
     <section
@@ -933,10 +989,8 @@ function OurValues() {
         }
       `}</style>
     </section>
-  )
+  );
 }
-
-
 
 /* =========================================================
    ABOUT PAGE
@@ -964,7 +1018,6 @@ export default function AboutPage() {
       <Products />
 
       <OurValues />
-
     </>
-  )
+  );
 }
