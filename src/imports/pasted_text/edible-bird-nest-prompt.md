@@ -8,20 +8,20 @@ The website should closely follow the provided Figma design. The visual style sh
 
 Use a sophisticated luxury aesthetic:
 
-* Primary background: warm ivory / cream
-* Secondary background: soft beige
-* Accent: elegant champagne gold
-* Text: dark brown / charcoal
-* Typography: elegant serif font for large headings
-* Typography: clean modern sans-serif for body text
-* Rounded corners should be subtle, not excessive
-* Use generous whitespace
-* Use premium product photography
-* Use subtle shadows
-* Use thin gold borders
-* Use delicate bird/nest decorative elements
-* Avoid overly colorful UI
-* Avoid a generic e-commerce template appearance
+- Primary background: warm ivory / cream
+- Secondary background: soft beige
+- Accent: elegant champagne gold
+- Text: dark brown / charcoal
+- Typography: elegant serif font for large headings
+- Typography: clean modern sans-serif for body text
+- Rounded corners should be subtle, not excessive
+- Use generous whitespace
+- Use premium product photography
+- Use subtle shadows
+- Use thin gold borders
+- Use delicate bird/nest decorative elements
+- Avoid overly colorful UI
+- Avoid a generic e-commerce template appearance
 
 The website should feel similar to a **high-end Asian wellness / luxury food brand**.
 
@@ -35,7 +35,7 @@ Create a clean fixed/sticky navigation bar.
 
 Logo:
 
-**NESTURA**
+**QUEEN**
 
 Small subtitle:
 
@@ -45,19 +45,19 @@ Include a simple elegant bird logo icon.
 
 ### Navigation
 
-* Home
-* Products
-* Our Story
-* Quality
-* Blog
-* Contact
+- Home
+- Products
+- Our Story
+- Quality
+- Blog
+- Contact
 
 ### Right
 
-* Search icon
-* User/account icon
-* Shopping bag/cart icon
-* Cart item counter
+- Search icon
+- User/account icon
+- Shopping bag/cart icon
+- Cart item counter
 
 On mobile, replace the navigation links with a hamburger menu.
 
@@ -75,14 +75,14 @@ Small label:
 
 Large heading:
 
-**Nature's
+**QUEEN
 Purest Gift**
 
 Use an elegant serif font.
 
 Add a short description:
 
-"Carefully harvested from pristine caves and traditionally prepared to preserve nature's finest nutrition for your loved ones."
+"Carefully harvested from pristine caves and traditionally prepared to preserve QUEEN finest nutrition for your loved ones."
 
 Buttons:
 
@@ -100,12 +100,12 @@ Display a large premium bird's nest product image.
 
 Show:
 
-* Bird's nest in a premium ceramic bowl
-* Luxury packaging
-* Warm natural lighting
-* Wooden tray
-* Subtle flowers / natural elements
-* Soft cream background
+- Bird's nest in a premium ceramic bowl
+- Luxury packaging
+- Warm natural lighting
+- Wooden tray
+- Subtle flowers / natural elements
+- Soft cream background
 
 Add subtle decorative flying bird elements.
 
@@ -141,9 +141,9 @@ Committed to quality and customer satisfaction.
 
 Each item should have:
 
-* Thin gold line icon
-* Small gold heading
-* Short description
+- Thin gold line icon
+- Small gold heading
+- Short description
 
 On mobile, convert this section into a 2-column or horizontal scroll layout.
 
@@ -205,19 +205,19 @@ Button:
 
 Product cards should include:
 
-* Large product image
-* Product name
-* Short description
-* Gold outline button
-* Soft cream background
-* Very subtle border
-* Small hover animation
+- Large product image
+- Product name
+- Short description
+- Gold outline button
+- Soft cream background
+- Very subtle border
+- Small hover animation
 
 On hover:
 
-* Image slightly zooms
-* Card rises slightly
-* Button becomes gold
+- Image slightly zooms
+- Card rises slightly
+- Button becomes gold
 
 ---
 
@@ -229,10 +229,10 @@ Create a split-screen section.
 
 Large lifestyle image showing:
 
-* Prepared bird's nest
-* Elegant ceramic bowl
-* Warm tea/food setting
-* Traditional Asian luxury atmosphere
+- Prepared bird's nest
+- Elegant ceramic bowl
+- Warm tea/food setting
+- Traditional Asian luxury atmosphere
 
 ### Right
 
@@ -246,7 +246,7 @@ Main heading:
 
 Description:
 
-"At NESTURA, we believe the finest bird's nest comes from nature and careful hands. Each nest is ethically harvested from pristine caves, meticulously cleaned and quality-checked to retain its natural nutrients."
+"At QUEEN, we believe the finest bird's nest comes from nature and careful hands. Each nest is ethically harvested from pristine caves, meticulously cleaned and quality-checked to retain its natural nutrients."
 
 Button:
 
@@ -310,7 +310,7 @@ Create a large elegant CTA section.
 
 Heading:
 
-**Bring Nature's Luxury
+**Bring QUEEN Luxury
 Into Your Everyday Life.**
 
 Button:
@@ -321,10 +321,10 @@ Place premium bird's nest products on the right side.
 
 Use:
 
-* Ivory background
-* Gold typography
-* Subtle bird illustration
-* Soft decorative botanical elements
+- Ivory background
+- Gold typography
+- Subtle bird illustration
+- Soft decorative botanical elements
 
 ---
 
@@ -334,7 +334,7 @@ Create a dark luxury footer.
 
 ### Brand
 
-NESTURA
+QUEEN
 
 EDIBLE BIRD'S NEST
 
@@ -344,46 +344,46 @@ Description:
 
 Social icons:
 
-* Facebook
-* Instagram
-* Telegram
-* WhatsApp
+- Facebook
+- Instagram
+- Telegram
+- WhatsApp
 
 ### Products
 
-* Premium Bird's Nest
-* Cleaned Bird's Nest
-* Ready-to-Drink Nest
-* Premium Gift Box
-* Accessories
+- Premium Bird's Nest
+- Cleaned Bird's Nest
+- Ready-to-Drink Nest
+- Premium Gift Box
+- Accessories
 
 ### Company
 
-* Our Story
-* Our Process
-* Quality Assurance
-* Blog
-* FAQ
+- Our Story
+- Our Process
+- Quality Assurance
+- Blog
+- FAQ
 
 ### Customer Care
 
-* Shipping & Delivery
-* Return Policy
-* Terms & Conditions
-* Privacy Policy
+- Shipping & Delivery
+- Return Policy
+- Terms & Conditions
+- Privacy Policy
 
 ### Contact
 
 Include:
 
-* Phone
-* Email
-* Location
-* Phnom Penh, Cambodia
+- Phone
+- Email
+- Location
+- Phnom Penh, Cambodia
 
 Bottom:
 
-**© 2026 NESTURA. All Rights Reserved.**
+**© 2026 QUEEN. All Rights Reserved.**
 
 ---
 
@@ -391,25 +391,25 @@ Bottom:
 
 The website must be:
 
-* Fully responsive
-* Mobile-first
-* Desktop optimized
-* Tablet optimized
-* Accessible
-* Fast loading
-* SEO friendly
-* Smooth scrolling
-* Modern animations
-* Clean component structure
+- Fully responsive
+- Mobile-first
+- Desktop optimized
+- Tablet optimized
+- Accessible
+- Fast loading
+- SEO friendly
+- Smooth scrolling
+- Modern animations
+- Clean component structure
 
 Add subtle animations:
 
-* Fade-in sections while scrolling
-* Image zoom on product hover
-* Smooth button transitions
-* Navigation underline animation
-* Gentle floating bird decoration
-* Smooth page transitions
+- Fade-in sections while scrolling
+- Image zoom on product hover
+- Smooth button transitions
+- Navigation underline animation
+- Gentle floating bird decoration
+- Smooth page transitions
 
 Do NOT use excessive animations.
 
@@ -481,13 +481,13 @@ Buttons should be full-width or comfortable touch targets.
 
 If converting the Figma design into code, use:
 
-* Next.js
-* TypeScript
-* Tailwind CSS
-* React
-* Lucide React icons
-* Modern semantic HTML
-* Reusable React components
+- Next.js
+- TypeScript
+- Tailwind CSS
+- React
+- Lucide React icons
+- Modern semantic HTML
+- Reusable React components
 
 Recommended structure:
 

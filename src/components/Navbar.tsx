@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { NavLink, useNavigate } from "react-router"
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router";
 import {
   BirdLogo,
   CartIcon,
@@ -8,7 +8,7 @@ import {
   SearchIcon,
   UserIcon,
   useScrolled,
-} from "../shared"
+} from "../shared";
 
 const NAV_LINKS = [
   { label: "Home", to: "/" },
@@ -18,12 +18,12 @@ const NAV_LINKS = [
   // { label: "Quality", to: "/quality" },
   // { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/faq" },
-]
+];
 
 export default function Navbar() {
-  const scrolled = useScrolled()
-  const [open, setOpen] = useState(false)
-  const navigate = useNavigate()
+  const scrolled = useScrolled();
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header
@@ -69,7 +69,7 @@ export default function Navbar() {
                   lineHeight: 1.1,
                 }}
               >
-                NESTURA
+                QUEEN
               </div>
               <div
                 style={{
@@ -79,7 +79,7 @@ export default function Navbar() {
                   fontWeight: 500,
                 }}
               >
-                EDIBLE BIRD'S NEST
+                BIRD'S NEST
               </div>
             </div>
           </button>
@@ -87,13 +87,13 @@ export default function Navbar() {
           {/* Nav links — desktop */}
           <nav
             style={{ display: "flex", gap: 32, margin: "0 auto" }}
-            className="nestura-nav-desktop"
+            className="QUEEN-nav-desktop"
           >
             {NAV_LINKS.map(({ label, to }) => (
               <NavLink
                 key={label}
                 to={to}
-                className="nestura-nav-link"
+                className="QUEEN-nav-link"
                 style={({ isActive }) => ({
                   fontSize: 13,
                   fontWeight: 500,
@@ -140,12 +140,12 @@ export default function Navbar() {
       )}
 
       <style>{`
-        .nestura-nav-link { position: relative; }
-        .nestura-nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#B8860B; transition:width 0.3s ease; }
-        .nestura-nav-link:hover::after, .nestura-nav-link.active::after { width:100%; }
-        @media(max-width:768px){ .nestura-nav-desktop{display:none!important} .nestura-nav-mobile{display:flex!important} }
-        @media(min-width:769px){ .nestura-nav-mobile{display:none!important} .nestura-nav-desktop{display:flex!important} }
+        .QUEEN-nav-link { position: relative; }
+        .QUEEN-nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#B8860B; transition:width 0.3s ease; }
+        .QUEEN-nav-link:hover::after, .QUEEN-nav-link.active::after { width:100%; }
+        @media(max-width:768px){ .QUEEN-nav-desktop{display:none!important} .QUEEN-nav-mobile{display:flex!important} }
+        @media(min-width:769px){ .QUEEN-nav-mobile{display:none!important} .QUEEN-nav-desktop{display:flex!important} }
       `}</style>
     </header>
-  )
+  );
 }

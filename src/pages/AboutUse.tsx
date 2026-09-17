@@ -10,18 +10,12 @@ import {
   SectionLabel,
 } from "../shared";
 import storyImagePrim from "../images/bird_nest_prim_preview.png";
-// import storyImageChia from "../images/chia_seed_info.png";
-// import storyImageGinseng from "../images/ginseng_info.png";
-// import storyImageOriginal from "../images/original_info.png";
-// import storyImagePandan from "../images/pandan_info.png";
-// import storyImageZeroSugar from "../images/zero_sugar_info.png";
 
 import storyImageChia from "../images/chia_bn.png";
 import storyImageGinseng from "../images/ginseng_bn.png";
 import storyImageOriginal from "../images/original_bn.png";
 import storyImagePandan from "../images/pandan_bn.png";
 import storyImageZeroSugar from "../images/zero_sugar_bn.png";
-import storyImageCertificate from "../images/certificate.png";
 /* =========================================================
    COMPANY INFORMATION
 ========================================================= */
@@ -462,146 +456,7 @@ function OurStory() {
    CO-FOUNDERS
 ========================================================= */
 
-function CoFounders() {
-  const { ref, visible } = useFadeIn();
 
-  return (
-    <section
-      ref={ref}
-      style={{
-        background: C.ivory,
-        padding: "96px 0",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 24px",
-        }}
-      >
-        <div
-          style={{
-            textAlign: "center",
-            marginBottom: 60,
-          }}
-        >
-          <BirdDecor size={36} opacity={0.35} />
-
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: "clamp(32px,4vw,48px)",
-              color: C.brown,
-              margin: "24px 0 14px",
-            }}
-          >
-            The People Behind
-            <br />
-            <span style={{ color: C.gold }}>Queen Birdnest</span>
-          </h2>
-
-          <p
-            style={{
-              maxWidth: 600,
-              margin: "0 auto",
-              fontSize: 15,
-              color: C.muted,
-              lineHeight: 1.8,
-            }}
-          >
-            Our co-founders share a vision of building a brand where traditional
-            craftsmanship meets modern quality.
-          </p>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 40,
-          }}
-          className="founder-grid"
-        >
-          {FOUNDERS.map((founder, index) => (
-            <div
-              key={index}
-              style={{
-                background: C.cream,
-                padding: 18,
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(30px)",
-                transition: `opacity .7s ease ${index * 0.15}s,
-                  transform .7s ease ${index * 0.15}s`,
-              }}
-            >
-              <div
-                style={{
-                  overflow: "hidden",
-                  position: "relative",
-                }}
-              >
-                <img
-                  src={founder.image}
-                  alt={founder.name}
-                  style={{
-                    width: "100%",
-                    height: 440,
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </div>
-
-              <div style={{ padding: "28px 12px 12px" }}>
-                <div
-                  style={{
-                    fontSize: 10,
-                    color: C.gold,
-                    letterSpacing: ".18em",
-                    fontWeight: 600,
-                    marginBottom: 8,
-                  }}
-                >
-                  {founder.role.toUpperCase()}
-                </div>
-
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display',serif",
-                    fontSize: 28,
-                    color: C.brown,
-                    marginBottom: 14,
-                  }}
-                >
-                  {founder.name}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: 14,
-                    lineHeight: 1.8,
-                    color: C.muted,
-                  }}
-                >
-                  {founder.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @media(max-width:768px){
-          .founder-grid{
-            grid-template-columns:1fr!important;
-          }
-        }
-      `}</style>
-    </section>
-  );
-}
 
 /* =========================================================
    MISSION & VISION
@@ -1011,7 +866,6 @@ export default function AboutPage() {
 
       <OurStory />
 
-      <CoFounders />
 
       <MissionVision />
 

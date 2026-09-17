@@ -1,5 +1,6 @@
-import { BirdLogo, BirdDecor, ArrowRight, C } from "../shared"
-import { useState } from "react"
+import { BirdLogo, BirdDecor, ArrowRight, C } from "../shared";
+import { useState } from "react";
+import { Link } from "react-router";
 const PhoneIcon = () => (
   <svg
     width="13"
@@ -12,7 +13,7 @@ const PhoneIcon = () => (
   >
     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
   </svg>
-)
+);
 const EmailIcon = () => (
   <svg
     width="13"
@@ -26,7 +27,7 @@ const EmailIcon = () => (
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
     <polyline points="22,6 12,13 2,6" />
   </svg>
-)
+);
 const MapIcon = () => (
   <svg
     width="13"
@@ -40,29 +41,36 @@ const MapIcon = () => (
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
-)
+);
 
 const SOCIALS = [
   {
     label: "Facebook",
     path: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
+    url: "https://www.facebook.com/queensbirdnestkh/",
   },
   {
     label: "Instagram",
     path: "M16 2H8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zM12 15a3 3 0 110-6 3 3 0 010 6z",
+    url: "https://www.instagram.com/queensbirdnest_official/",
   },
-  { label: "Telegram", path: "M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" },
+  {
+    label: "Telegram",
+    path: "M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z",
+    url: "",
+  },
   {
     label: "WhatsApp",
     path: "M17.5 14.5c-.3-.2-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5s0-.4-.1-.6c-.1-.2-.7-1.6-1-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C8 8 7 9 7 11c0 2 1.5 4 1.7 4.2.2.3 2.8 4.3 6.8 5.9 4 1.6 4 1.1 4.7 1 .7 0 2.1-.8 2.4-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z",
+    url: "",
   },
-]
+];
 
-function FooterLink({ children }: { children: string }) {
-  const [hov, setHov] = useState(false)
+function FooterLink({ to, children }: { to: string; children: string }) {
+  const [hov, setHov] = useState(false);
   return (
-    <a
-      href="#"
+    <Link
+      to={to}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
@@ -75,15 +83,15 @@ function FooterLink({ children }: { children: string }) {
       }}
     >
       {children}
-    </a>
-  )
+    </Link>
+  );
 }
 
-function SocialBtn({ s }: { s: typeof SOCIALS[0] }) {
-  const [hov, setHov] = useState(false)
+function SocialBtn({ s }: { s: (typeof SOCIALS)[0] }) {
+  const [hov, setHov] = useState(false);
   return (
     <a
-      href="#"
+      href={s.url}
       aria-label={s.label}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
@@ -113,7 +121,7 @@ function SocialBtn({ s }: { s: typeof SOCIALS[0] }) {
         <path d={s.path} />
       </svg>
     </a>
-  )
+  );
 }
 
 export default function Footer() {
@@ -152,7 +160,7 @@ export default function Footer() {
                     letterSpacing: "0.04em",
                   }}
                 >
-                  NESTURA
+                  QUEEN
                 </div>
                 <div
                   style={{
@@ -161,7 +169,7 @@ export default function Footer() {
                     letterSpacing: "0.18em",
                   }}
                 >
-                  EDIBLE BIRD'S NEST
+                  BIRD'S NEST
                 </div>
               </div>
             </div>
@@ -194,16 +202,16 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              PRODUCTS
+              QUICK LINKS
             </h4>
             {[
-              "Premium Bird's Nest",
-              "Cleaned Bird's Nest",
-              "Ready-to-Drink Nest",
-              "Premium Gift Box",
-              "Accessories",
-            ].map((l) => (
-              <FooterLink key={l}>{l}</FooterLink>
+              { label: "About Us", to: "/about-use" },
+              { label: "Our Process", to: "/our-process" },
+              { label: "Contact", to: "/faq" },
+            ].map(({ label, to }) => (
+              <FooterLink key={label} to={to}>
+                {label}
+              </FooterLink>
             ))}
           </div>
           <div>
@@ -216,37 +224,16 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              COMPANY
+              OUR PRODUCTS
             </h4>
             {[
-              "Our Story",
-              "Our Process",
-              "Quality Assurance",
-              "Blog",
-              "FAQ",
-            ].map((l) => (
-              <FooterLink key={l}>{l}</FooterLink>
-            ))}
-          </div>
-          <div>
-            <h4
-              style={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: "rgba(201,168,76,0.9)",
-                letterSpacing: "0.14em",
-                marginBottom: 20,
-              }}
-            >
-              CUSTOMER CARE
-            </h4>
-            {[
-              "Shipping & Delivery",
-              "Return Policy",
-              "Terms & Conditions",
-              "Privacy Policy",
-            ].map((l) => (
-              <FooterLink key={l}>{l}</FooterLink>
+              { label: "Products", to: "/" },
+              { label: "The Process", to: "/our-process" },
+              { label: "Certifications", to: "/" },
+            ].map(({ label, to }) => (
+              <FooterLink key={label} to={to}>
+                {label}
+              </FooterLink>
             ))}
           </div>
 
@@ -267,7 +254,7 @@ export default function Footer() {
                 icon: <PhoneIcon />,
                 lines: ["+855 12 345 678", "+855 98 765 432"],
               },
-              { icon: <EmailIcon />, lines: ["info@nestura.com"] },
+              { icon: <EmailIcon />, lines: ["QueenBirdNest598@gmail.com"] },
               { icon: <MapIcon />, lines: ["Phnom Penh, Cambodia"] },
             ].map((c, i) => (
               <div
@@ -315,7 +302,7 @@ export default function Footer() {
           }}
         >
           <p style={{ fontSize: 12, color: "rgba(250,247,242,0.28)" }}>
-            © 2026 NESTURA. All Rights Reserved.
+            © 2026 QUEEN. All Rights Reserved.
           </p>
           <div style={{ display: "flex", gap: 24 }}>
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
@@ -342,5 +329,5 @@ export default function Footer() {
         @media(max-width:480px){ .footer-grid{ grid-template-columns:1fr!important } }
       `}</style>
     </footer>
-  )
+  );
 }

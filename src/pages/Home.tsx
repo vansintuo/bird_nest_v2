@@ -308,7 +308,7 @@ function Hero() {
               marginBottom: 8,
             }}
           >
-            Nature's
+            QUEEN
           </h1>
           <h1
             style={{
@@ -335,7 +335,7 @@ function Hero() {
             }}
           >
             Carefully harvested from pristine caves and traditionally prepared
-            to preserve nature's finest nutrition for your loved ones.
+            to preserve QUEEN finest nutrition for your loved ones.
           </p>
         </div>
 
@@ -1088,7 +1088,7 @@ function Certificates() {
                   marginTop: 2,
                 }}
               >
-                No exceptions — quality is not optional at NESTURA.
+                No exceptions — quality is not optional at QUEEN.
               </div>
             </div>
           </div>
@@ -1223,7 +1223,7 @@ function OurStory() {
               marginBottom: 28,
             }}
           >
-           Premium
+            Premium
             <br />
             Packaging
           </h2>
@@ -1236,7 +1236,7 @@ function OurStory() {
               maxWidth: 440,
             }}
           >
-            At NESTURA, we believe the finest bird's nest comes from nature and
+            At QUEEN, we believe the finest bird's nest comes from nature and
             careful hands. Each nest is ethically harvested from pristine caves,
             meticulously cleaned and quality-checked to retain its natural
             nutrients.
