@@ -22,6 +22,7 @@ import gradeImgC2 from "../images/grand/grad_c2.jpg";
 import gradeImgC3 from "../images/grand/grad_c3.jpg";
 import storyImageZeroSugar from "../images/zero_sugar_bn.png";
 import storyImageCertificate from "../images/certificate.png";
+import birdNestHouseMp4 from "../video/bird_nest_house.mp4";
 
 const truncate = (s: string, n = 18) =>
   s.length > n ? s.slice(0, n) + "..." : s;
@@ -1043,7 +1044,7 @@ function QueenVideo() {
         >
           <video
             ref={videoRef}
-            src="bird_nest_house.mp4"
+            src={birdNestHouseMp4}
             poster="https://www.damadingjiyanwo.com/images/section-image-4.jpg"
             preload="metadata"
             playsInline
