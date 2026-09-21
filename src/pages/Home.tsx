@@ -603,8 +603,11 @@ const GRADES = [
     img: gradeImgA,
     alt: "Grade A long strand bird's nest",
     desc: "Hand-selected long strands with exceptional length, colour, and thickness. Our top tier, reserved for the finest nests with perfect integrity and a natural, rich aroma.",
-    features: ["Extra long strands", "Uniform golden colour", "Highest nutrient density"],
-    
+    features: [
+      "Extra long strands",
+      "Uniform golden colour",
+      "Highest nutrient density",
+    ],
   },
   {
     grade: "GRADE B",
@@ -614,7 +617,6 @@ const GRADES = [
     alt: "Grade B classic bird's nest",
     desc: "Balanced quality with medium-length strands and a clean, consistent finish. An excellent everyday choice that keeps the full taste and nutrition of premium nests.",
     features: ["Medium strands", "Clean finish", "Consistent batches"],
-
   },
   {
     grade: "GRADE C",
@@ -624,7 +626,6 @@ const GRADES = [
     alt: "Grade C value bird's nest",
     desc: "Shorter strands and a soft natural texture at a friendly price. Every nest is still carefully cleaned and quality-checked for a genuine, safe experience.",
     features: ["Soft texture", "Ideal for cooking", "Great everyday value"],
-
   },
 ];
 
@@ -632,27 +633,69 @@ function Grades() {
   const { ref, visible } = useFadeIn();
   const [active, setActive] = useState(0);
   const nextGrade = () => setActive((a) => (a + 1) % GRADES.length);
-  const prevGrade = () => setActive((a) => (a - 1 + GRADES.length) % GRADES.length);
+  const prevGrade = () =>
+    setActive((a) => (a - 1 + GRADES.length) % GRADES.length);
   return (
     <section ref={ref} style={{ background: C.ivory, padding: "96px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            justifyContent: "space-between",
+            marginBottom: 48,
+            flexWrap: "wrap",
+            gap: 20,
+          }}
+        >
           <div>
-            <p style={{ fontSize: 10, letterSpacing: "0.22em", fontWeight: 700, color: C.gold, marginBottom: 12 }}>
+            <p
+              style={{
+                fontSize: 10,
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+                color: C.gold,
+                marginBottom: 12,
+              }}
+            >
               OUR GRADES
             </p>
-            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: C.brown, marginBottom: 8 }}>
+            <h2
+              style={{
+                fontFamily: "'Playfair Display',serif",
+                fontSize: "clamp(32px,4vw,44px)",
+                fontWeight: 700,
+                color: C.brown,
+                marginBottom: 8,
+              }}
+            >
               Choose Your Grade
             </h2>
             <GoldDivider />
           </div>
-          <p style={{ fontSize: 14, color: C.muted, maxWidth: 380, lineHeight: 1.75 }}>
-            Tap a grade to preview its product. Every grade is harvested, cleaned, and quality-checked to the same trusted standard.
+          <p
+            style={{
+              fontSize: 14,
+              color: C.muted,
+              maxWidth: 380,
+              lineHeight: 1.75,
+            }}
+          >
+            Tap a grade to preview its product. Every grade is harvested,
+            cleaned, and quality-checked to the same trusted standard.
           </p>
         </div>
 
         {/* Grade tabs */}
-        <div style={{ display: "flex", gap: 14, marginBottom: 40, flexWrap: "wrap" }} className="grade-tabs">
+        <div
+          style={{
+            display: "flex",
+            gap: 14,
+            marginBottom: 40,
+            flexWrap: "wrap",
+          }}
+          className="grade-tabs"
+        >
           {GRADES.map((g, i) => (
             <button
               key={i}
@@ -667,7 +710,8 @@ function Grades() {
                 color: active === i ? "#FAF7F2" : C.brown,
                 cursor: "pointer",
                 transition: "all 0.25s ease",
-                boxShadow: active === i ? "0 8px 28px rgba(184,134,11,0.3)" : "none",
+                boxShadow:
+                  active === i ? "0 8px 28px rgba(184,134,11,0.3)" : "none",
               }}
             >
               {g.grade}
@@ -706,21 +750,132 @@ function Grades() {
                 }}
                 className="grade-preview"
               >
-                <div style={{ position: "relative", minHeight: 460, overflow: "hidden" }}>
-                  <img src={g.img} alt={g.alt} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,transparent 70%,rgba(44,26,14,0.35))" }} />
+                <div
+                  style={{
+                    position: "relative",
+                    minHeight: 460,
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    src={g.img}
+                    alt={g.alt}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(to right,transparent 70%,rgba(44,26,14,0.35))",
+                    }}
+                  />
                 </div>
-                <div style={{ padding: "56px 48px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
-                    <div style={{ width: "fit-content", padding: "6px 14px", fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", color: C.gold, border: `1px solid rgba(184,134,11,0.3)` }}>{g.badge}</div>
-                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.18em", color: C.brown }}>{g.grade}</div>
+                <div
+                  style={{
+                    padding: "56px 48px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    position: "relative",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 14,
+                      marginBottom: 18,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "fit-content",
+                        padding: "6px 14px",
+                        fontSize: 9,
+                        fontWeight: 700,
+                        letterSpacing: "0.14em",
+                        color: C.gold,
+                        border: `1px solid rgba(184,134,11,0.3)`,
+                      }}
+                    >
+                      {g.badge}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        letterSpacing: "0.18em",
+                        color: C.brown,
+                      }}
+                    >
+                      {g.grade}
+                    </div>
                   </div>
-                  <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(26px,3vw,36px)", fontWeight: 700, color: C.brown, marginBottom: 18, lineHeight: 1.2 }}>{g.title}</h3>
-                  <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.85, marginBottom: 28 }}>{g.desc}</p>
-                  <div style={{ borderTop: `1px solid rgba(184,134,11,0.12)`, paddingTop: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+                  <h3
+                    style={{
+                      fontFamily: "'Playfair Display',serif",
+                      fontSize: "clamp(26px,3vw,36px)",
+                      fontWeight: 700,
+                      color: C.brown,
+                      marginBottom: 18,
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {g.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: 14,
+                      color: C.muted,
+                      lineHeight: 1.85,
+                      marginBottom: 28,
+                    }}
+                  >
+                    {g.desc}
+                  </p>
+                  <div
+                    style={{
+                      borderTop: `1px solid rgba(184,134,11,0.12)`,
+                      paddingTop: 20,
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 12,
+                    }}
+                  >
                     {g.features.map((f, j) => (
-                      <div key={j} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13.5, color: C.charcoal }}>
-                        <div style={{ width: 18, height: 18, borderRadius: "50%", border: `1px solid rgba(184,134,11,0.35)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: C.gold, fontSize: 10 }}>✓</div>
+                      <div
+                        key={j}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 12,
+                          fontSize: 13.5,
+                          color: C.charcoal,
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 18,
+                            height: 18,
+                            borderRadius: "50%",
+                            border: `1px solid rgba(184,134,11,0.35)`,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexShrink: 0,
+                            color: C.gold,
+                            fontSize: 10,
+                          }}
+                        >
+                          ✓
+                        </div>
                         {f}
                       </div>
                     ))}
@@ -779,7 +934,14 @@ function Grades() {
           </button>
 
           {/* Dots */}
-          <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 24 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              justifyContent: "center",
+              marginTop: 24,
+            }}
+          >
             {GRADES.map((_, d) => (
               <button
                 key={d}
@@ -1632,12 +1794,12 @@ export default function Home() {
     <>
       <Hero />
       {/* <QualityFeatures /> */}
+      <Grades />
       <Process />
       <QueenVideo />
       <Products />
-      <Grades />
-      <Certificates />
       <OurStory />
+      <Certificates />
     </>
   );
 }
