@@ -11,6 +11,11 @@ import {
 } from "../shared";
 import { useNavigate } from "react-router";
 import storyImagePrim from "../images/bird_nest_prim_preview.png";
+import finalProcess from "../images/process/final_process.jpg";
+import houseBird from "../images/process/house_bird.jpg";
+import carefulSelect from "../images/process/careful_select.jpg";
+import qualitySelect from "../images/process/quality_select.jpg";
+import selectedNest from "../images/process/selected_nest.jpg";
 
 const STEPS = [
   {
@@ -20,7 +25,7 @@ const STEPS = [
     desc: "We partner with responsible swiftlet farmers who maintain natural, humane bird house environments. Our nests are sourced from certified farms in Southeast Asia where swiftlets nest freely, and no birds are harmed in the process.",
     detail:
       "Carefully selected natural bird's nests — sustainably and ethically sourced.",
-    img: "https://static01.nyt.com/images/2024/03/20/multimedia/00Indonesia-birdnest-dispatch-01-lkhg/00Indonesia-birdnest-dispatch-01-lkhg-articleLarge-v2.jpg?quality=75&auto=webp&disable=upscale",
+    img: houseBird,
     alt: "Bird house in natural field environment",
     bg: C.ivory,
   },
@@ -31,44 +36,33 @@ const STEPS = [
     desc: "Each nest is individually inspected by our skilled team. We assess strand length, colour, shape, and overall integrity. Only nests that meet our premium grade standards are accepted into our processing line.",
     detail:
       "Visual inspection ensures authenticity and natural premium quality.",
-    img: "https://sgbestbirdnest.sg/wp-content/uploads/2024/07/014-%E7%87%95%E7%AA%9D%E5%B7%A5%E5%8E%82%E5%9B%BE%E7%89%872-scaled.jpg",
+    img: qualitySelect,
     alt: "Close-up of premium raw bird's nest",
     bg: C.cream,
   },
   {
     num: "03",
-    label: "Hand Cleaning",
-    subtitle: "Craft, patience, and precision",
-    desc: "Our skilled artisans meticulously remove impurities by hand using fine tools and pure water. This delicate process preserves the natural strand structure and active compounds that make bird's nest so prized.",
-    detail:
-      "Every feather and foreign particle removed by patient, trained hands.",
-    img: "https://cvsumberalam.co.id/data/production/8.jpg",
-    alt: "Hands carefully cleaning bird's nest",
-    bg: C.ivory,
-  },
-  {
-    num: "04",
     label: "Quality Processing",
     subtitle: "Controlled and hygienic",
     desc: "After cleaning, nests are processed under strict hygiene protocols in our controlled environment. Temperature, humidity, and handling are carefully monitored to maintain purity and preserve natural nutrients throughout.",
     detail: "Prepared under rigorous hygiene and processing standards.",
-    img: "https://hitang-birdnest.com/wp-content/themes/hitang-storefront-child/assets/images/cleaning-5-dry.png",
+    img: carefulSelect,
     alt: "Clean food processing facility",
     bg: C.cream,
   },
   {
-    num: "05",
+    num: "04",
     label: "Final Inspection",
     subtitle: "Every piece, verified",
     desc: "Before packaging, each nest undergoes a final quality review. Our team checks for consistency, cleanliness, and grade classification. Only products that pass every checkpoint are approved for the next stage.",
     detail:
       "No nest leaves our facility without passing a thorough final review.",
-    img: "https://www.euyansang.com/cdn/shop/articles/HealthReads_4_5Ways_Birds_Nest1.jpg?v=1775466492",
+    img: finalProcess,
     alt: "Premium product inspection",
     bg: C.ivory,
   },
   {
-    num: "06",
+    num: "05",
     label: "Premium Packaging",
     subtitle: "Worthy of what's inside",
     desc: "Each product is carefully packed in our premium packaging, designed to maintain freshness and present the product beautifully. Our packaging reflects the care and craftsmanship of everything inside.",
@@ -320,7 +314,7 @@ function NestToNourishment() {
               }}
             >
               <img
-                src="https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/476054198_1294593131882489_2324238320778180359_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGcZw1jzLFfMlVaiuAPLPh6-FxWMM5xP5T4XFYwznE_lAzXPaac_WmLXV8d04oTqoN5SgtLztUcngZTYjU5ZxV4&_nc_ohc=fw5I3MZoj3AQ7kNvwEm1Oeq&_nc_oc=AdofsfRWGz0BLVQNDRmyDti_LXpgmJ8V2KJzdUtzQaxlvj6T3Y5PNNg8LskY28kqggk&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=fSCe73ymk78eRrjvF68lvA&_nc_ss=7b2a8&oh=00_AQJkL4MQxp3RJ3FT9kQp9WoYbNvMhAqYyQdoy1O0Tn0kJQ&oe=6AB14D25"
+                src={selectedNest}
                 alt="Raw bird's nest from nature"
                 style={{ width: "100%", height: 400, objectFit: "cover" }}
               />

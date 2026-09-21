@@ -12,6 +12,14 @@ import storyImageChia from "../images/chia_bn.png";
 import storyImageGinseng from "../images/ginseng_bn.png";
 import storyImageOriginal from "../images/original_bn.png";
 import storyImagePandan from "../images/pandan_bn.png";
+import gradeImgA from "../images/grand/grad_a1.jpg";
+import gradeImgA2 from "../images/grand/grad_a2.jpg";
+import gradeImgA3 from "../images/grand/grad_a3.jpg";
+import gradeImgB from "../images/grand/grad_b1.jpg";
+import gradeImgB2 from "../images/grand/grad_b2.jpg";
+import gradeImgC from "../images/grand/grad_c1.jpg";
+import gradeImgC2 from "../images/grand/grad_c2.jpg";
+import gradeImgC3 from "../images/grand/grad_c3.jpg";
 import storyImageZeroSugar from "../images/zero_sugar_bn.png";
 import storyImageCertificate from "../images/certificate.png";
 
@@ -582,6 +590,217 @@ function Products() {
         </div>
       </div>
       <style>{`@media(max-width:900px){.products-grid{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:480px){.products-grid{grid-template-columns:1fr!important}}`}</style>
+    </section>
+  );
+}
+
+/* ── Grade data ── */
+const GRADES = [
+  {
+    grade: "GRADE A",
+    badge: "PREMIUM AAA",
+    title: "Superior Long Strands",
+    img: gradeImgA,
+    alt: "Grade A long strand bird's nest",
+    desc: "Hand-selected long strands with exceptional length, colour, and thickness. Our top tier, reserved for the finest nests with perfect integrity and a natural, rich aroma.",
+    features: ["Extra long strands", "Uniform golden colour", "Highest nutrient density"],
+    
+  },
+  {
+    grade: "GRADE B",
+    badge: "AAA STANDARD",
+    title: "Classic Quality",
+    img: gradeImgB,
+    alt: "Grade B classic bird's nest",
+    desc: "Balanced quality with medium-length strands and a clean, consistent finish. An excellent everyday choice that keeps the full taste and nutrition of premium nests.",
+    features: ["Medium strands", "Clean finish", "Consistent batches"],
+
+  },
+  {
+    grade: "GRADE C",
+    badge: "AA STANDARD",
+    title: "Smart Value",
+    img: gradeImgC,
+    alt: "Grade C value bird's nest",
+    desc: "Shorter strands and a soft natural texture at a friendly price. Every nest is still carefully cleaned and quality-checked for a genuine, safe experience.",
+    features: ["Soft texture", "Ideal for cooking", "Great everyday value"],
+
+  },
+];
+
+function Grades() {
+  const { ref, visible } = useFadeIn();
+  const [active, setActive] = useState(0);
+  const nextGrade = () => setActive((a) => (a + 1) % GRADES.length);
+  const prevGrade = () => setActive((a) => (a - 1 + GRADES.length) % GRADES.length);
+  return (
+    <section ref={ref} style={{ background: C.ivory, padding: "96px 0" }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
+          <div>
+            <p style={{ fontSize: 10, letterSpacing: "0.22em", fontWeight: 700, color: C.gold, marginBottom: 12 }}>
+              OUR GRADES
+            </p>
+            <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,4vw,44px)", fontWeight: 700, color: C.brown, marginBottom: 8 }}>
+              Choose Your Grade
+            </h2>
+            <GoldDivider />
+          </div>
+          <p style={{ fontSize: 14, color: C.muted, maxWidth: 380, lineHeight: 1.75 }}>
+            Tap a grade to preview its product. Every grade is harvested, cleaned, and quality-checked to the same trusted standard.
+          </p>
+        </div>
+
+        {/* Grade tabs */}
+        <div style={{ display: "flex", gap: 14, marginBottom: 40, flexWrap: "wrap" }} className="grade-tabs">
+          {GRADES.map((g, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              style={{
+                padding: "14px 36px",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.18em",
+                border: `1px solid ${active === i ? C.gold : "rgba(184,134,11,0.3)"}`,
+                background: active === i ? C.gold : C.cream,
+                color: active === i ? "#FAF7F2" : C.brown,
+                cursor: "pointer",
+                transition: "all 0.25s ease",
+                boxShadow: active === i ? "0 8px 28px rgba(184,134,11,0.3)" : "none",
+              }}
+            >
+              {g.grade}
+            </button>
+          ))}
+        </div>
+
+        {/* Grade card slider */}
+        <div
+          className="grade-slider"
+          style={{
+            position: "relative",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(24px)",
+            transition: "opacity 0.5s ease,transform 0.5s ease",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              overflow: "hidden",
+              background: C.cream,
+              border: `1px solid rgba(184,134,11,0.12)`,
+            }}
+          >
+            {GRADES.map((g, i) => (
+              <div
+                key={i}
+                style={{
+                  flex: "0 0 100%",
+                  minWidth: "100%",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: "transform 0.55s ease",
+                }}
+                className="grade-preview"
+              >
+                <div style={{ position: "relative", minHeight: 460, overflow: "hidden" }}>
+                  <img src={g.img} alt={g.alt} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,transparent 70%,rgba(44,26,14,0.35))" }} />
+                </div>
+                <div style={{ padding: "56px 48px", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
+                    <div style={{ width: "fit-content", padding: "6px 14px", fontSize: 9, fontWeight: 700, letterSpacing: "0.14em", color: C.gold, border: `1px solid rgba(184,134,11,0.3)` }}>{g.badge}</div>
+                    <div style={{ fontSize: 13, fontWeight: 700, letterSpacing: "0.18em", color: C.brown }}>{g.grade}</div>
+                  </div>
+                  <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(26px,3vw,36px)", fontWeight: 700, color: C.brown, marginBottom: 18, lineHeight: 1.2 }}>{g.title}</h3>
+                  <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.85, marginBottom: 28 }}>{g.desc}</p>
+                  <div style={{ borderTop: `1px solid rgba(184,134,11,0.12)`, paddingTop: 20, display: "flex", flexDirection: "column", gap: 12 }}>
+                    {g.features.map((f, j) => (
+                      <div key={j} style={{ display: "flex", alignItems: "center", gap: 12, fontSize: 13.5, color: C.charcoal }}>
+                        <div style={{ width: 18, height: 18, borderRadius: "50%", border: `1px solid rgba(184,134,11,0.35)`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: C.gold, fontSize: 10 }}>✓</div>
+                        {f}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Arrows */}
+          <button
+            onClick={prevGrade}
+            aria-label="Previous grade"
+            style={{
+              position: "absolute",
+              top: "45%",
+              left: -20,
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              border: `1px solid rgba(184,134,11,0.3)`,
+              background: C.ivory,
+              color: C.gold,
+              cursor: "pointer",
+              boxShadow: "0 6px 20px rgba(44,26,14,0.12)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 22,
+            }}
+          >
+            ‹
+          </button>
+          <button
+            onClick={nextGrade}
+            aria-label="Next grade"
+            style={{
+              position: "absolute",
+              top: "45%",
+              right: -20,
+              width: 44,
+              height: 44,
+              borderRadius: "50%",
+              border: `1px solid rgba(184,134,11,0.3)`,
+              background: C.ivory,
+              color: C.gold,
+              cursor: "pointer",
+              boxShadow: "0 6px 20px rgba(44,26,14,0.12)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 22,
+            }}
+          >
+            ›
+          </button>
+
+          {/* Dots */}
+          <div style={{ display: "flex", gap: 8, justifyContent: "center", marginTop: 24 }}>
+            {GRADES.map((_, d) => (
+              <button
+                key={d}
+                onClick={() => setActive(d)}
+                aria-label={`Go to ${GRADES[d].grade}`}
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: "50%",
+                  border: "none",
+                  cursor: "pointer",
+                  background: active === d ? C.gold : "rgba(184,134,11,0.25)",
+                  transition: "background 0.25s ease",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+        <style>{`@media(max-width:768px){.grade-preview{grid-template-columns:1fr!important}.grade-preview>div:first-child{min-height:300px!important}}@media(max-width:520px){.grade-slider>button{display:none!important}}`}</style>
+      </div>
     </section>
   );
 }
@@ -1416,6 +1635,7 @@ export default function Home() {
       <Process />
       <QueenVideo />
       <Products />
+      <Grades />
       <Certificates />
       <OurStory />
     </>
