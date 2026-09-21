@@ -1796,8 +1796,8 @@ export default function Home() {
       <Hero />
       {/* <QualityFeatures /> */}
       <Grades />
-      <Process />
       <QueenVideo />
+      <Process />
       <Products />
       <OurStory />
       <Certificates />
