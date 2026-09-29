@@ -53,7 +53,7 @@ const PRODUCTS = [
     description:
       "Thoughtfully prepared products designed to make enjoying premium bird's nest simple and convenient.",
     image:
-      "https://scontent.fpnh7-1.fna.fbcdn.net/v/t39.30808-6/480046025_1301933777815091_9038416660960061473_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx720x960&ctp=s720x960&_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEK16o5KZknTPuZjqLScdLNlGqPDgOHMTeUao8OA4cxN8-h47mzad6meMIVbOawYytTeK_8YVqXyWcJh9I5rrG7&_nc_ohc=4shy2pp9v90Q7kNvwGyw75O&_nc_oc=AdoVaY7MLPN9chWr531vhXL4Gv3Mab-XxFcigNuc62tjBdyhrIh7yQZ7M8o92cPD4yI&_nc_zt=23&_nc_ht=scontent.fpnh7-1.fna&_nc_gid=Rhh3pNE8N47DZNo6vLbMkg&_nc_ss=7b2a8&oh=00_AQIbnXcLKrX9zij2ud3PcqGW02V8qhZRntzC7j7Jloq9Ug&oe=6AB045AC",
+      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/476054198_1294593131882489_2324238320778180359_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGcZw1jzLFfMlVaiuAPLPh6-FxWMM5xP5T4XFYwznE_lAzXPaac_WmLXV8d04oTqoN5SgtLztUcngZTYjU5ZxV4&_nc_ohc=0Y-q0syqZp0Q7kNvwHUannG&_nc_oc=AdpLS56XMFQdI21cI5_5QYAR6KxU7nTv384RMp3LgkdbK0zTGiroHENU2ZP2Lt3MxHs&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=w-TzweABW5fkD39g6VlaGw&_nc_ss=7b2a8&oh=00_AQM9k8ylhwWoI9zp5ZDqXDjz3cj9K6ocbuG6XCw_jpdVgg&oe=6AC15765",
   },
   {
     title: "Gift Collection",
@@ -61,7 +61,7 @@ const PRODUCTS = [
     description:
       "Beautifully presented Queen Birdnest products created for gifting, celebrations, and meaningful moments.",
     image:
-      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/476054198_1294593131882489_2324238320778180359_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGcZw1jzLFfMlVaiuAPLPh6-FxWMM5xP5T4XFYwznE_lAzXPaac_WmLXV8d04oTqoN5SgtLztUcngZTYjU5ZxV4&_nc_ohc=fw5I3MZoj3AQ7kNvwEm1Oeq&_nc_oc=AdofsfRWGz0BLVQNDRmyDti_LXpgmJ8V2KJzdUtzQaxlvj6T3Y5PNNg8LskY28kqggk&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=5a9jz3xS6thcRYUgBUwm-g&_nc_ss=7b2a8&oh=00_AQLjUMXPQF1_6BcUrrUYKteJ2lml40XjtZ5e4yfl_4jjbw&oe=6AB033E5",
+      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/475872355_1294581968550272_1932998559119663185_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx2048x1394&ctp=s2048x1394&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFrBG0-1XvrS9XEssjmVHXoa2fQtJpDxPVrZ9C0mkPE9WdAK3JfEL2AxWCIBJpYYCzTrejYS9HzFDPqeqbJ_-dx&_nc_ohc=zo_r-WrhA88Q7kNvwGu9Ddi&_nc_oc=AdoftU0XNYav6vKnXrdmxSvPAsJDrV7HCHHIhUqVx5wIHwWN81hsT4oX9SQ21cgakw8&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=z-u7qWCdCzoQ2ufy1iNY9g&_nc_ss=7b2a8&oh=00_AQMJFm3AqgYTGDwJ0ZYaD3ojloBNACSY_l0RVS0fSrZ5cw&oe=6AC14C65",
   },
 ];
 
@@ -109,7 +109,7 @@ function WhoWeAre() {
             }}
           >
             <img
-              src="https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/474745677_1287359165939219_2118366557123665066_n.jpg?stp=dst-jpg_tt6&cstp=mx1834x2048&ctp=s1834x2048&_nc_cat=111&ccb=1-7&_nc_sid=f727a1&_nc_eui2=AeEKrgjzM1zVazPxnlgdtTPl_VkHfxN0qKv9WQd_E3Soq7GpUpY6sqM_9u8WjVPSthoh8F_ebtxj5pQxsOQzbyxW&_nc_ohc=-yjqox6p7ZQQ7kNvwHadyD7&_nc_oc=Adp_kt_petLXEZOik1RPiqS8dRRJKuYZAG_o2VxeLDklSbRyTFkH0dRz1UCkBacZnkA&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=zx0-7qxSjhN_WGRjIfzaqw&_nc_ss=7b2a8&oh=00_AQLE9mgo3Isaf6t4AFgB233t5yVbSsavE_XPQB64x4B05g&oe=6AB03BE0"
+              src={storyImagePrim}
               alt="Natural premium ingredients"
               style={{
                 width: "100%",
@@ -455,8 +455,6 @@ function OurStory() {
 /* =========================================================
    CO-FOUNDERS
 ========================================================= */
-
-
 
 /* =========================================================
    MISSION & VISION
@@ -865,7 +863,6 @@ export default function AboutPage() {
       <WhoWeAre />
 
       <OurStory />
-
 
       <MissionVision />
 

@@ -374,6 +374,7 @@ function NestToNourishment() {
               transition: "opacity 0.6s ease 0.3s",
             }}
           >
+            
             <div
               style={{
                 width: 1,
@@ -435,7 +436,7 @@ function NestToNourishment() {
               }}
             >
               <img
-                src="https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/475772913_1294588611882941_6482093589324163510_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEefTtjry_9FRj8xORUA9eeakSF9XcE4dBqRIX1dwTh0C8aF7dH-TizDbleweDn9FJKJoVe52GEKOYOR24-p6X2&_nc_ohc=PKvCZusU0G0Q7kNvwGIneO7&_nc_oc=AdotLUozStPtHtLfmlKURIfwQ0wzHTZ_4wwdd0VpZnQVYy-ctkD5mvpeeNIBf-BkwMc&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=2W64jVtSsgwSXqIFOrzX6w&_nc_ss=7b2a8&oh=00_AQIhJFcw0MYr6UvYyycTjDB9f_7JEqQszHp5ZCJE88w7uw&oe=6AB12BC5"
+                src={storyImagePrim}
                 alt="Premium cleaned bird's nest product"
                 style={{ width: "100%", height: 400, objectFit: "cover" }}
               />
