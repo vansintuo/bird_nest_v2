@@ -12,11 +12,14 @@ import storyImageChia from "../images/chia_bn.png";
 import storyImageGinseng from "../images/ginseng_bn.png";
 import storyImageOriginal from "../images/original_bn.png";
 import storyImagePandan from "../images/pandan_bn.png";
+import gradeImgB1Logo from "../images/grand/grad_b4.png";
 import gradeImgA from "../images/grand/grad_a1.jpg";
 import gradeImgA2 from "../images/grand/grad_a2.jpg";
 import gradeImgA3 from "../images/grand/grad_a3.jpg";
-import gradeImgB from "../images/grand/grad_b1.jpg";
-import gradeImgB2 from "../images/grand/grad_b2.jpg";
+import gradeImgB from "../images/grand/grad_b1.png";
+import gradeImgB2 from "../images/grand/grad_b2.png";
+import gradeImgB3 from "../images/grand/grad_b3.png";
+import gradeImgB4 from "../images/grand/grad_b4.png";
 import gradeImgC from "../images/grand/grad_c1.jpg";
 import gradeImgC2 from "../images/grand/grad_c2.jpg";
 import gradeImgC3 from "../images/grand/grad_c3.jpg";
@@ -366,8 +369,7 @@ function Hero() {
             }}
           >
             <img
-              src="https://static.wixstatic.com/media/aee2a8_9c2bda02e2314826af6d0a03d450f34f~mv2.jpg/v1/fill/w_2500,h_1666,al_c/aee2a8_9c2bda02e2314826af6d0a03d450f34f~mv2.jpg"
-              alt="Premium edible bird's nest in golden plate"
+              src={gradeImgB1Logo}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           </div>
@@ -601,41 +603,110 @@ const GRADES = [
     grade: "GRADE A",
     badge: "PREMIUM AAA",
     title: "Superior Long Strands",
-    img: gradeImgA,
-    alt: "Grade A long strand bird's nest",
     desc: "Hand-selected long strands with exceptional length, colour, and thickness. Our top tier, reserved for the finest nests with perfect integrity and a natural, rich aroma.",
     features: [
       "Extra long strands",
       "Uniform golden colour",
       "Highest nutrient density",
     ],
+    products: [
+      {
+        name: "Extra Long Strand",
+        desc: "The longest strands in our range, hand-picked one nest at a time.",
+        img: gradeImgA,
+        alt: "Grade A extra long strand bird's nest",
+      },
+      {
+        name: "Whole Nest Selection",
+        desc: "Complete unbroken nests graded for shape and strand density.",
+        img: gradeImgA2,
+        alt: "Grade A whole nest bird's nest",
+      },
+      {
+        name: "Premium Cleaned",
+        desc: "Meticulously cleaned, retaining the nest's natural richness.",
+        img: gradeImgA3,
+        alt: "Grade A premium cleaned bird's nest",
+      },
+    ],
   },
   {
     grade: "GRADE B",
     badge: "AAA STANDARD",
     title: "Classic Quality",
-    img: gradeImgB,
-    alt: "Grade B classic bird's nest",
     desc: "Balanced quality with medium-length strands and a clean, consistent finish. An excellent everyday choice that keeps the full taste and nutrition of premium nests.",
     features: ["Medium strands", "Clean finish", "Consistent batches"],
+    products: [
+      {
+        name: "Classic Strand",
+        desc: "Balanced medium strands with a clean, consistent finish.",
+        img: gradeImgB,
+        alt: "Grade B classic strand bird's nest",
+      },
+      {
+        name: "Everyday Blend",
+        desc: "An easy everyday nest that keeps the full taste and nutrition.",
+        img: gradeImgB2,
+        alt: "Grade B everyday blend bird's nest",
+      },
+      {
+        name: "Everyday Blend",
+        desc: "An easy everyday nest that keeps the full taste and nutrition.",
+        img: gradeImgB3,
+        alt: "Grade B everyday blend bird's nest",
+      },
+      {
+        name: "Everyday Blend",
+        desc: "An easy everyday nest that keeps the full taste and nutrition.",
+        img: gradeImgB4,
+        alt: "Grade B everyday blend bird's nest",
+      },
+    ],
   },
   {
     grade: "GRADE C",
     badge: "AA STANDARD",
     title: "Smart Value",
-    img: gradeImgC,
-    alt: "Grade C value bird's nest",
     desc: "Shorter strands and a soft natural texture at a friendly price. Every nest is still carefully cleaned and quality-checked for a genuine, safe experience.",
     features: ["Soft texture", "Ideal for cooking", "Great everyday value"],
+    products: [
+      {
+        name: "Soft Texture",
+        desc: "Shorter strands that soften beautifully in the pot.",
+        img: gradeImgC,
+        alt: "Grade C soft texture bird's nest",
+      },
+      {
+        name: "Everyday Value",
+        desc: "A friendly price without compromising on cleaning standards.",
+        img: gradeImgC2,
+        alt: "Grade C everyday value bird's nest",
+      },
+      {
+        name: "Cooking Blend",
+        desc: "Ideal for cooking, with a gentle natural aroma.",
+        img: gradeImgC3,
+        alt: "Grade C cooking blend bird's nest",
+      },
+    ],
   },
 ];
 
 function Grades() {
   const { ref, visible } = useFadeIn();
   const [active, setActive] = useState(0);
-  const nextGrade = () => setActive((a) => (a + 1) % GRADES.length);
-  const prevGrade = () =>
-    setActive((a) => (a - 1 + GRADES.length) % GRADES.length);
+  const [slide, setSlide] = useState(0);
+
+  const grade = GRADES[active];
+  const total = grade.products.length;
+
+  const selectGrade = (i: number) => {
+    setActive(i);
+    setSlide(0);
+  };
+  const nextProduct = () => setSlide((s) => (s + 1) % total);
+  const prevProduct = () => setSlide((s) => (s - 1 + total) % total);
+
   return (
     <section ref={ref} style={{ background: C.ivory, padding: "96px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -682,8 +753,9 @@ function Grades() {
               lineHeight: 1.75,
             }}
           >
-            Tap a grade to preview its product. Every grade is harvested,
-            cleaned, and quality-checked to the same trusted standard.
+            Pick a grade, then slide through every product available in it. Each
+            one is harvested, cleaned, and quality-checked to the same trusted
+            standard.
           </p>
         </div>
 
@@ -700,13 +772,15 @@ function Grades() {
           {GRADES.map((g, i) => (
             <button
               key={i}
-              onClick={() => setActive(i)}
+              onClick={() => selectGrade(i)}
               style={{
                 padding: "14px 36px",
                 fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.18em",
-                border: `1px solid ${active === i ? C.gold : "rgba(184,134,11,0.3)"}`,
+                border: `1px solid ${
+                  active === i ? C.gold : "rgba(184,134,11,0.3)"
+                }`,
                 background: active === i ? C.gold : C.cream,
                 color: active === i ? "#FAF7F2" : C.brown,
                 cursor: "pointer",
@@ -720,7 +794,7 @@ function Grades() {
           ))}
         </div>
 
-        {/* Grade card slider */}
+        {/* Grade card */}
         <div
           className="grade-slider"
           style={{
@@ -732,237 +806,370 @@ function Grades() {
         >
           <div
             style={{
-              display: "flex",
-              overflow: "hidden",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
               background: C.cream,
               border: `1px solid rgba(184,134,11,0.12)`,
             }}
+            className="grade-preview"
           >
-            {GRADES.map((g, i) => (
+            {/* Product slider — slides between products of the active grade */}
+            <div style={{ position: "relative", minHeight: 460 }}>
               <div
-                key={i}
                 style={{
-                  flex: "0 0 100%",
-                  minWidth: "100%",
-                  display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
-                  transform: `translateX(-${active * 100}%)`,
-                  transition: "transform 0.55s ease",
+                  display: "flex",
+                  overflow: "hidden",
+                  height: "100%",
                 }}
-                className="grade-preview"
+              >
+                {grade.products.map((p, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      flex: "0 0 100%",
+                      minWidth: "100%",
+                      position: "relative",
+                      transform: `translateX(-${slide * 100}%)`,
+                      transition: "transform 0.55s ease",
+                    }}
+                  >
+                    <img
+                      src={p.img}
+                      alt={p.alt}
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top,rgba(44,26,14,0.75) 0%,rgba(44,26,14,0.15) 45%,rgba(44,26,14,0.05) 70%)",
+                  pointerEvents: "none",
+                }}
+              />
+
+              {/* Product caption */}
+              <div
+                style={{
+                  position: "absolute",
+                  left: 32,
+                  right: 32,
+                  bottom: 32,
+                  color: "#FAF7F2",
+                  pointerEvents: "none",
+                }}
               >
                 <div
                   style={{
-                    position: "relative",
-                    minHeight: 460,
-                    overflow: "hidden",
+                    fontSize: 9,
+                    letterSpacing: "0.2em",
+                    fontWeight: 700,
+                    color: C.goldLight,
+                    marginBottom: 8,
                   }}
                 >
-                  <img
-                    src={g.img}
-                    alt={g.alt}
+                  {grade.products[slide].name.toUpperCase()}
+                </div>
+                <p
+                  style={{
+                    fontSize: 13.5,
+                    lineHeight: 1.7,
+                    color: "rgba(250,247,242,0.8)",
+                    marginBottom: 14,
+                  }}
+                >
+                  {grade.products[slide].desc}
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    fontSize: 10,
+                    letterSpacing: "0.16em",
+                    color: "rgba(250,247,242,0.6)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {String(slide + 1).padStart(2, "0")}
+                  <span
                     style={{
-                      position: "absolute",
-                      inset: 0,
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
+                      flex: 1,
+                      maxWidth: 90,
+                      height: 1,
+                      background: "rgba(201,168,76,0.5)",
                     }}
                   />
-                  <div
+                  {String(total).padStart(2, "0")}
+                </div>
+              </div>
+
+              {/* Product arrows */}
+              {total > 1 && (
+                <>
+                  <button
+                    onClick={prevProduct}
+                    aria-label="Previous product"
+                    className="grade-arrow"
                     style={{
                       position: "absolute",
-                      inset: 0,
-                      background:
-                        "linear-gradient(to right,transparent 70%,rgba(44,26,14,0.35))",
+                      top: "50%",
+                      left: 16,
+                      marginTop: -22,
                     }}
-                  />
+                  >
+                    ‹
+                  </button>
+                  <button
+                    onClick={nextProduct}
+                    aria-label="Next product"
+                    className="grade-arrow"
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      right: 16,
+                      marginTop: -22,
+                    }}
+                  >
+                    ›
+                  </button>
+                </>
+              )}
+
+              {/* Product dots */}
+              {total > 1 && (
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 14,
+                    right: 32,
+                    display: "flex",
+                    gap: 8,
+                  }}
+                >
+                  {grade.products.map((_, d) => (
+                    <button
+                      key={d}
+                      onClick={() => setSlide(d)}
+                      aria-label={`Show product ${d + 1}`}
+                      style={{
+                        width: slide === d ? 22 : 8,
+                        height: 8,
+                        borderRadius: 999,
+                        border: "none",
+                        padding: 0,
+                        cursor: "pointer",
+                        background:
+                          slide === d ? C.goldLight : "rgba(250,247,242,0.4)",
+                        transition: "all 0.25s ease",
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Grade info */}
+            <div
+              style={{
+                padding: "56px 48px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 14,
+                  marginBottom: 18,
+                }}
+              >
+                <div
+                  style={{
+                    width: "fit-content",
+                    padding: "6px 14px",
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    color: C.gold,
+                    border: `1px solid rgba(184,134,11,0.3)`,
+                  }}
+                >
+                  {grade.badge}
                 </div>
                 <div
                   style={{
-                    padding: "56px 48px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    position: "relative",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    letterSpacing: "0.18em",
+                    color: C.brown,
                   }}
                 >
+                  {grade.grade}
+                </div>
+              </div>
+              <h3
+                style={{
+                  fontFamily: "'Playfair Display',serif",
+                  fontSize: "clamp(26px,3vw,36px)",
+                  fontWeight: 700,
+                  color: C.brown,
+                  marginBottom: 12,
+                  lineHeight: 1.2,
+                }}
+              >
+                {grade.title}
+              </h3>
+              <p
+                style={{
+                  fontSize: 14,
+                  color: C.muted,
+                  lineHeight: 1.85,
+                  marginBottom: 28,
+                }}
+              >
+                {grade.desc}
+              </p>
+              <div
+                style={{
+                  borderTop: `1px solid rgba(184,134,11,0.12)`,
+                  paddingTop: 20,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 12,
+                }}
+              >
+                {grade.features.map((f, j) => (
                   <div
+                    key={j}
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: 14,
-                      marginBottom: 18,
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "fit-content",
-                        padding: "6px 14px",
-                        fontSize: 9,
-                        fontWeight: 700,
-                        letterSpacing: "0.14em",
-                        color: C.gold,
-                        border: `1px solid rgba(184,134,11,0.3)`,
-                      }}
-                    >
-                      {g.badge}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 13,
-                        fontWeight: 700,
-                        letterSpacing: "0.18em",
-                        color: C.brown,
-                      }}
-                    >
-                      {g.grade}
-                    </div>
-                  </div>
-                  <h3
-                    style={{
-                      fontFamily: "'Playfair Display',serif",
-                      fontSize: "clamp(26px,3vw,36px)",
-                      fontWeight: 700,
-                      color: C.brown,
-                      marginBottom: 18,
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {g.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: 14,
-                      color: C.muted,
-                      lineHeight: 1.85,
-                      marginBottom: 28,
-                    }}
-                  >
-                    {g.desc}
-                  </p>
-                  <div
-                    style={{
-                      borderTop: `1px solid rgba(184,134,11,0.12)`,
-                      paddingTop: 20,
-                      display: "flex",
-                      flexDirection: "column",
                       gap: 12,
+                      fontSize: 13.5,
+                      color: C.charcoal,
                     }}
                   >
-                    {g.features.map((f, j) => (
-                      <div
-                        key={j}
+                    <div
+                      style={{
+                        width: 18,
+                        height: 18,
+                        borderRadius: "50%",
+                        border: `1px solid rgba(184,134,11,0.35)`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        color: C.gold,
+                        fontSize: 10,
+                      }}
+                    >
+                      ✓
+                    </div>
+                    {f}
+                  </div>
+                ))}
+              </div>
+
+              {/* Product list for this grade */}
+              <div
+                style={{
+                  marginTop: 28,
+                  paddingTop: 20,
+                  borderTop: `1px solid rgba(184,134,11,0.12)`,
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: "0.2em",
+                    color: C.gold,
+                    marginBottom: 14,
+                  }}
+                >
+                  {total} PRODUCT{total > 1 ? "S" : ""} IN THIS GRADE
+                </div>
+                <div
+                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
+                >
+                  {grade.products.map((p, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setSlide(i)}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 12,
+                        padding: "8px 10px",
+                        background:
+                          slide === i ? "rgba(184,134,11,0.08)" : "none",
+                        border: `1px solid ${
+                          slide === i
+                            ? "rgba(184,134,11,0.3)"
+                            : "rgba(184,134,11,0.1)"
+                        }`,
+                        cursor: "pointer",
+                        textAlign: "left",
+                        transition: "all 0.25s ease",
+                      }}
+                    >
+                      <img
+                        src={p.img}
+                        alt={p.alt}
                         style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 12,
-                          fontSize: 13.5,
-                          color: C.charcoal,
+                          width: 40,
+                          height: 40,
+                          objectFit: "cover",
+                          flexShrink: 0,
                         }}
-                      >
+                      />
+                      <div style={{ minWidth: 0 }}>
                         <div
                           style={{
-                            width: 18,
-                            height: 18,
-                            borderRadius: "50%",
-                            border: `1px solid rgba(184,134,11,0.35)`,
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexShrink: 0,
-                            color: C.gold,
-                            fontSize: 10,
+                            fontSize: 12,
+                            fontWeight: 600,
+                            color: C.brown,
+                            letterSpacing: "0.04em",
                           }}
                         >
-                          ✓
+                          {truncate(p.name, 22)}
                         </div>
-                        {f}
+                        <div
+                          style={{
+                            fontSize: 10,
+                            color: C.muted,
+                            marginTop: 2,
+                          }}
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </div>
                       </div>
-                    ))}
-                  </div>
+                    </button>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Arrows */}
-          <button
-            onClick={prevGrade}
-            aria-label="Previous grade"
-            style={{
-              position: "absolute",
-              top: "45%",
-              left: -20,
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              border: `1px solid rgba(184,134,11,0.3)`,
-              background: C.ivory,
-              color: C.gold,
-              cursor: "pointer",
-              boxShadow: "0 6px 20px rgba(44,26,14,0.12)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 22,
-            }}
-          >
-            ‹
-          </button>
-          <button
-            onClick={nextGrade}
-            aria-label="Next grade"
-            style={{
-              position: "absolute",
-              top: "45%",
-              right: -20,
-              width: 44,
-              height: 44,
-              borderRadius: "50%",
-              border: `1px solid rgba(184,134,11,0.3)`,
-              background: C.ivory,
-              color: C.gold,
-              cursor: "pointer",
-              boxShadow: "0 6px 20px rgba(44,26,14,0.12)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 22,
-            }}
-          >
-            ›
-          </button>
-
-          {/* Dots */}
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              justifyContent: "center",
-              marginTop: 24,
-            }}
-          >
-            {GRADES.map((_, d) => (
-              <button
-                key={d}
-                onClick={() => setActive(d)}
-                aria-label={`Go to ${GRADES[d].grade}`}
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  border: "none",
-                  cursor: "pointer",
-                  background: active === d ? C.gold : "rgba(184,134,11,0.25)",
-                  transition: "background 0.25s ease",
-                  padding: 0,
-                }}
-              />
-            ))}
+            </div>
           </div>
         </div>
-        <style>{`@media(max-width:768px){.grade-preview{grid-template-columns:1fr!important}.grade-preview>div:first-child{min-height:300px!important}}@media(max-width:520px){.grade-slider>button{display:none!important}}`}</style>
+        <style>{`
+          .grade-arrow{width:44px;height:44px;border-radius:50%;border:1px solid rgba(184,134,11,0.35);background:rgba(250,247,242,0.92);color:${C.gold};cursor:pointer;box-shadow:0 6px 20px rgba(44,26,14,0.15);display:flex;align-items:center;justify-content:center;font-size:24px;line-height:1;backdrop-filter:blur(6px);transition:background 0.25s ease,transform 0.25s ease}
+          .grade-arrow:hover{background:#FAF7F2;transform:translateY(-2px)}
+          @media(max-width:768px){.grade-preview{grid-template-columns:1fr!important}.grade-preview>div:first-child{min-height:420px!important}}
+          @media(max-width:520px){.grade-arrow{display:none!important}}
+        `}</style>
       </div>
     </section>
   );
@@ -1194,7 +1401,9 @@ function CertificateCard({
       onMouseLeave={() => setHov(false)}
       style={{
         background: C.ivory,
-        border: `1px solid ${hov ? "rgba(184,134,11,0.3)" : "rgba(184,134,11,0.1)"}`,
+        border: `1px solid ${
+          hov ? "rgba(184,134,11,0.3)" : "rgba(184,134,11,0.1)"
+        }`,
         overflow: "hidden",
         transition: "all 0.3s ease",
         boxShadow: hov ? "0 16px 48px rgba(44,26,14,0.1)" : "none",

@@ -16,6 +16,9 @@ import storyImageGinseng from "../images/ginseng_bn.png";
 import storyImageOriginal from "../images/original_bn.png";
 import storyImagePandan from "../images/pandan_bn.png";
 import storyImageZeroSugar from "../images/zero_sugar_bn.png";
+import giftPagkage from "../images/process/gift_pagkage.jpg";
+import readyToEatPagkage from "../images/process/ready_to_eat_pagkage.jpg";
+
 /* =========================================================
    COMPANY INFORMATION
 ========================================================= */
@@ -52,16 +55,14 @@ const PRODUCTS = [
     subtitle: "Convenience meets quality",
     description:
       "Thoughtfully prepared products designed to make enjoying premium bird's nest simple and convenient.",
-    image:
-      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/476054198_1294593131882489_2324238320778180359_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGcZw1jzLFfMlVaiuAPLPh6-FxWMM5xP5T4XFYwznE_lAzXPaac_WmLXV8d04oTqoN5SgtLztUcngZTYjU5ZxV4&_nc_ohc=0Y-q0syqZp0Q7kNvwHUannG&_nc_oc=AdpLS56XMFQdI21cI5_5QYAR6KxU7nTv384RMp3LgkdbK0zTGiroHENU2ZP2Lt3MxHs&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=w-TzweABW5fkD39g6VlaGw&_nc_ss=7b2a8&oh=00_AQM9k8ylhwWoI9zp5ZDqXDjz3cj9K6ocbuG6XCw_jpdVgg&oe=6AC15765",
+    image: readyToEatPagkage,
   },
   {
     title: "Gift Collection",
     subtitle: "A meaningful expression of care",
     description:
       "Beautifully presented Queen Birdnest products created for gifting, celebrations, and meaningful moments.",
-    image:
-      "https://scontent.fpnh7-2.fna.fbcdn.net/v/t39.30808-6/475872355_1294581968550272_1932998559119663185_n.jpg?stp=cp6_dst-jpg_tt6&cstp=mx2048x1394&ctp=s2048x1394&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFrBG0-1XvrS9XEssjmVHXoa2fQtJpDxPVrZ9C0mkPE9WdAK3JfEL2AxWCIBJpYYCzTrejYS9HzFDPqeqbJ_-dx&_nc_ohc=zo_r-WrhA88Q7kNvwGu9Ddi&_nc_oc=AdoftU0XNYav6vKnXrdmxSvPAsJDrV7HCHHIhUqVx5wIHwWN81hsT4oX9SQ21cgakw8&_nc_zt=23&_nc_ht=scontent.fpnh7-2.fna&_nc_gid=z-u7qWCdCzoQ2ufy1iNY9g&_nc_ss=7b2a8&oh=00_AQMJFm3AqgYTGDwJ0ZYaD3ojloBNACSY_l0RVS0fSrZ5cw&oe=6AC14C65",
+    image: giftPagkage,
   },
 ];
 
