@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router";
+import { useState } from "react"
+import { useNavigate, useLocation } from "react-router"
 import {
   BirdLogo,
   CartIcon,
@@ -8,22 +8,41 @@ import {
   SearchIcon,
   UserIcon,
   useScrolled,
-} from "../shared";
+  useActiveSection,
+} from "../shared"
 
 const NAV_LINKS = [
-  { label: "Home", to: "/" },
-  // { label: "Products", to: "/our-process" },
-  { label: "Our Process", to: "/our-process" },
-  { label: "About Us", to: "/about-use" },
-  // { label: "Quality", to: "/quality" },
-  // { label: "Blog", to: "/blog" },
-  { label: "Contact", to: "/faq" },
-];
+  { label: "Home", to: "/", id: "top" },
+  { label: "Products", to: "/#products", id: "products" },
+  { label: "Our Process", to: "/#process", id: "process" },
+  { label: "About Us", to: "/#about", id: "about" },
+  { label: "Contact", to: "/#contact", id: "contact" },
+]
+
+const SPY_IDS = NAV_LINKS.map((l) => l.id)
 
 export default function Navbar() {
-  const scrolled = useScrolled();
-  const [open, setOpen] = useState(false);
-  const navigate = useNavigate();
+  const scrolled = useScrolled()
+  const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  const activeSection = useActiveSection(SPY_IDS)
+
+  const goTo = (to: string) => {
+    setOpen(false)
+    const [path, hash] = to.split("#")
+    if (path && path !== pathname) {
+      navigate(to)
+      return
+    }
+    if (hash) {
+      document
+        .getElementById(hash)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" })
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
 
   return (
     <header
@@ -58,7 +77,7 @@ export default function Navbar() {
             }}
           >
             <BirdLogo />
-            <div style={{ textAlign: "left" }}>
+            {/* <div style={{ textAlign: "left" }}>
               <div
                 style={{
                   fontFamily: "'Playfair Display', serif",
@@ -81,7 +100,7 @@ export default function Navbar() {
               >
                 BIRD'S NEST
               </div>
-            </div>
+            </div> */}
           </button>
 
           {/* Nav links — desktop */}
@@ -89,22 +108,31 @@ export default function Navbar() {
             style={{ display: "flex", gap: 32, margin: "0 auto" }}
             className="QUEEN-nav-desktop"
           >
-            {NAV_LINKS.map(({ label, to }) => (
-              <NavLink
-                key={label}
-                to={to}
-                className="QUEEN-nav-link"
-                style={({ isActive }) => ({
-                  fontSize: 13,
-                  fontWeight: 500,
-                  color: isActive ? "#B8860B" : "#3A2D20",
-                  textDecoration: "none",
-                  letterSpacing: "0.04em",
-                })}
-              >
-                {label}
-              </NavLink>
-            ))}
+            {NAV_LINKS.map(({ label, to, id }) => {
+              const isActive = activeSection === id
+              return (
+                <a
+                  key={label}
+                  href={to}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    goTo(to)
+                  }}
+                  className={`QUEEN-nav-link${isActive ? " active" : ""}`}
+                  style={{
+                    fontSize: 13,
+                    fontWeight: isActive ? 700 : 500,
+                    color: isActive ? "#B8860B" : "#3A2D20",
+                    textDecoration: "none",
+                    letterSpacing: "0.04em",
+                    cursor: "pointer",
+                    transition: "color 0.25s ease, font-weight 0.25s ease",
+                  }}
+                >
+                  {label}
+                </a>
+              )
+            })}
           </nav>
         </div>
       </div>
@@ -118,34 +146,40 @@ export default function Navbar() {
             padding: "20px 24px 24px",
           }}
         >
-          {NAV_LINKS.map(({ label, to }) => (
-            <NavLink
+          {NAV_LINKS.map(({ label, to, id }) => (
+            <a
               key={label}
-              to={to}
-              onClick={() => setOpen(false)}
-              style={({ isActive }) => ({
+              href={to}
+              onClick={(e) => {
+                e.preventDefault()
+                goTo(to)
+              }}
+              style={{
                 display: "block",
                 padding: "12px 0",
                 fontSize: 15,
-                color: isActive ? "#B8860B" : "#3A2D20",
+                fontWeight: activeSection === id ? 700 : 400,
+                color: activeSection === id ? "#B8860B" : "#3A2D20",
                 textDecoration: "none",
                 borderBottom: "1px solid rgba(184,134,11,0.08)",
                 letterSpacing: "0.04em",
-              })}
+                cursor: "pointer",
+              }}
             >
               {label}
-            </NavLink>
+            </a>
           ))}
         </div>
       )}
 
       <style>{`
-        .QUEEN-nav-link { position: relative; }
+        .QUEEN-nav-link { position: relative; padding-bottom: 4px; }
         .QUEEN-nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px; background:#B8860B; transition:width 0.3s ease; }
-        .QUEEN-nav-link:hover::after, .QUEEN-nav-link.active::after { width:100%; }
+        .QUEEN-nav-link:hover::after { width:100%; }
+        .QUEEN-nav-link.active::after { width:100%; height:2px; }
         @media(max-width:768px){ .QUEEN-nav-desktop{display:none!important} .QUEEN-nav-mobile{display:flex!important} }
         @media(min-width:769px){ .QUEEN-nav-mobile{display:none!important} .QUEEN-nav-desktop{display:flex!important} }
       `}</style>
     </header>
-  );
+  )
 }
