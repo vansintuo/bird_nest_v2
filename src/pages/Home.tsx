@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import {
   BirdDecor,
   ArrowRight,
@@ -18,6 +18,8 @@ import gradeImgB1Logo from "../images/grand/grad_b4.png";
 import gradeImgA from "../images/grand/grad_a1.jpg";
 import gradeImgA2 from "../images/grand/grad_a2.jpg";
 import gradeImgA3 from "../images/grand/grad_a3.jpg";
+import gradeImgA4 from "../images/grand/grad_a4.png";
+import gradeImgA5 from "../images/grand/grad_a5.png";
 import gradeImgB from "../images/grand/grad_b1.png";
 import gradeImgB2 from "../images/grand/grad_b2.png";
 import gradeImgB3 from "../images/grand/grad_b3.png";
@@ -151,7 +153,7 @@ const QUALITY_FEATURES = [
   {
     icon: <IconPremium />,
     title: "PREMIUM QUALITY",
-    desc: "Handpicked from the best natural habitats.",
+    desc: "Handpicked from trusted swiftlet farms.",
   },
   {
     icon: <IconCleaned />,
@@ -207,8 +209,8 @@ const PROCESS_STEPS = [
   {
     num: "01",
     label: "HARVEST",
-    icon: "⛰",
-    desc: "Nests are carefully harvested from natural caves.",
+    icon: "⌂",
+    desc: "Nests are carefully harvested from managed swiftlet farms.",
   },
   {
     num: "02",
@@ -236,8 +238,61 @@ const PROCESS_STEPS = [
   },
 ];
 
+/* ── Hero slider slides ── */
+const HERO_SLIDES = [
+  {
+    img: gradeImgA,
+    label: "GRADE A",
+    title: "Superior Long Strands",
+    alt: "Grade A extra long strand bird's nest",
+  },
+  {
+    img: gradeImgB1Logo,
+    label: "GRADE B",
+    title: "Premium Quality",
+    alt: "Premium grade bird's nest",
+  },
+
+  {
+    img: gradeImgC2,
+    label: "GRADE C",
+    title: "Smart Value",
+    alt: "Grade C soft texture bird's nest",
+  },
+];
+
 /* ── Sections ── */
+const HERO_SLIDE_MS = 6000;
+const HERO_TRANSITION_MS = 700;
+
 function Hero() {
+  const total = HERO_SLIDES.length;
+  const [index, setIndex] = useState(0);
+  const [animate, setAnimate] = useState(true);
+  const indexRef = useRef(0);
+
+  useEffect(() => {
+    let timer: number;
+
+    const tick = () => {
+      const next = indexRef.current + 1;
+      if (next > total) {
+        // Wrap silently: no transition so the loop looks continuous.
+        indexRef.current = 0;
+        setAnimate(false);
+        setIndex(0);
+        timer = window.setTimeout(() => setAnimate(true), 60);
+      } else {
+        indexRef.current = next;
+        setIndex(next);
+      }
+      timer = window.setTimeout(tick, HERO_SLIDE_MS);
+    };
+
+    timer = window.setTimeout(tick, HERO_SLIDE_MS);
+    return () => window.clearTimeout(timer);
+  }, [total]);
+
   return (
     <section
       id="top"
@@ -357,8 +412,8 @@ function Hero() {
               marginTop: 28,
             }}
           >
-            Carefully harvested from pristine caves and traditionally prepared
-            to preserve QUEEN finest nutrition for your loved ones.
+            Carefully harvested from trusted swiftlet farms and traditionally
+            prepared to preserve QUEEN finest nutrition for your loved ones.
           </p>
         </div>
 
@@ -372,31 +427,59 @@ function Hero() {
           <div
             style={{
               width: "100%",
-              maxWidth: 520,
+              maxWidth: 620,
               aspectRatio: "1/1",
               borderRadius: "50% 50% 50% 50%/60% 60% 40% 40%",
               overflow: "hidden",
               boxShadow: "0 32px 80px rgba(44,26,14,0.2)",
+              position: "relative",
             }}
           >
-            <img
-              src={gradeImgB1Logo}
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-            />
+            <div
+              style={{
+                display: "flex",
+                height: "100%",
+                width: "100%",
+                transition: animate
+                  ? `transform ${HERO_TRANSITION_MS}ms ease`
+                  : "none",
+                transform: `translateX(-${index * 100}%)`,
+              }}
+            >
+              {[...HERO_SLIDES, HERO_SLIDES[0]].map((s, i) => (
+                <img
+                  key={i}
+                  src={s.img}
+                  alt={s.alt}
+                  aria-hidden={i > total - 1}
+                  style={{
+                    flex: "0 0 100%",
+                    minWidth: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              ))}
+            </div>
           </div>
+
+          {/* Slide caption */}
           <div
             style={{
               position: "absolute",
               bottom: 40,
-              left: -16,
+              right: 0,
               background: "rgba(250,247,242,0.96)",
               backdropFilter: "blur(8px)",
               border: "1px solid rgba(184,134,11,0.2)",
               padding: "14px 20px",
               boxShadow: "0 8px 32px rgba(44,26,14,0.12)",
+              textAlign: "right",
             }}
           >
             <div
+              key={`l-${index}`}
+              className="hero-caption"
               style={{
                 fontSize: 9,
                 color: C.gold,
@@ -405,9 +488,11 @@ function Hero() {
                 marginBottom: 3,
               }}
             >
-              GRADE AAA
+              {HERO_SLIDES[index % total].label}
             </div>
             <div
+              key={`t-${index}`}
+              className="hero-caption"
               style={{
                 fontFamily: "'Playfair Display',serif",
                 fontSize: 15,
@@ -415,7 +500,7 @@ function Hero() {
                 fontWeight: 600,
               }}
             >
-              Premium Quality
+              {HERO_SLIDES[index % total].title}
             </div>
           </div>
         </div>
@@ -425,11 +510,12 @@ function Hero() {
         @media(max-width:768px){ .hero-grid{grid-template-columns:1fr!important;gap:40px!important} }
         @keyframes float{0%,100%{transform:translateY(0)rotate(-5deg)}50%{transform:translateY(-10px)rotate(0deg)}}
         .bird-float{animation:float 4s ease-in-out infinite}
+        .hero-caption{animation:heroFade 0.5s ease}
+        @keyframes heroFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
       `}</style>
     </section>
   );
 }
-
 
 function ProductCard({ p }: { p: (typeof PRODUCTS)[0] }) {
   const [hov, setHov] = useState(false);
@@ -579,6 +665,18 @@ const GRADES = [
         name: "Premium Cleaned",
         desc: "Meticulously cleaned, retaining the nest's natural richness.",
         img: gradeImgA3,
+        alt: "Grade A premium cleaned bird's nest",
+      },
+      {
+        name: "AAA White",
+        desc: "Pure white colour with smooth strands and exceptional texture.",
+        img: gradeImgA4,
+        alt: "Grade A premium cleaned bird's nest",
+      },
+      {
+        name: "AAA Silver",
+        desc: "Rich silver tone with a balance of texture and aroma.",
+        img: gradeImgA5,
         alt: "Grade A premium cleaned bird's nest",
       },
     ],
@@ -3783,6 +3881,9 @@ function OurStoryTimeline() {
   );
 }
 
+/* ═══════════════════════════════════════════════════════════
+   Product Area 
+   ═══════════════════════════════════════════════════════════ */
 function ProductArea() {
   return (
     <section id="products" aria-label="Products">
@@ -3795,94 +3896,10 @@ function ProductArea() {
   );
 }
 
-function MissionVision() {
-  return (
-    <section style={{ background: C.brown, padding: "96px 0" }}>
-      <div
-        style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 1,
-        }}
-        className="mission-grid"
-      >
-        <div
-          style={{
-            padding: "40px 48px",
-            borderRight: "1px solid rgba(201,168,76,.2)",
-          }}
-        >
-          <SectionLabel>
-            <span style={{ color: C.goldLight }}>OUR MISSION</span>
-          </SectionLabel>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: 38,
-              color: C.goldLight,
-              margin: "20px 0",
-            }}
-          >
-            Quality You Can Trust
-          </h2>
-          <p
-            style={{
-              color: "rgba(250,247,242,.62)",
-              fontSize: 15,
-              lineHeight: 1.9,
-            }}
-          >
-            Our mission is to provide carefully selected and thoughtfully
-            processed bird's nest products while building lasting trust with
-            every customer.
-          </p>
-        </div>
-
-        <div style={{ padding: "40px 48px" }}>
-          <SectionLabel>
-            <span style={{ color: C.goldLight }}>OUR VISION</span>
-          </SectionLabel>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: 38,
-              color: C.goldLight,
-              margin: "20px 0",
-            }}
-          >
-            A Better Bird's Nest Experience
-          </h2>
-          <p
-            style={{
-              color: "rgba(250,247,242,.62)",
-              fontSize: 15,
-              lineHeight: 1.9,
-            }}
-          >
-            We envision QUEEN becoming a trusted premium brand known for
-            authenticity, craftsmanship, elegant presentation and uncompromising
-            attention to quality.
-          </p>
-        </div>
-      </div>
-
-      <style>{`
-        @media(max-width:768px){
-          .mission-grid{grid-template-columns:1fr!important}
-          .mission-grid > div{border-right:none!important;border-bottom:1px solid rgba(201,168,76,.2)}
-        }
-      `}</style>
-    </section>
-  );
-}
-
 function AboutProducts() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.cream, }}>
+    <section ref={ref} style={{ background: C.cream }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -3987,100 +4004,6 @@ function AboutProducts() {
           .product-heading > p{margin-top:20px}
           .product-grid{grid-template-columns:1fr!important}
         }
-      `}</style>
-    </section>
-  );
-}
-
-function OurValues() {
-  const values = [
-    {
-      title: "Authenticity",
-      text: "We believe customers deserve products that are genuine, transparent and carefully sourced.",
-    },
-    {
-      title: "Craftsmanship",
-      text: "Every nest receives careful attention from selection through final preparation.",
-    },
-    {
-      title: "Quality",
-      text: "We continuously focus on consistency and careful processing across every product.",
-    },
-    {
-      title: "Trust",
-      text: "We build our relationships through honesty, responsibility and long-term commitment.",
-    },
-  ];
-
-  return (
-    <section style={{ background: C.ivory, padding: "88px 0" }}>
-      <div
-        style={{
-          maxWidth: 1100,
-          margin: "0 auto",
-          padding: "0 24px",
-          textAlign: "center",
-        }}
-      >
-        <SectionLabel>
-          <span style={{ color: C.gold }}>WHAT WE STAND FOR</span>
-        </SectionLabel>
-        <h2
-          style={{
-            fontFamily: "'Playfair Display',serif",
-            fontSize: "clamp(32px,4vw,46px)",
-            color: C.brown,
-            margin: "20px 0 50px",
-          }}
-        >
-          Our Values
-        </h2>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4,1fr)",
-            gap: 1,
-            background: "rgba(184,134,11,.15)",
-          }}
-          className="values-grid"
-        >
-          {values.map((value, index) => (
-            <div
-              key={index}
-              style={{ background: C.ivory, padding: "36px 24px" }}
-            >
-              <div
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: 34,
-                  color: "rgba(184,134,11,.25)",
-                  marginBottom: 12,
-                }}
-              >
-                0{index + 1}
-              </div>
-              <h3
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: 22,
-                  color: C.brown,
-                  marginBottom: 12,
-                }}
-              >
-                {value.title}
-              </h3>
-              <p style={{ fontSize: 13, lineHeight: 1.8, color: C.muted }}>
-                {value.text}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <style>{`
-        @media(max-width:768px){.values-grid{grid-template-columns:1fr 1fr!important}}
-        @media(max-width:480px){.values-grid{grid-template-columns:1fr!important}}
       `}</style>
     </section>
   );

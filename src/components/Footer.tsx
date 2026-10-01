@@ -1,5 +1,6 @@
-import { BirdLogo, BirdDecor, ArrowRight, C } from "../shared"
-import { useState } from "react"
+import { BirdLogo, BirdDecor, ArrowRight, C } from "../shared";
+import { useState } from "react";
+import isoVerify from "../images/iso_verify.png";
 const PhoneIcon = () => (
   <svg
     width="13"
@@ -12,7 +13,7 @@ const PhoneIcon = () => (
   >
     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
   </svg>
-)
+);
 const EmailIcon = () => (
   <svg
     width="13"
@@ -26,7 +27,7 @@ const EmailIcon = () => (
     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
     <polyline points="22,6 12,13 2,6" />
   </svg>
-)
+);
 const MapIcon = () => (
   <svg
     width="13"
@@ -40,7 +41,7 @@ const MapIcon = () => (
     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
     <circle cx="12" cy="10" r="3" />
   </svg>
-)
+);
 
 const SOCIALS = [
   {
@@ -63,29 +64,29 @@ const SOCIALS = [
     path: "M17.5 14.5c-.3-.2-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5s0-.4-.1-.6c-.1-.2-.7-1.6-1-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C8 8 7 9 7 11c0 2 1.5 4 1.7 4.2.2.3 2.8 4.3 6.8 5.9 4 1.6 4 1.1 4.7 1 .7 0 2.1-.8 2.4-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z",
     url: "",
   },
-]
+];
 
 type FooterLinkProps = {
-  to: string
-  children: string
-}
+  to: string;
+  children: string;
+};
 
 function FooterLink({ to, children }: FooterLinkProps) {
-  const [hov, setHov] = useState(false)
+  const [hov, setHov] = useState(false);
   return (
     <a
       href={to}
       onClick={(e) => {
-        e.preventDefault()
-        const [path, hash] = to.split("#")
+        e.preventDefault();
+        const [path, hash] = to.split("#");
         if (hash) {
           document
             .getElementById(hash)
-            ?.scrollIntoView({ behavior: "smooth", block: "start" })
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
         } else if (path) {
-          window.location.href = path
+          window.location.href = path;
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" })
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }}
       onMouseEnter={() => setHov(true)}
@@ -102,11 +103,11 @@ function FooterLink({ to, children }: FooterLinkProps) {
     >
       {children}
     </a>
-  )
+  );
 }
 
-function SocialBtn({ s }: { s: typeof SOCIALS[0] }) {
-  const [hov, setHov] = useState(false)
+function SocialBtn({ s }: { s: (typeof SOCIALS)[0] }) {
+  const [hov, setHov] = useState(false);
   return (
     <a
       href={s.url}
@@ -139,7 +140,7 @@ function SocialBtn({ s }: { s: typeof SOCIALS[0] }) {
         <path d={s.path} />
       </svg>
     </a>
-  )
+  );
 }
 
 export default function Footer() {
@@ -308,6 +309,67 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* ISO verification */}
+        <div
+          className="footer-iso"
+          style={{
+            marginBottom: 36,
+            display: "flex",
+            alignItems: "center",
+            gap: 32,
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ maxWidth: 260 }}>
+            <h4
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                color: "rgba(201,168,76,0.9)",
+                letterSpacing: "0.14em",
+                margin: "0 0 10px",
+              }}
+            >
+              ISO VERIFIED
+            </h4>
+            <p
+              style={{
+                fontSize: 12.5,
+                lineHeight: 1.7,
+                color: "rgba(250,247,242,0.45)",
+                margin: 0,
+              }}
+            >
+              Every batch is produced under an audited ISO management system,
+              from farm collection through to cleaning, grading and packing.
+            </p>
+          </div>
+          <a
+            href="#quality"
+            onClick={(e) => {
+              e.preventDefault();
+              document
+                .getElementById("quality")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
+            }}
+            title="View ISO certification"
+            style={{
+              display: "block",
+              flex: "1 1 320px",
+              minWidth: 260,
+              padding: 10,
+            }}
+          >
+            <img
+              src={isoVerify}
+              alt="Bird Nest Logo"
+              width="150"
+              height="150"
+              style={{ objectFit: "contain", borderRadius: "50%" }}
+            />
+          </a>
+        </div>
+
         <div
           style={{
             borderTop: "1px solid rgba(184,134,11,0.15)",
@@ -347,5 +409,5 @@ export default function Footer() {
         @media(max-width:480px){ .footer-grid{ grid-template-columns:1fr!important } }
       `}</style>
     </footer>
-  )
+  );
 }

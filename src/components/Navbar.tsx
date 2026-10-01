@@ -77,30 +77,7 @@ export default function Navbar() {
             }}
           >
             <BirdLogo />
-            {/* <div style={{ textAlign: "left" }}>
-              <div
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#2C1A0E",
-                  letterSpacing: "0.04em",
-                  lineHeight: 1.1,
-                }}
-              >
-                QUEEN
-              </div>
-              <div
-                style={{
-                  fontSize: 8,
-                  color: "#B8860B",
-                  letterSpacing: "0.18em",
-                  fontWeight: 500,
-                }}
-              >
-                BIRD'S NEST
-              </div>
-            </div> */}
+
           </button>
 
           {/* Nav links — desktop */}
