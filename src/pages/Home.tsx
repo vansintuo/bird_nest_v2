@@ -3738,7 +3738,7 @@ function WhoWeAre() {
 function OurStoryTimeline() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.cream, padding: "96px 0" }}>
+    <section ref={ref}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -3899,7 +3899,7 @@ function ProductArea() {
 function AboutProducts() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.cream }}>
+    <section ref={ref} style={{ background: C.cream, padding: "96px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
