@@ -51,6 +51,7 @@ import Certificate2 from "../images/certificate/certificate_2.jpg";
 import Certificate3 from "../images/certificate/certificate_3.jpg";
 import Certificate4 from "../images/certificate/certificate_4.jpg";
 import readyToEatPackage from "../images/process/ready_to_eat_pagkage.jpg";
+import { title } from "process";
 
 const truncate = (s: string, n = 18) =>
   s.length > n ? s.slice(0, n) + "..." : s;
@@ -1535,7 +1536,7 @@ const CERTIFICATES = [
     img: Certificate2,
     alt: "Food safety certificate",
     badge: "FOOD SAFETY",
-    title: "Food Safety Standard",
+    title: "",
     desc: "Produced under strict food safety handling and hygiene protocols, verified through regular audits and review.",
     year: "Maintained annually",
   },
@@ -1543,7 +1544,7 @@ const CERTIFICATES = [
     img: Certificate1,
     alt: "Hygiene certified facility certificate",
     badge: "FACILITY",
-    title: "Hygiene Certified Facility",
+    title:"",
     desc: "Our processing environment meets rigorous hygiene and sanitation requirements in a clean, controlled setting.",
     year: "Certified production facility",
   },
@@ -1551,7 +1552,7 @@ const CERTIFICATES = [
     img: Certificate3,
     alt: "AAA grade standard certificate",
     badge: "QUALITY",
-    title: "AAA Grade Standard",
+    title: "",
     desc: "Every nest is assessed against Premium AAA criteria for strand integrity, colour consistency, purity, and aroma.",
     year: "Applied to every batch",
   },
@@ -1559,7 +1560,7 @@ const CERTIFICATES = [
     img: Certificate4,
     alt: "Responsible and ethical sourcing certificate",
     badge: "ETHICAL",
-    title: "Responsible & Ethical",
+    title: "",
     desc: "We work with certified swiftlet farms committed to humane, sustainable harvesting practices.",
     year: "Farm-audited supply chain",
   },
