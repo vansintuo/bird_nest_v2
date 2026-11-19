@@ -10,10 +10,18 @@ import {
   GoldButton,
 } from "../shared";
 import storyImagePrim from "../images/bird_nest_prim_preview.png";
-import storyImageChia from "../images/chia_bn.png";
-import storyImageGinseng from "../images/ginseng_bn.png";
-import storyImageOriginal from "../images/original_bn.png";
-import storyImagePandan from "../images/pandan_bn.png";
+import storyImagePrimV2 from "../images/grand/premier_projpg.jpg";
+import storyImageClean2 from "../images/grand/clean_birdnest.jpg";
+import storyImageChia from "../images/standard/quality_select_chia.png";
+import storyImageGinseng from "../images/standard/quality_select_gaiseng.png";
+import storyImageOriginal from "../images/standard/quality_select_original.png";
+import storyImagePandan from "../images/standard/quality_select_pandan.png";
+// for box flavor
+import storyImageChiaBox from "../images/standard/chia_box.png";
+import storyImageGinsengBox from "../images/standard/ginseng_box.png";
+import storyImageOriginalBox from "../images/standard/original_box.png";
+import storyImagePandanBox from "../images/standard/pandan_box.png";
+// grad bird nest
 import gradeImgB1Logo from "../images/grand/grad_b4.png";
 import gradeImgA from "../images/grand/grad_a1.jpg";
 import gradeImgA2 from "../images/grand/grad_a2.jpg";
@@ -27,17 +35,22 @@ import gradeImgB4 from "../images/grand/grad_b4.png";
 import gradeImgC from "../images/grand/grad_c1.jpg";
 import gradeImgC2 from "../images/grand/grad_c2.jpg";
 import gradeImgC3 from "../images/grand/grad_c3.jpg";
-import storyImageZeroSugar from "../images/zero_sugar_bn.png";
-import storyImageCertificate from "../images/certificate.png";
+// process bird nest
 import birdNestHouseMp4 from "../video/bird_nest_house.mp4";
 import finalProcess from "../images/process/final_process.jpg";
 import houseBird from "../images/process/house_bird.jpg";
 import carefulSelect from "../images/process/careful_select.jpg";
 import qualitySelect from "../images/process/quality_select.jpg";
 import selectedNest from "../images/process/selected_nest.jpg";
+import sgoutNest from "../images/process/sgout_nest.jpg";
 import giftPackage from "../images/process/gift_pagkage.jpg";
+import CheckProcess from "../images/process/checking_process.jpg";
+//certificate
+import Certificate1 from "../images/certificate/certificate_1.jpg";
+import Certificate2 from "../images/certificate/certificate_2.jpg";
+import Certificate3 from "../images/certificate/certificate_3.jpg";
+import Certificate4 from "../images/certificate/certificate_4.jpg";
 import readyToEatPackage from "../images/process/ready_to_eat_pagkage.jpg";
-import birdNestLogo from "../images/bird_logo.png";
 
 const truncate = (s: string, n = 18) =>
   s.length > n ? s.slice(0, n) + "..." : s;
@@ -172,36 +185,49 @@ const QUALITY_FEATURES = [
   },
 ];
 
-const PRODUCTS = [
+type Product = {
+  name: string;
+  desc: string;
+  img: string;
+  alt: string;
+  imageScale?: number;
+};
+
+const PRODUCTS: Product[] = [
   {
     name: "CHIA BIRD'S NEST",
-    desc: "Top grade raw bird's nest with long strands.",
+    desc: "Queen's White Bird's Nest – Chia Seed Flavor is made with premium natural bird's nest and nutritious chia seeds. Rich in dietary fiber,",
     img: storyImageChia,
     alt: "Premium raw bird's nest on dark plate",
+    imageScale: 1,
   },
   {
     name: "Original BIRD'S NEST",
-    desc: "Meticulously cleaned and ready to cook.",
+    desc: "Queen's White Bird's Nest – Original Flavor (No Added Sugar) ",
     img: storyImageOriginal,
-    alt: "Cleaned bird's nest on textile",
+    alt: "Cleaned bird's nest on text1ile",
+    imageScale: 1,
   },
   {
     name: "GINSENG BIRD'S NEST",
-    desc: "Convenient and nutritious, ready to enjoy.",
+    desc: "Queen's White Bird's Nest – Red Ginseng Flavor is made with premium natural bird's nest blended ",
     img: storyImageGinseng,
     alt: "White ceramic bowl ready to drink",
+    imageScale: 1,
   },
   {
     name: "Pandan BIRD'S NEST",
-    desc: "Perfect gift for your loved ones on special occasions.",
+    desc: "Queen's White Bird's Nest – Red Ginseng Flavor is made with premium natural bird's nest blended with the goodness of red ginseng.",
     img: storyImagePandan,
     alt: "Premium luxury gift box packaging",
+    imageScale: 1,
   },
   {
     name: "ZERO SUGAR BIRD'S NEST",
-    desc: "Perfect gift for your loved ones on special occasions.",
-    img: storyImageZeroSugar,
+    desc: "Queen's White Bird's Nest – Original Flavor is made with premium natural bird's nest to preserve",
+    img: storyImageOriginal,
     alt: "Premium luxury gift box packaging",
+    imageScale: 1,
   },
 ];
 
@@ -386,7 +412,7 @@ function Hero() {
               marginBottom: 8,
             }}
           >
-            QUEEN
+            QUEEN'S
           </h1>
           <h1
             style={{
@@ -399,7 +425,7 @@ function Hero() {
               fontStyle: "italic",
             }}
           >
-            Purest Gift
+            Whte Bird Nest
           </h1>
           <GoldDivider className="home-divider" />
           <p
@@ -412,8 +438,12 @@ function Hero() {
               marginTop: 28,
             }}
           >
-            Carefully harvested from trusted swiftlet farms and traditionally
-            prepared to preserve QUEEN finest nutrition for your loved ones.
+            Queen Bird Nest is committed to providing premium-quality bird’s
+            nest products, with its bird’s nest house strategically located near
+            the natural Tonle Sap, an ideal environment for swiftlets. Our
+            operations are officially recognized by relevant government
+            ministries, and we strictly follow established production standards
+            to ensure product quality, safety, and authenticity.
           </p>
         </div>
 
@@ -517,8 +547,9 @@ function Hero() {
   );
 }
 
-function ProductCard({ p }: { p: (typeof PRODUCTS)[0] }) {
+function ProductCard({ p }: { p: Product }) {
   const [hov, setHov] = useState(false);
+  const scale = (p.imageScale ?? 1) * (hov ? 1.06 : 1);
   return (
     <div
       onMouseEnter={() => setHov(true)}
@@ -543,11 +574,12 @@ function ProductCard({ p }: { p: (typeof PRODUCTS)[0] }) {
           src={p.img}
           alt={p.alt}
           style={{
+            display: "block",
             width: "100%",
             height: "100%",
             objectFit: "cover",
             transition: "transform 0.5s ease",
-            transform: hov ? "scale(1.06)" : "scale(1)",
+            transform: `scale(${scale})`,
           }}
         />
       </div>
@@ -569,11 +601,35 @@ function ProductCard({ p }: { p: (typeof PRODUCTS)[0] }) {
             fontSize: 13,
             color: C.muted,
             lineHeight: 1.65,
-            marginBottom: 22,
+            marginBottom: 18,
           }}
         >
-          {p.desc}
+          {truncate(p.desc, 50)}
         </p>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            paddingTop: 14,
+            borderTop: `1px solid rgba(184,134,11,0.12)`,
+            fontSize: 10,
+            letterSpacing: "0.14em",
+            fontWeight: 600,
+            color: C.gold,
+            textTransform: "uppercase",
+          }}
+        >
+          <span>150ml</span>
+          <span
+            style={{
+              flex: 1,
+              height: 1,
+              background: "rgba(184,134,11,0.25)",
+            }}
+          />
+          <span>One Cup</span>
+        </div>
       </div>
     </div>
   );
@@ -582,7 +638,7 @@ function ProductCard({ p }: { p: (typeof PRODUCTS)[0] }) {
 function Products() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.cream, padding: "96px 0" }}>
+    <section ref={ref} style={{ background: C.cream, padding: "28px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -595,17 +651,17 @@ function Products() {
           }}
         >
           <div>
-            <h2
+            <p
               style={{
-                fontFamily: "'Playfair Display',serif",
-                fontSize: "clamp(32px,4vw,44px)",
+                fontSize: 10,
+                letterSpacing: "0.22em",
                 fontWeight: 700,
-                color: C.brown,
-                marginBottom: 8,
+                color: C.gold,
+                marginBottom: 12,
               }}
             >
-              OUR PRODUCTS
-            </h2>
+              STANDARD PRODUCTS
+            </p>
             <GoldDivider />
           </div>
         </div>
@@ -743,6 +799,7 @@ const GRADES = [
   },
 ];
 
+// Grad Birdnest
 function Grades() {
   const { ref, visible } = useFadeIn();
   const [active, setActive] = useState(0);
@@ -759,7 +816,7 @@ function Grades() {
   const prevProduct = () => setSlide((s) => (s - 1 + total) % total);
 
   return (
-    <section ref={ref} style={{ background: C.ivory, padding: "96px 0" }}>
+    <section ref={ref} style={{ background: C.cream, padding: "28px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -772,6 +829,17 @@ function Grades() {
           }}
         >
           <div>
+            <h2
+              style={{
+                fontFamily: "'Playfair Display',serif",
+                fontSize: "clamp(32px,4vw,44px)",
+                fontWeight: 700,
+                color: C.brown,
+                marginBottom: 8,
+              }}
+            >
+              OUR PRODUCTS
+            </h2>
             <p
               style={{
                 fontSize: 10,
@@ -783,17 +851,6 @@ function Grades() {
             >
               OUR GRADES
             </p>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display',serif",
-                fontSize: "clamp(32px,4vw,44px)",
-                fontWeight: 700,
-                color: C.brown,
-                marginBottom: 8,
-              }}
-            >
-              Choose Your Grade
-            </h2>
             <GoldDivider />
           </div>
           <p
@@ -1306,770 +1363,6 @@ const MYTHS = [
   },
 ];
 
-function BirdNestGuide() {
-  const intro = useFadeIn();
-  const nature = useFadeIn();
-  const inside = useFadeIn();
-  const enjoy = useFadeIn();
-  const grade = useFadeIn();
-  const myths = useFadeIn();
-
-  return (
-    <>
-      {/* Intro */}
-      <section
-        ref={intro.ref}
-        style={{ background: C.ivory, padding: "96px 0" }}
-        id="bird-nest-guide"
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              marginBottom: 48,
-              flexWrap: "wrap",
-              gap: 20,
-            }}
-          >
-            <div>
-              <SectionLabel>
-                <span style={{ color: C.gold }}>BIRD'S NEST 101</span>
-              </SectionLabel>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(32px,4vw,44px)",
-                  fontWeight: 700,
-                  color: C.brown,
-                  marginBottom: 8,
-                }}
-              >
-                Understanding Bird's Nest
-              </h2>
-              <GoldDivider />
-            </div>
-            <p
-              style={{
-                fontSize: 14,
-                color: C.muted,
-                maxWidth: 400,
-                lineHeight: 1.75,
-              }}
-            >
-              Most people first meet bird's nest in a bowl, not on a plate. Here
-              is what it actually is, what is inside it, and how to cook it.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 64,
-              alignItems: "center",
-            }}
-            className="guide-intro-grid"
-          >
-            <div
-              style={{
-                opacity: intro.visible ? 1 : 0,
-                transform: intro.visible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity .7s ease, transform .7s ease",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  overflow: "hidden",
-                  borderRadius: 4,
-                  boxShadow: "0 24px 64px rgba(44,26,14,.14)",
-                }}
-              >
-                <img
-                  src={gradeImgA}
-                  alt="Cleaned raw bird's nest strands"
-                  style={{
-                    width: "100%",
-                    height: 460,
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </div>
-            </div>
-
-            <div
-              style={{
-                opacity: intro.visible ? 1 : 0,
-                transform: intro.visible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity .7s ease .15s, transform .7s ease .15s",
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(24px,3vw,32px)",
-                  color: C.brown,
-                  lineHeight: 1.25,
-                  marginBottom: 20,
-                }}
-              >
-                It is a nest — and that is the whole point.
-              </h3>
-              <p
-                style={{
-                  fontSize: 15.5,
-                  color: C.muted,
-                  lineHeight: 1.9,
-                  marginBottom: 18,
-                }}
-              >
-                Edible bird's nest is the nest of the swiftlet, a small bird
-                that lives in caves and buildings across Southeast Asia. The
-                swiftlet uses its saliva to glue fine strands together, then
-                shapes the result into a shallow cup fixed to a wall or ceiling.
-              </p>
-              <p
-                style={{
-                  fontSize: 15.5,
-                  color: C.muted,
-                  lineHeight: 1.9,
-                  marginBottom: 18,
-                }}
-              >
-                That construction is what makes it valuable. The strands are
-                almost pure protein held together by natural sugars, and they
-                dissolve into water when cooked. A good nest should look like
-                pale, fine threads — not like a white powder, and not like
-                anything manufactured.
-              </p>
-              <p
-                style={{
-                  fontSize: 15.5,
-                  color: C.muted,
-                  lineHeight: 1.9,
-                  margin: 0,
-                }}
-              >
-                Everything we sell begins here, at a harvest that nobody rushed.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <style>{`@media(max-width:768px){.guide-intro-grid{grid-template-columns:1fr!important;gap:40px!important}}`}</style>
-      </section>
-
-      {/* What it is — three cards */}
-      <section
-        ref={nature.ref}
-        style={{
-          background: C.cream,
-          padding: "80px 0",
-          borderTop: "1px solid rgba(184,134,11,0.1)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3,1fr)",
-              gap: 24,
-            }}
-            className="guide-cards-grid"
-          >
-            {WHAT_IT_IS.map((item, i) => (
-              <div
-                key={item.title}
-                style={{
-                  background: C.ivory,
-                  border: "1px solid rgba(184,134,11,0.12)",
-                  padding: "36px 30px",
-                  opacity: nature.visible ? 1 : 0,
-                  transform: nature.visible
-                    ? "translateY(0)"
-                    : "translateY(24px)",
-                  transition: `opacity .6s ease ${i * 0.1}s, transform .6s ease ${i * 0.1}s`,
-                }}
-              >
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: "50%",
-                    border: "1px solid rgba(184,134,11,0.35)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: C.gold,
-                    fontSize: 18,
-                    marginBottom: 20,
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display',serif",
-                    fontSize: 19,
-                    color: C.brown,
-                    margin: "0 0 12px",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 13.5,
-                    color: C.muted,
-                    lineHeight: 1.75,
-                    margin: 0,
-                  }}
-                >
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <style>{`@media(max-width:900px){.guide-cards-grid{grid-template-columns:1fr!important}}`}</style>
-      </section>
-
-      {/* What is inside */}
-      <section
-        ref={inside.ref}
-        style={{ background: C.ivory, padding: "96px 0" }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 64,
-              alignItems: "start",
-            }}
-            className="guide-inside-grid"
-          >
-            <div
-              style={{
-                opacity: inside.visible ? 1 : 0,
-                transform: inside.visible
-                  ? "translateY(0)"
-                  : "translateY(24px)",
-                transition: "opacity .7s ease, transform .7s ease",
-              }}
-            >
-              <SectionLabel>
-                <span style={{ color: C.gold }}>WHAT IS INSIDE</span>
-              </SectionLabel>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(28px,3.5vw,40px)",
-                  color: C.brown,
-                  lineHeight: 1.2,
-                  margin: "20px 0 20px",
-                }}
-              >
-                Read the Label,
-                <br />
-                <span style={{ color: C.gold }}>Not the Marketing</span>
-              </h2>
-              <p
-                style={{
-                  fontSize: 15.5,
-                  color: C.muted,
-                  lineHeight: 1.9,
-                  margin: 0,
-                }}
-              >
-                A cleaned raw nest contains no added ingredients at all. What
-                follows is simply what is naturally present in the material —
-                listed so you can judge a nest on its own merits.
-              </p>
-            </div>
-
-            <div
-              style={{
-                opacity: inside.visible ? 1 : 0,
-                transform: inside.visible
-                  ? "translateY(0)"
-                  : "translateY(24px)",
-                transition: "opacity .7s ease .15s, transform .7s ease .15s",
-              }}
-            >
-              <div
-                style={{
-                  borderTop: "1px solid rgba(184,134,11,0.12)",
-                }}
-              >
-                {WHAT_INSIDE.map((item) => (
-                  <div
-                    key={item.label}
-                    style={{
-                      display: "flex",
-                      gap: 18,
-                      padding: "24px 0",
-                      borderBottom: "1px solid rgba(184,134,11,0.12)",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: 22,
-                        height: 22,
-                        marginTop: 2,
-                        flexShrink: 0,
-                      }}
-                    >
-                      <CheckIcon />
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          fontSize: 10.5,
-                          fontWeight: 700,
-                          letterSpacing: "0.16em",
-                          color: C.gold,
-                          marginBottom: 8,
-                        }}
-                      >
-                        {item.label}
-                      </div>
-                      <p
-                        style={{
-                          fontSize: 13.5,
-                          color: C.muted,
-                          lineHeight: 1.75,
-                          margin: 0,
-                        }}
-                      >
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <p
-                style={{
-                  fontSize: 12,
-                  color: C.muted,
-                  lineHeight: 1.7,
-                  fontStyle: "italic",
-                  marginTop: 24,
-                  marginBottom: 0,
-                }}
-              >
-                Bird's nest is a food, not a medicine. It contains no added
-                hormones, bleach or fillers, and it is not a substitute for
-                medical treatment. If you are pregnant, managing a health
-                condition or taking medication, speak with your doctor before
-                including it in your diet.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <style>{`@media(max-width:900px){.guide-inside-grid{grid-template-columns:1fr!important;gap:40px!important}}`}</style>
-      </section>
-
-      {/* How to enjoy */}
-      <section
-        ref={enjoy.ref}
-        style={{
-          background: C.cream,
-          padding: "96px 0",
-          borderTop: "1px solid rgba(184,134,11,0.1)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              textAlign: "center",
-              maxWidth: 700,
-              margin: "0 auto 56px",
-              opacity: enjoy.visible ? 1 : 0,
-              transform: enjoy.visible ? "translateY(0)" : "translateY(20px)",
-              transition: "opacity .7s ease, transform .7s ease",
-            }}
-          >
-            <SectionLabel>
-              <span style={{ color: C.gold }}>HOW TO ENJOY IT</span>
-            </SectionLabel>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display',serif",
-                fontSize: "clamp(32px,4vw,44px)",
-                color: C.brown,
-                margin: "20px 0 16px",
-              }}
-            >
-              Four Ways to Eat It
-            </h2>
-            <p style={{ fontSize: 15.5, color: C.muted, lineHeight: 1.8 }}>
-              From a Sunday double-boil to a gift box, most people arrive at
-              bird's nest in one of these four ways.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4,1fr)",
-              gap: 24,
-            }}
-            className="guide-enjoy-grid"
-          >
-            {WAYS_TO_ENJOY.map((item, i) => (
-              <div
-                key={item.title}
-                style={{
-                  background: C.ivory,
-                  border: "1px solid rgba(184,134,11,0.12)",
-                  overflow: "hidden",
-                  opacity: enjoy.visible ? 1 : 0,
-                  transform: enjoy.visible
-                    ? "translateY(0)"
-                    : "translateY(24px)",
-                  transition: `opacity .6s ease ${i * 0.1}s, transform .6s ease ${i * 0.1}s`,
-                }}
-              >
-                <div style={{ aspectRatio: "4/3", background: C.creamDark }}>
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
-                  />
-                </div>
-                <div style={{ padding: "24px 22px 28px" }}>
-                  <h3
-                    style={{
-                      fontFamily: "'Playfair Display',serif",
-                      fontSize: 17,
-                      color: C.brown,
-                      margin: "0 0 10px",
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: 13,
-                      color: C.muted,
-                      lineHeight: 1.75,
-                      margin: 0,
-                    }}
-                  >
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <style>{`
-          @media(max-width:1000px){.guide-enjoy-grid{grid-template-columns:repeat(2,1fr)!important}}
-          @media(max-width:560px){.guide-enjoy-grid{grid-template-columns:1fr!important}}
-        `}</style>
-      </section>
-
-      {/* Choosing a grade */}
-      <section
-        ref={grade.ref}
-        style={{ background: C.ivory, padding: "96px 0" }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "space-between",
-              marginBottom: 48,
-              flexWrap: "wrap",
-              gap: 20,
-            }}
-          >
-            <div>
-              <SectionLabel>
-                <span style={{ color: C.gold }}>CHOOSING A GRADE</span>
-              </SectionLabel>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(28px,3.5vw,40px)",
-                  color: C.brown,
-                  margin: "20px 0 8px",
-                }}
-              >
-                Which One Should You Buy?
-              </h2>
-            </div>
-            <p
-              style={{
-                fontSize: 14,
-                color: C.muted,
-                maxWidth: 380,
-                lineHeight: 1.75,
-              }}
-            >
-              Every grade is cleaned and checked the same way. The difference is
-              strand quality, and that is what you are paying for.
-            </p>
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3,1fr)",
-              gap: 24,
-            }}
-            className="guide-grade-grid"
-          >
-            {GRADES.map((g, i) => (
-              <div
-                key={g.grade}
-                style={{
-                  background: C.cream,
-                  border: "1px solid rgba(184,134,11,0.12)",
-                  padding: "32px 28px",
-                  display: "flex",
-                  flexDirection: "column",
-                  opacity: grade.visible ? 1 : 0,
-                  transform: grade.visible
-                    ? "translateY(0)"
-                    : "translateY(24px)",
-                  transition: `opacity .6s ease ${i * 0.1}s, transform .6s ease ${i * 0.1}s`,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 12,
-                    marginBottom: 16,
-                  }}
-                >
-                  <span
-                    style={{
-                      padding: "5px 12px",
-                      fontSize: 9,
-                      fontWeight: 700,
-                      letterSpacing: "0.14em",
-                      color: C.gold,
-                      border: "1px solid rgba(184,134,11,0.3)",
-                    }}
-                  >
-                    {g.badge}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 12,
-                      fontWeight: 700,
-                      letterSpacing: "0.18em",
-                      color: C.brown,
-                    }}
-                  >
-                    {g.grade}
-                  </span>
-                </div>
-                <h3
-                  style={{
-                    fontFamily: "'Playfair Display',serif",
-                    fontSize: 20,
-                    color: C.brown,
-                    margin: "0 0 12px",
-                  }}
-                >
-                  {g.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: 13.5,
-                    color: C.muted,
-                    lineHeight: 1.75,
-                    margin: "0 0 20px",
-                  }}
-                >
-                  {g.desc}
-                </p>
-                <div
-                  style={{
-                    marginTop: "auto",
-                    paddingTop: 18,
-                    borderTop: "1px solid rgba(184,134,11,0.12)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 10,
-                  }}
-                >
-                  {g.features.map((f) => (
-                    <div
-                      key={f}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 10,
-                        fontSize: 13,
-                        color: C.charcoal,
-                      }}
-                    >
-                      <span style={{ color: C.gold, fontSize: 10 }}>✓</span>
-                      {f}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <style>{`
-          @media(max-width:1000px){.guide-grade-grid{grid-template-columns:1fr!important}}
-        `}</style>
-      </section>
-
-      {/* Myths */}
-      <section
-        ref={myths.ref}
-        style={{
-          background: C.brown,
-          padding: "96px 0",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1.4fr",
-              gap: 64,
-              alignItems: "start",
-            }}
-            className="guide-myths-grid"
-          >
-            <div
-              style={{
-                opacity: myths.visible ? 1 : 0,
-                transform: myths.visible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity .7s ease, transform .7s ease",
-              }}
-            >
-              <SectionLabel>
-                <span style={{ color: C.goldLight }}>MYTHS & FACTS</span>
-              </SectionLabel>
-              <h2
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(28px,3.5vw,40px)",
-                  color: "#FAF7F2",
-                  lineHeight: 1.2,
-                  margin: "20px 0 20px",
-                }}
-              >
-                What We Get
-                <br />
-                <span style={{ color: C.goldLight }}>Asked Every Week</span>
-              </h2>
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "rgba(250,247,242,0.55)",
-                  lineHeight: 1.85,
-                  margin: 0,
-                }}
-              >
-                Buying bird's nest for the first time is confusing enough
-                without the myths. These four come up more than any others.
-              </p>
-            </div>
-
-            <div
-              style={{
-                opacity: myths.visible ? 1 : 0,
-                transform: myths.visible ? "translateY(0)" : "translateY(24px)",
-                transition: "opacity .7s ease .15s, transform .7s ease .15s",
-              }}
-            >
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: 20 }}
-              >
-                {MYTHS.map((m) => (
-                  <div
-                    key={m.myth}
-                    style={{
-                      border: "1px solid rgba(184,134,11,0.25)",
-                      padding: "24px 26px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: 9.5,
-                        fontWeight: 700,
-                        letterSpacing: "0.2em",
-                        color: "rgba(250,247,242,0.35)",
-                        marginBottom: 8,
-                      }}
-                    >
-                      MYTH
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: "'Playfair Display',serif",
-                        fontSize: 18,
-                        color: "rgba(250,247,242,0.55)",
-                        textDecoration: "line-through",
-                        textDecorationColor: "rgba(201,168,76,0.5)",
-                        marginBottom: 14,
-                      }}
-                    >
-                      {m.myth}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: 9.5,
-                        fontWeight: 700,
-                        letterSpacing: "0.2em",
-                        color: C.goldLight,
-                        marginBottom: 8,
-                      }}
-                    >
-                      FACT
-                    </div>
-                    <p
-                      style={{
-                        fontSize: 14,
-                        color: "rgba(250,247,242,0.8)",
-                        lineHeight: 1.75,
-                        margin: 0,
-                      }}
-                    >
-                      {m.fact}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <style>{`
-          @media(max-width:900px){
-            .guide-myths-grid{grid-template-columns:1fr!important;gap:40px!important}
-          }
-        `}</style>
-      </section>
-    </>
-  );
-}
-
 /* ── Queen of Bird's Nest Video ── */
 function QueenVideo() {
   const { ref, visible } = useFadeIn();
@@ -2092,8 +1385,8 @@ function QueenVideo() {
     <section
       ref={ref}
       style={{
-        background: C.cream,
-        padding: "96px 0",
+        background: C.ivory,
+        padding: "28px 0",
         borderTop: "1px solid rgba(184,134,11,0.1)",
       }}
     >
@@ -2147,7 +1440,7 @@ function QueenVideo() {
           <video
             ref={videoRef}
             src={birdNestHouseMp4}
-            poster="https://www.damadingjiyanwo.com/images/section-image-4.jpg"
+            poster={houseBird}
             preload="metadata"
             playsInline
             onEnded={() => setPlaying(false)}
@@ -2239,44 +1532,36 @@ function QueenVideo() {
 /* ── Certificate data ── */
 const CERTIFICATES = [
   {
-    img: storyImageCertificate,
-    ratio: "1700 / 2200",
-    alt: "",
-    badge: "",
+    img: Certificate2,
+    alt: "Food safety certificate",
+    badge: "FOOD SAFETY",
     title: "Food Safety Standard",
-    desc: "Our products are produced under strict food safety handling and hygiene protocols verified through regular internal audits and external review.",
+    desc: "Produced under strict food safety handling and hygiene protocols, verified through regular audits and review.",
     year: "Maintained annually",
-    color: "#4CAF82",
   },
   {
-    img: "https://cdn.shopify.com/s/files/1/0825/4157/6505/files/VIET_SUN_BIRDNEST_-_FDA_480x480.jpg?v=1723985475",
-    ratio: "1700 / 2200",
-    alt: "",
-    badge: "",
+    img: Certificate1,
+    alt: "Hygiene certified facility certificate",
+    badge: "FACILITY",
     title: "Hygiene Certified Facility",
-    desc: "Our processing environment meets rigorous hygiene and sanitation requirements, ensuring every product is handled in a clean, controlled setting.",
+    desc: "Our processing environment meets rigorous hygiene and sanitation requirements in a clean, controlled setting.",
     year: "Certified production facility",
-    color: "#4CAF82",
   },
   {
-    img: "https://xiaoxiandunbirdnest.com/wp-content/uploads/2026/03/7191376245-CHM26-CL.png",
-    ratio: "1700 / 2200",
-    alt: "",
-    badge: "",
+    img: Certificate3,
+    alt: "AAA grade standard certificate",
+    badge: "QUALITY",
     title: "AAA Grade Standard",
-    desc: "Every nest is assessed against our Premium AAA grading criteria — covering strand integrity, colour consistency, purity, and natural aroma.",
+    desc: "Every nest is assessed against Premium AAA criteria for strand integrity, colour consistency, purity, and aroma.",
     year: "Applied to every batch",
-    color: "#4CAF82",
   },
   {
-    img: "https://xiaoxiandunbirdnest.com/wp-content/uploads/2026/03/7191376245-CHM26-CL.png",
-    ratio: "",
-    alt: "",
-    badge: "",
+    img: Certificate4,
+    alt: "Responsible and ethical sourcing certificate",
+    badge: "ETHICAL",
     title: "Responsible & Ethical",
-    desc: "We work exclusively with certified swiftlet farms committed to humane, sustainable harvesting practices — protecting both the nests and the birds.",
+    desc: "We work with certified swiftlet farms committed to humane, sustainable harvesting practices.",
     year: "Farm-audited supply chain",
-    color: "#4CAF82",
   },
 ];
 
@@ -2284,10 +1569,12 @@ function CertificateCard({
   cert,
   index,
   visible,
+  onPreview,
 }: {
   cert: (typeof CERTIFICATES)[0];
   index: number;
   visible: boolean;
+  onPreview: (cert: (typeof CERTIFICATES)[0]) => void;
 }) {
   const [hov, setHov] = useState(false);
   return (
@@ -2297,150 +1584,146 @@ function CertificateCard({
       style={{
         background: C.ivory,
         border: `1px solid ${
-          hov ? "rgba(184,134,11,0.3)" : "rgba(184,134,11,0.1)"
+          hov ? "rgba(184,134,11,0.35)" : "rgba(184,134,11,0.12)"
         }`,
         overflow: "hidden",
         transition: "all 0.3s ease",
-        boxShadow: hov ? "0 16px 48px rgba(44,26,14,0.1)" : "none",
+        boxShadow: hov
+          ? "0 18px 48px rgba(44,26,14,0.12)"
+          : "0 4px 18px rgba(44,26,14,0.04)",
         transform: hov ? "translateY(-4px)" : "none",
         opacity: visible ? 1 : 0,
         transitionDelay: `${index * 0.1}s`,
       }}
     >
-      {/* Image */}
-      <div
+      {/* Certificate frame */}
+      <button
+        type="button"
+        onClick={() => onPreview(cert)}
+        aria-label={`Preview ${cert.title}`}
         style={{
+          display: "block",
+          width: "100%",
           position: "relative",
-          overflow: "hidden",
-          aspectRatio: cert.ratio,
-          background: C.creamDark,
+          padding: 18,
+          background:
+            "linear-gradient(135deg,#F5ECD9 0%,#FAF7F2 50%,#F0E6C8 100%)",
+          border: "none",
+          borderBottom: "1px solid rgba(184,134,11,0.12)",
+          cursor: "pointer",
+          textAlign: "inherit",
         }}
       >
-        <img
-          src={cert.img}
-          alt={cert.alt}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            transition: "transform 0.5s ease",
-            transform: hov ? "scale(1.05)" : "scale(1)",
-          }}
-        />
-        {/* Gold seal watermark */}
         <div
           style={{
-            position: "absolute",
-            bottom: -20,
-            right: -20,
-            width: 88,
-            height: 88,
-            borderRadius: "50%",
-            border: `1.5px solid rgba(184,134,11,0.25)`,
-            opacity: 0.6,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: -12,
-            right: -12,
-            width: 72,
-            height: 72,
-            borderRadius: "50%",
-            border: `1px solid rgba(184,134,11,0.2)`,
-            opacity: 0.5,
-          }}
-        />
-      </div>
-
-      {/* Content */}
-      <div style={{ padding: "28px 24px 24px" }}>
-        <div
-          style={{
+            position: "relative",
+            background: "#fffdf8",
+            border: "1px solid rgba(184,134,11,0.25)",
+            boxShadow: "inset 0 0 0 4px rgba(250,247,242,0.9)",
+            padding: 10,
+            minHeight: 260,
             display: "flex",
             alignItems: "center",
-            gap: 10,
-            marginBottom: 14,
+            justifyContent: "center",
           }}
         >
-          {/* Circular seal icon */}
+          <img
+            src={cert.img}
+            alt={cert.alt}
+            style={{
+              width: "100%",
+              height: "100%",
+              maxHeight: 360,
+              objectFit: "contain",
+              display: "block",
+              transition: "transform 0.4s ease",
+              transform: hov ? "scale(1.02)" : "scale(1)",
+            }}
+          />
           <div
             style={{
-              width: 36,
-              height: 36,
-              borderRadius: "50%",
-              border: `1.5px solid ${cert.color}`,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              background: `rgba(184,134,11,0.04)`,
+              position: "absolute",
+              top: 10,
+              left: 10,
+              padding: "5px 10px",
+              fontSize: 8,
+              fontWeight: 700,
+              letterSpacing: "0.16em",
+              color: C.gold,
+              background: "rgba(250,247,242,0.96)",
+              border: "1px solid rgba(184,134,11,0.3)",
             }}
           >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke={cert.color}
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
+            {cert.badge}
           </div>
-          <h3
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: 16,
-              fontWeight: 600,
-              color: C.brown,
-              lineHeight: 1.25,
-            }}
-          >
-            {truncate(cert.title)}
-          </h3>
           <div
             style={{
+              position: "absolute",
+              right: 10,
+              bottom: 10,
+              padding: "6px 10px",
               fontSize: 9,
               fontWeight: 600,
               letterSpacing: "0.12em",
-              color: C.gold,
+              color: C.brown,
+              background: "rgba(250,247,242,0.96)",
+              border: "1px solid rgba(184,134,11,0.25)",
             }}
           >
-            {truncate(cert.alt)}
+            VIEW
           </div>
         </div>
+      </button>
+
+      {/* Content */}
+      <div style={{ padding: "24px 22px 22px" }}>
+        <h3
+          style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 18,
+            fontWeight: 600,
+            color: C.brown,
+            lineHeight: 1.25,
+            marginBottom: 10,
+          }}
+        >
+          {cert.title}
+        </h3>
         <p
           style={{
             fontSize: 13,
             color: C.muted,
             lineHeight: 1.75,
-            marginBottom: 18,
+            marginBottom: 16,
           }}
         >
-          {truncateCertDesc(cert.desc)}
+          {cert.desc}
         </p>
         <div
           style={{
             display: "flex",
             alignItems: "center",
             gap: 8,
-            paddingTop: 16,
-            borderTop: `1px solid rgba(184,134,11,0.1)`,
+            paddingTop: 14,
+            borderTop: "1px solid rgba(184,134,11,0.12)",
           }}
         >
           <div
             style={{
-              width: 6,
-              height: 6,
+              width: 18,
+              height: 18,
               borderRadius: "50%",
-              background: cert.color,
+              border: "1px solid rgba(184,134,11,0.35)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: C.gold,
+              fontSize: 10,
               flexShrink: 0,
             }}
-          />
+          >
+            ✓
+          </div>
           <span
             style={{ fontSize: 11, color: C.muted, letterSpacing: "0.06em" }}
           >
@@ -2454,6 +1737,22 @@ function CertificateCard({
 
 function Certificates() {
   const { ref, visible } = useFadeIn();
+  const [preview, setPreview] = useState<(typeof CERTIFICATES)[0] | null>(null);
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreview(null);
+    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [preview]);
+
   return (
     <section
       ref={ref}
@@ -2523,7 +1822,13 @@ function Certificates() {
           className="cert-cards-grid"
         >
           {CERTIFICATES.map((cert, i) => (
-            <CertificateCard key={i} cert={cert} index={i} visible={visible} />
+            <CertificateCard
+              key={i}
+              cert={cert}
+              index={i}
+              visible={visible}
+              onPreview={setPreview}
+            />
           ))}
         </div>
 
@@ -2611,6 +1916,115 @@ function Certificates() {
           </div>
         </div>
       </div>
+      {preview && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={preview.title}
+          onClick={() => setPreview(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            background: "rgba(26,16,8,0.82)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 24,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "relative",
+              width: "min(100%, 980px)",
+              maxHeight: "90vh",
+              background:
+                "linear-gradient(135deg,#F5ECD9 0%,#FAF7F2 50%,#F0E6C8 100%)",
+              border: "1px solid rgba(184,134,11,0.35)",
+              boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
+              padding: 16,
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setPreview(null)}
+              aria-label="Close preview"
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                border: "1px solid rgba(184,134,11,0.35)",
+                background: "rgba(250,247,242,0.96)",
+                color: C.brown,
+                cursor: "pointer",
+                fontSize: 20,
+                lineHeight: 1,
+                zIndex: 1,
+              }}
+            >
+              ×
+            </button>
+            <div
+              style={{
+                background: "#fffdf8",
+                border: "1px solid rgba(184,134,11,0.2)",
+                padding: 12,
+              }}
+            >
+              <img
+                src={preview.img}
+                alt={preview.alt || preview.title}
+                style={{
+                  width: "100%",
+                  maxHeight: "calc(90vh - 140px)",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </div>
+            <div
+              style={{
+                padding: "14px 4px 2px",
+                display: "flex",
+                alignItems: "baseline",
+                justifyContent: "space-between",
+                gap: 12,
+                flexWrap: "wrap",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: "0.16em",
+                    color: C.gold,
+                    marginBottom: 4,
+                  }}
+                >
+                  {preview.badge}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: 20,
+                    color: C.brown,
+                  }}
+                >
+                  {preview.title}
+                </div>
+              </div>
+              <div style={{ fontSize: 12, color: C.muted }}>{preview.year}</div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <style>{`@media(max-width:900px){.cert-cards-grid{grid-template-columns:repeat(2,1fr)!important}}@media(max-width:480px){.cert-cards-grid{grid-template-columns:1fr!important}}`}</style>
     </section>
   );
@@ -2697,7 +2111,8 @@ function OurStory() {
               gap: 10,
             }}
           >
-            OUR PRODUCTS <BirdDecor size={16} opacity={0.7} />
+            Premium Packaging
+            <BirdDecor size={16} opacity={0.7} />
           </p>
           <h2
             style={{
@@ -2718,7 +2133,7 @@ function OurStory() {
               fontSize: 15,
               lineHeight: 1.8,
               color: C.muted,
-              marginBottom: 40,
+              marginBottom: 32,
               maxWidth: 440,
             }}
           >
@@ -2727,27 +2142,75 @@ function OurStory() {
             meticulously cleaned and quality-checked to retain its natural
             nutrients.
           </p>
-          <a
-            href="#"
+          <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              fontSize: 12,
-              fontWeight: 600,
-              color: C.gold,
-              letterSpacing: "0.1em",
-              textDecoration: "none",
-              borderBottom: `1px solid ${C.gold}`,
-              paddingBottom: 4,
-              width: "fit-content",
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 16,
+              maxWidth: 440,
             }}
+            className="packaging-specs"
           >
-            LEARN MORE ABOUT US <ArrowRight />
-          </a>
+            {[
+              {
+                label: "Premium Packaging",
+                volume: "80ml",
+                serving: "Per cup",
+              },
+              {
+                label: "Standard Products",
+                volume: "150ml",
+                serving: "Per cup",
+              },
+            ].map((s) => (
+              <div
+                key={s.label}
+                style={{
+                  background: C.cream,
+                  border: `1px solid rgba(184,134,11,0.16)`,
+                  padding: "18px 20px",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: 9,
+                    letterSpacing: "0.16em",
+                    fontWeight: 700,
+                    color: C.gold,
+                    marginBottom: 8,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {s.label}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "'Playfair Display',serif",
+                    fontSize: 24,
+                    fontWeight: 700,
+                    color: C.brown,
+                    lineHeight: 1,
+                  }}
+                >
+                  {s.volume}
+                </div>
+                <div
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: "0.14em",
+                    color: C.muted,
+                    marginTop: 6,
+                    textTransform: "uppercase",
+                  }}
+                >
+                  {s.serving}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <style>{`@media(max-width:768px){.story-grid{grid-template-columns:1fr!important}}`}</style>
+      <style>{`@media(max-width:768px){.story-grid{grid-template-columns:1fr!important}}@media(max-width:420px){.packaging-specs{grid-template-columns:1fr!important}}`}</style>
     </section>
   );
 }
@@ -2804,15 +2267,69 @@ const PROCESS_DETAIL = [
     num: "05",
     label: "Premium Packaging",
     subtitle: "Worthy of what's inside",
-    desc: "Each product is carefully packed in our premium packaging, designed to maintain freshness and present the product beautifully. Our packaging reflects the care and craftsmanship of everything inside.",
-    detail:
-      "Elegant, hygienic packaging that protects and presents with pride.",
-    img: storyImagePrim,
+    desc: "Each product is carefully packed in our premium packaging, designed to maintain freshness and present the product beautifully. Premium packaging is portioned at 80ml per cup, while our standard products are portioned at 150ml per cup. Our packaging reflects the care and craftsmanship of everything inside.",
+    detail: "Premium: 80ml per cup. Standard: 150ml per cup.",
+    img: storyImagePrimV2,
     alt: "Elegant premium product packaging",
     bg: C.cream,
   },
 ];
 
+const PROCESS_PRIM = [
+  {
+    num: "01",
+    label: "Checking Process",
+    subtitle: "Only the finest pass our eyes",
+    desc: "Each bird’s nest is carefully inspected and checked for quality, ensuring its natural shape, cleanliness, and overall condition meet our quality standards before proceeding to the next stage of processing",
+    detail:
+      "Visual inspection ensures authenticity and natural premium quality.",
+    img: CheckProcess,
+    alt: "Close-up of premium raw bird's nest",
+    bg: C.cream,
+  },
+  {
+    num: "02",
+    label: "Careful Selection",
+    subtitle: "Only the finest pass our eyes",
+    desc: "Each nest is individually inspected by our skilled team. We assess strand length, colour, shape, and overall integrity. Only nests that meet our premium grade standards are accepted into our processing line.",
+    detail:
+      "Visual inspection ensures authenticity and natural premium quality.",
+    img: selectedNest,
+    alt: "Close-up of premium raw bird's nest",
+    bg: C.cream,
+  },
+  {
+    num: "03",
+    label: "Quality Select",
+    subtitle: "Controlled and hygienic",
+    desc: "After cleaning, nests are processed under strict hygiene protocols in our controlled environment. Temperature, humidity, and handling are carefully monitored to maintain purity and preserve natural nutrients throughout.",
+    detail: "Prepared under rigorous hygiene and processing standards.",
+    img: sgoutNest,
+    alt: "Clean food processing facility",
+    bg: C.cream,
+  },
+  {
+    num: "04",
+    label: "Final Inspection",
+    subtitle: "Every piece, verified",
+    desc: "Before packaging, each nest undergoes a final quality review. Our team checks for consistency, cleanliness, and grade classification. Only products that pass every checkpoint are approved for the next stage.",
+    detail:
+      "No nest leaves our facility without passing a thorough final review.",
+    img: storyImageClean2,
+    alt: "Premium product inspection",
+    bg: C.ivory,
+  },
+  {
+    num: "05",
+    label: "Premium Packaging",
+    subtitle: "Worthy of what's inside",
+    desc: "Each product is carefully packed in our premium packaging, designed to maintain freshness and present the product beautifully. Premium packaging is portioned at 80ml per cup, while our standard products are portioned at 150ml per cup. Our packaging reflects the care and craftsmanship of everything inside.",
+    detail: "Premium: 80ml per cup. Standard: 150ml per cup.",
+    img: readyToEatPackage,
+    alt: "Elegant premium product packaging",
+    bg: C.cream,
+  },
+];
 function Process() {
   const { ref, visible } = useFadeIn();
   return (
@@ -2957,9 +2474,11 @@ function Process() {
 }
 
 function ProcessSteps() {
+  const { ref, visible } = useFadeIn();
+  const rows = Math.max(PROCESS_DETAIL.length, PROCESS_PRIM.length);
   return (
-    <section id="process-detail">
-      <div style={{ background: C.ivory, padding: "72px 0" }}>
+    <section id="process-detail" ref={ref}>
+      <div style={{ background: C.ivory, padding: "72px 0 56px" }}>
         <div
           style={{
             maxWidth: 760,
@@ -2985,191 +2504,280 @@ function ProcessSteps() {
           </p>
         </div>
       </div>
-      {PROCESS_DETAIL.map((step, i) => (
-        <ProcessStepCard key={i} step={step} index={i} />
-      ))}
+
+      <div style={{ background: C.cream, padding: "48px 0 88px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+          <div
+            className="process-columns"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              columnGap: 120,
+              marginBottom: 32,
+            }}
+          >
+            <div
+              style={{
+                textAlign: "right",
+                fontSize: 10,
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+                color: C.gold,
+                textTransform: "uppercase",
+              }}
+            >
+              DRINK PROCESS DETAIL
+            </div>
+            <div
+              style={{
+                fontSize: 10,
+                letterSpacing: "0.22em",
+                fontWeight: 700,
+                color: C.gold,
+                textTransform: "uppercase",
+              }}
+            >
+              Bird's Nest Drying Process
+            </div>
+          </div>
+
+          <div style={{ position: "relative" }}>
+            <div
+              className="process-timeline-line"
+              style={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: "50%",
+                width: 1,
+                background:
+                  "linear-gradient(to bottom,transparent,rgba(184,134,11,0.35) 6%,rgba(184,134,11,0.35) 94%,transparent)",
+                pointerEvents: "none",
+              }}
+            />
+            <div
+              className="process-timeline-grid"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                columnGap: 120,
+                rowGap: 40,
+                alignItems: "start",
+              }}
+            >
+              {Array.from({ length: rows }).flatMap((_, i) => [
+                <div key={`detail-${i}`} className="process-timeline-item">
+                  {PROCESS_DETAIL[i] ? (
+                    <ProcessPreviewCard
+                      step={PROCESS_DETAIL[i]}
+                      index={i}
+                      side="left"
+                      visible={visible}
+                    />
+                  ) : null}
+                </div>,
+                <div key={`prim-${i}`} className="process-timeline-item">
+                  {PROCESS_PRIM[i] ? (
+                    <ProcessPreviewCard
+                      step={PROCESS_PRIM[i]}
+                      index={i}
+                      side="right"
+                      visible={visible}
+                    />
+                  ) : null}
+                </div>,
+              ])}
+            </div>
+          </div>
+        </div>
+        <style>{`
+          @media(max-width:1100px){
+            .process-preview-img{width:150px!important}
+          }
+          @media(max-width:900px){
+            .process-columns{display:none!important}
+            .process-timeline-grid{grid-template-columns:1fr!important;row-gap:24px!important;column-gap:0!important}
+            .process-timeline-item{grid-column:1 / -1!important}
+            .process-timeline-line,.process-step-connector,.process-step-dot{display:none!important}
+            .process-preview{flex-direction:column!important}
+            .process-preview-img{width:100%!important;aspect-ratio:16 / 9!important}
+            .process-preview-text{text-align:left!important}
+          }
+          @media(max-width:600px){
+            .process-preview-img{aspect-ratio:4 / 3!important}
+          }
+        `}</style>
+      </div>
     </section>
   );
 }
 
-function ProcessStepCard({
+function ProcessPreviewCard({
   step,
   index,
+  side,
+  visible,
 }: {
   step: (typeof PROCESS_DETAIL)[0];
   index: number;
+  side: "left" | "right";
+  visible: boolean;
 }) {
-  const { ref, visible } = useFadeIn();
-  const isEven = index % 2 === 0;
+  const isLeft = side === "left";
   return (
-    <div ref={ref} style={{ background: step.bg }}>
+    <div
+      style={{
+        position: "relative",
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.6s ease ${index * 0.08}s,transform 0.6s ease ${index * 0.08}s`,
+      }}
+    >
       <div
+        className="process-step-connector"
         style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "72px 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 72,
-          alignItems: "center",
+          position: "absolute",
+          top: "50%",
+          width: 60,
+          height: 1,
+          background: "rgba(184,134,11,0.35)",
+          ...(isLeft ? { right: -60 } : { left: -60 }),
         }}
-        className="step-grid"
+      />
+      <div
+        className="process-step-dot"
+        style={{
+          position: "absolute",
+          top: "50%",
+          width: 14,
+          height: 14,
+          borderRadius: "50%",
+          background: C.cream,
+          border: `2px solid ${C.gold}`,
+          boxShadow: "0 0 0 4px rgba(184,134,11,0.12)",
+          zIndex: 2,
+          ...(isLeft
+            ? { right: -60, transform: "translate(50%,-50%)" }
+            : { left: -60, transform: "translate(-50%,-50%)" }),
+        }}
+      />
+
+      <div
+        className="process-preview"
+        style={{
+          display: "flex",
+          flexDirection: isLeft ? "row-reverse" : "row",
+          background: C.ivory,
+          border: "1px solid rgba(184,134,11,0.14)",
+          boxShadow: "0 16px 40px rgba(44,26,14,0.06)",
+          overflow: "hidden",
+        }}
       >
         <div
+          className="process-preview-img"
           style={{
-            order: isEven ? 1 : 2,
-            opacity: visible ? 1 : 0,
-            transform: visible
-              ? "translateX(0)"
-              : `translateX(${isEven ? -30 : 30}px)`,
-            transition: "opacity 0.7s ease,transform 0.7s ease",
+            width: 190,
+            flexShrink: 0,
+            position: "relative",
+            overflow: "hidden",
+            aspectRatio: "1 / 1",
           }}
         >
+          <img
+            src={step.img}
+            alt={step.alt}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
           <div
             style={{
-              position: "relative",
-              borderRadius: 4,
-              overflow: "hidden",
-              boxShadow: "0 24px 64px rgba(255,255,255,0.14)",
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(to top,rgba(44,26,14,0.35),transparent 60%)",
+              pointerEvents: "none",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              bottom: 12,
+              left: isLeft ? "auto" : 12,
+              right: isLeft ? 12 : "auto",
+              fontFamily: "'Playfair Display',serif",
+              fontSize: 22,
+              fontWeight: 700,
+              color: "rgba(250,247,242,0.85)",
+              lineHeight: 1,
             }}
           >
-            <img
-              src={step.img}
-              alt={step.alt}
-              style={{
-                width: "100%",
-                height: 380,
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                top: 20,
-                left: 20,
-                fontFamily: "'Playfair Display',serif",
-                fontSize: 80,
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.15)",
-                lineHeight: 1,
-                pointerEvents: "none",
-              }}
-            >
-              {step.num}
-            </div>
+            {step.num}
           </div>
         </div>
 
         <div
+          className="process-preview-text"
           style={{
-            order: isEven ? 2 : 1,
-            opacity: visible ? 1 : 0,
-            transform: visible
-              ? "translateX(0)"
-              : `translateX(${isEven ? 30 : -30}px)`,
-            transition: "opacity 0.7s ease 0.15s,transform 0.7s ease 0.15s",
+            padding: "24px 24px",
+            flex: 1,
+            minWidth: 0,
+            textAlign: isLeft ? "right" : "left",
           }}
         >
           <div
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-              marginBottom: 24,
+              fontSize: 9,
+              letterSpacing: "0.2em",
+              fontWeight: 700,
+              color: C.gold,
+              marginBottom: 6,
             }}
           >
-            <span
-              style={{
-                fontFamily: "'Playfair Display',serif",
-                fontSize: 56,
-                fontWeight: 700,
-                color: "rgba(184,134,11,0.15)",
-                lineHeight: 1,
-              }}
-            >
-              {step.num}
-            </span>
-            <div
-              style={{
-                width: 1,
-                height: 48,
-                background: "rgba(184,134,11,0.2)",
-              }}
-            />
-            <div>
-              <div
-                style={{
-                  fontSize: 10,
-                  color: C.gold,
-                  letterSpacing: "0.2em",
-                  fontWeight: 600,
-                  marginBottom: 4,
-                }}
-              >
-                STEP {step.num}
-              </div>
-              <h3
-                style={{
-                  fontFamily: "'Playfair Display',serif",
-                  fontSize: "clamp(26px,3vw,36px)",
-                  fontWeight: 700,
-                  color: C.brown,
-                  lineHeight: 1.2,
-                }}
-              >
-                {step.label}
-              </h3>
-            </div>
+            STEP {step.num}
           </div>
+          <h3
+            style={{
+              fontFamily: "'Playfair Display',serif",
+              fontSize: 19,
+              fontWeight: 700,
+              color: C.brown,
+              lineHeight: 1.25,
+              marginBottom: 6,
+            }}
+          >
+            {step.label}
+          </h3>
           <p
             style={{
-              fontSize: 14,
+              fontSize: 12,
               color: C.gold,
-              letterSpacing: "0.06em",
               fontStyle: "italic",
-              marginBottom: 20,
+              letterSpacing: "0.04em",
+              marginBottom: 8,
             }}
           >
             {step.subtitle}
           </p>
           <p
             style={{
-              fontSize: 15,
-              lineHeight: 1.85,
+              fontSize: 12.5,
               color: C.muted,
-              marginBottom: 24,
+              lineHeight: 1.65,
+              margin: 0,
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
             }}
           >
             {step.desc}
           </p>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 12,
-              padding: "16px 20px",
-              background: "rgba(184,134,11,0.06)",
-              border: "1px solid rgba(184,134,11,0.15)",
-            }}
-          >
-            <div
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: C.gold,
-                marginTop: 6,
-                flexShrink: 0,
-              }}
-            />
-            <p style={{ fontSize: 13, color: C.charcoal, lineHeight: 1.7 }}>
-              {step.detail}
-            </p>
-          </div>
         </div>
       </div>
-      <style>{`@media(max-width:768px){.step-grid{grid-template-columns:1fr!important;gap:32px!important}}`}</style>
     </div>
   );
 }
@@ -3177,7 +2785,7 @@ function ProcessStepCard({
 function NestToNourishment() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.brown, padding: "96px 0" }}>
+    <section ref={ref} style={{ background: C.brown, padding: "28px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div style={{ textAlign: "center", marginBottom: 64 }}>
           <SectionLabel>
@@ -3454,47 +3062,7 @@ const STATS = [
   { value: "0%", label: "Artificial Additives" },
 ];
 
-function QualityCommitment() {
-  const { ref, visible } = useFadeIn();
-  return (
-    <section
-      ref={ref}
-      style={{ background: C.ivory, padding: "72px 0" }}
-      id="quality"
-    >
-      <div
-        style={{
-          maxWidth: 820,
-          margin: "0 auto",
-          padding: "0 24px",
-          textAlign: "center",
-        }}
-      >
-        <GoldDivider />
-        <h2
-          style={{
-            fontFamily: "'Playfair Display',serif",
-            fontSize: "clamp(28px,3.5vw,40px)",
-            fontWeight: 700,
-            color: C.brown,
-            margin: "32px 0 20px",
-            lineHeight: 1.2,
-          }}
-        >
-          Our Commitment to Quality
-        </h2>
-        <p style={{ fontSize: 16, lineHeight: 1.85, color: C.muted }}>
-          At QUEEN, quality is not a department — it is a philosophy that runs
-          through everything we do. From the moment we select a nest from a
-          partner farm to the second it is sealed in its final packaging, every
-          step is guided by our commitment to purity, safety, and authenticity.
-          We believe you deserve to know exactly what you are receiving, and we
-          are proud to stand behind every product we offer.
-        </p>
-      </div>
-    </section>
-  );
-}
+const TEXT_BREAK = "\n\n\n";
 
 function TrustStats() {
   const { ref, visible } = useFadeIn();
@@ -3563,7 +3131,7 @@ const ABOUT_PRODUCTS = [
     subtitle: "Pure natural nourishment",
     description:
       "Carefully selected and processed edible bird's nest prepared for customers who value authenticity and premium quality.",
-    image: storyImagePrim,
+    image: storyImagePrimV2,
   },
   {
     title: "Ready-to-Enjoy Nest",
@@ -3584,159 +3152,54 @@ const ABOUT_PRODUCTS = [
 const TIMELINE = [
   {
     year: "01",
-    img: storyImageChia,
-    title: "Chia Flavor Bird's Nest",
-    text: "Discover our latest innovation: Chia Bird's Nest, crafted with the same quality you trust and chia flavor.",
+    img: storyImageOriginalBox,
+    title: "Original Bird's Nest",
+    imageScale: 11,
+    text: `រសជាតិដើម ផលិតពីសំបុកត្រចៀកកាំគុណភាពខ្ពស់ រក្សាបាននូវរសជាតិធម្មជាតិដ៏ពិសេស។ សំបូរទៅដោយប្រូតេអ៊ីនល្អៗ អាស៊ីតអាមីណូនិងអាហារូបត្ថម្ភសំខាន់ៗ និងខូឡាជែនជួយបំប៉នសុខភាពរាងកាយ ថែរក្សាស្បែកឲ្យមានសំណើម ភ្លឺថ្លាពីខាងក្នុង។ ជួយស្តារប្រព័ន្ធរាងកាយ ជួសជុលកោសិកាចាស់ៗ ធ្វើអោយក្មេងជាងវ័យ។${TEXT_BREAK}Queen's White Bird's Nest – Original Flavor (No Added Sugar) is made with premium natural bird's nest to preserve its authentic taste and delicate texture without added sugar. Rich in protein, amino acids, collagen, and essential nutrients, it helps nourish the body, supports healthy-looking skin, and promotes overall wellness and daily vitality. An ideal choice`,
   },
   {
     year: "02",
-    img: storyImageOriginal,
-    title: "Original Bird's Nest",
-    text: "Discover our latest innovation: Original Bird's Nest, crafted with the same quality you trust and original flavor.",
+    img: storyImageChiaBox,
+    imageScale: 11,
+    title: "Chia Flavor Bird's Nest",
+    text: `ទឹកមាត់ត្រចៀកកាំ Queen's White Bird Nest គ្រាប់ឈៀមានប្រភពពីអាហារបំប៉នសុខភាព អូមេហ្គា 3 ជាតិរ៉ែ ថាមពល ហ្វាយប័រ ក្រុមការងារថ្នាក់ទឹកយូមជួយជាតិ រក្សាទឹក ថែរក្សាសុខភាព សុខភាពប្រចាំថ្ងៃ។ ពិសេស បំផុតសម្រាប់អ្នកស្រលាញ់សុខភាព។${TEXT_BREAK}Queen's White Bird's Nest – Chia Seed Flavor is made with premium natural bird's nest and nutritious chia seeds. Rich in dietary fiber, Omega-3, protein, calcium, magnesium, and essential minerals, it helps support hydration, overall wellness, natural beauty, and daily vitality. An ideal choice for health-conscious individuals.`,
   },
+
   {
     year: "03",
-    img: storyImageGinseng,
+    img: storyImageGinsengBox,
     title: "Ginseng Flavor Bird's Nest",
-    text: "Discover our latest innovation: Ginseng Bird's Nest, crafted with the same quality you trust and ginseng flavor.",
+    text: `ទឹកមាត់ត្រចៀកកាំ Queen's White Bird Nest រស់ជាតិយុិនសុិនក្រហម​ ជាកាបញ្ចូលគ្នារវាងសំបុកត្រជៀកកាំធម្មជាតិជាមួយនឹងយុិនសុិនក្រហមដ៏មានតម្លៃ។ ជួយបង្កើនថាមពល ប៉ូវកម្លាំង នឹងប្រព័ន្ធភាពសុំាក្នុងរាងកាយ ជាពិសេស បង្កើនភាពស្រស់ស្រាយពេញមួយថ្ងៃ។​ សាកសមសម្រាប់​ មនុស្សពេញវ័យកណ្តាលឡើងទៅ។${TEXT_BREAK}Queen's White Bird's Nest – Red Ginseng Flavor is made with premium natural bird's nest blended with the goodness of red ginseng. This nourishing beverage helps support vitality, promotes overall wellness, and keeps you feeling energized throughout the day. An ideal choice for adults, especially middle-aged individuals.`,
   },
   {
     year: "04",
-    img: storyImagePandan,
+    img: storyImagePandanBox,
+    imageScale: 11,
     title: "Pandan Flavor Bird's Nest",
-    text: "Discover our latest innovation: Pandan Flavor Bird's Nest, crafted with the same quality you trust and pandan flavor.",
+    text: `ទឹកមាត់ត្រចៀកកាំ Queen's White Bird Nest ស្លឹកតយគឺ​ជា​សង្កាត់ត្រចៀកកាំធម្មជាតិនឹងលក្ខណៈពិសេសឈ្ងុយឆ្ងាញ់ពីស្លឹកតយ អារម្មណ៍ធូរស្រាល ថយចុះតានតឹងដល់ប្រព័ន្ធដំណើរការថែរក្សាសម្រស់ ផ្តល់ថាមពលសម្រាប់ជីវិតប្រចាំថ្ងៃ។${TEXT_BREAK}Queen's White Bird's Nest – Red Ginseng Flavor is made with premium natural bird's nest blended with the goodness of red ginseng. This nourishing beverage helps support vitality, promotes overall wellness, and keeps you feeling energizedthroughout the day. An ideal choice for adults, especially middle-aged individuals.`,
   },
   {
     year: "05",
-    img: storyImageZeroSugar,
+    img: storyImageOriginalBox,
+    imageScale: 11,
     title: "Zero Sugar Bird's Nest",
-    text: "Discover our latest innovation: Zero Sugar Bird's Nest, crafted with the same quality you trust and zero sugar.",
+    text: `ទឹកមាត់ត្រចៀកកាំ Queen's white Bird Nest  រសជាតិដើម ផលិតពីសំបុកត្រចៀកកាំ រក្សាបាននូវរសជាតិ ធម្មជាតិ។ ក្នុងតំបន់ទៅដោយប្រូតេអ៊ីយូននឹង អាស៊ីតអាមីណូអាហារូបត្ថម្ភពិសេសនឹងជំនួយដល់ សុខភាពរាងកាយ សុខភាពស្បែកអោយមានផាសុខភាព ពីខាងក្នុង។ ជំនួយប្រព័ន្ធរាងកាយជួសជុល កោសិកាចាស់ធ្វើឱ្យក្មេងជាងវ័យ។ រៀបចំសម្រាប់ អ្នកកំពុងគ្រប់គ្រងជាតិស្ករ។${TEXT_BREAK}Queen's White Bird's Nest – Original Flavor is made with premium natural bird's nest to preserve its authentic taste and delicate texture. Rich in protein, amino acids, collagen, and essential nutrients, it helps nourish the body, supports healthy-looking skin, and promotes overall wellness and daily vitality.`,
   },
 ];
 
-function WhoWeAre() {
-  const { ref, visible } = useFadeIn();
-  return (
-    <section
-      ref={ref}
-      style={{ background: C.ivory, padding: "96px 0" }}
-      id="who-we-are"
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 80,
-          alignItems: "center",
-        }}
-        className="about-intro-grid"
-      >
-        <div
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateX(0)" : "translateX(-30px)",
-            transition: "opacity .7s ease, transform .7s ease",
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              overflow: "hidden",
-              borderRadius: 4,
-              boxShadow: "0 24px 64px rgba(44,26,14,.14)",
-            }}
-          >
-            <img
-              src={storyImagePrim}
-              alt="Natural premium ingredients"
-              style={{
-                width: "100%",
-                height: 520,
-                objectFit: "cover",
-                display: "block",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                left: 24,
-                bottom: 24,
-                fontFamily: "'Playfair Display',serif",
-                fontSize: 72,
-                color: "rgba(255,255,255,.15)",
-                fontWeight: 700,
-              }}
-            >
-              Q
-            </div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateX(0)" : "translateX(30px)",
-            transition: "opacity .7s ease .15s, transform .7s ease .15s",
-          }}
-        >
-          <SectionLabel>
-            <span style={{ color: C.gold }}>WHO WE ARE</span>
-          </SectionLabel>
-
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: "clamp(32px,4vw,48px)",
-              color: C.brown,
-              lineHeight: 1.2,
-              margin: "20px 0 24px",
-            }}
-          >
-            More Than a Bird's Nest.
-            <br />
-            <span style={{ color: C.gold }}>A Tradition of Care.</span>
-          </h2>
-
-          <p
-            style={{
-              fontSize: 16,
-              color: C.muted,
-              lineHeight: 1.9,
-              marginBottom: 20,
-            }}
-          >
-            QUEEN is a premium edible bird's nest company built around one
-            simple belief: quality begins with care.
-          </p>
-
-          <p
-            style={{
-              fontSize: 15,
-              color: C.muted,
-              lineHeight: 1.9,
-              marginBottom: 28,
-            }}
-          >
-            From carefully selecting our nests to preparing and packaging every
-            product, we focus on authenticity, craftsmanship and consistency.
-            Our goal is to bring the natural value of bird's nest to modern
-            families in a way that is trusted, beautiful and meaningful.
-          </p>
-
-          <GoldDivider />
-        </div>
-      </div>
-
-      <style>{`@media(max-width:768px){.about-intro-grid{grid-template-columns:1fr!important;gap:40px!important}}`}</style>
-    </section>
-  );
-}
-
 function OurStoryTimeline() {
   const { ref, visible } = useFadeIn();
+  const [preview, setPreview] = useState<(typeof TIMELINE)[0] | null>(null);
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreview(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [preview]);
+
   return (
     <section ref={ref}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -3768,7 +3231,7 @@ function OurStoryTimeline() {
           </p>
         </div>
 
-        <div style={{ maxWidth: 900, margin: "0 auto", position: "relative" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative" }}>
           <div
             style={{
               position: "absolute",
@@ -3822,7 +3285,16 @@ function OurStoryTimeline() {
                   >
                     {item.title}
                   </h3>
-                  <p style={{ fontSize: 14, lineHeight: 1.8, color: C.muted }}>
+                  <p
+                    className="timeline-description"
+                    style={{
+                      fontSize: 14,
+                      lineHeight: 1.8,
+                      color: C.muted,
+                      textAlign: "left",
+                      whiteSpace: "pre-line",
+                    }}
+                  >
                     {item.text}
                   </p>
                 </div>
@@ -3850,14 +3322,39 @@ function OurStoryTimeline() {
                   }}
                   className="story-item-media"
                 >
-                  <div style={{ overflow: "hidden", borderRadius: 4 }}>
+                  <div
+                    className="timeline-text"
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Preview ${item.title}`}
+                    onClick={() => setPreview(item)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") setPreview(item);
+                    }}
+                    style={{
+                      overflow: "hidden",
+                      borderRadius: 4,
+                      cursor: "zoom-in",
+                      background: C.cream,
+                      // border: "1px solid rgba(184,134,11,0.18)",
+                      aspectRatio: "4 / 3",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      transition: "box-shadow 0.3s ease",
+                    }}
+                  >
                     <img
                       src={item.img}
                       alt={item.title}
                       style={{
-                        width: "100%",
+                        width: "auto",
                         height: "auto",
+                        maxWidth: "100%",
+                        maxHeight: "calc(90vh - 140px)",
+                        objectFit: "contain",
                         display: "block",
+                        margin: "0 auto",
                       }}
                     />
                   </div>
@@ -3869,6 +3366,13 @@ function OurStoryTimeline() {
       </div>
 
       <style>{`
+        .timeline-description {
+          font-size: 14px;
+          line-height: 1.8;
+          color: var(--text-muted);
+          white-space: pre-line;
+          overflow-wrap: break-word;
+        }
         @media(max-width:768px){
           .story-line{left:7px!important}
           .story-item{grid-template-columns:30px 1fr!important;margin-bottom:40px!important}
@@ -3877,6 +3381,91 @@ function OurStoryTimeline() {
           .story-item > div.story-item-media{grid-column:2!important;grid-row:2!important;padding:0 0 0 20px!important;margin-top:20px}
         }
       `}</style>
+
+      {preview && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={preview.title}
+          onClick={() => setPreview(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            background: "rgba(26,16,8,0.82)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 24,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "relative",
+              width: "min(100%, 1100px)",
+              background:
+                "linear-gradient(135deg,#F5ECD9 0%,#FAF7F2 50%,#F0E6C8 100%)",
+              border: "1px solid rgba(184,134,11,0.35)",
+              boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
+              padding: 16,
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setPreview(null)}
+              aria-label="Close preview"
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                border: "1px solid rgba(184,134,11,0.35)",
+                background: "rgba(250,247,242,0.96)",
+                color: C.brown,
+                cursor: "pointer",
+                fontSize: 20,
+                lineHeight: 1,
+                zIndex: 1,
+              }}
+            >
+              ×
+            </button>
+            <div
+              style={{
+                background: "#fffdf8",
+                border: "1px solid rgba(184,134,11,0.2)",
+                padding: 12,
+              }}
+            >
+              <img
+                src={preview.img}
+                alt={preview.title}
+                style={{
+                  width: "100%",
+                  maxHeight: "calc(90vh - 140px)",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </div>
+            <div style={{ padding: "14px 4px 2px", textAlign: "center" }}>
+              <div
+                style={{
+                  fontFamily: "'Playfair Display',serif",
+                  fontSize: 20,
+                  color: C.brown,
+                }}
+              >
+                {preview.title}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -3899,7 +3488,7 @@ function ProductArea() {
 function AboutProducts() {
   const { ref, visible } = useFadeIn();
   return (
-    <section ref={ref} style={{ background: C.cream, padding: "96px 0" }}>
+    <section ref={ref} style={{ background: C.cream, padding: "28px 0" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
           style={{
@@ -3920,21 +3509,9 @@ function AboutProducts() {
               }}
             >
               Crafted for
-              <br />
-              <span style={{ color: C.gold }}>Every Occasion</span>
+              <span style={{ color: C.gold }}> a Gift</span>
             </h2>
           </div>
-          <p
-            style={{
-              maxWidth: 400,
-              color: C.muted,
-              fontSize: 14,
-              lineHeight: 1.8,
-            }}
-          >
-            Discover our collection of carefully prepared bird's nest products,
-            created with the same attention to quality at every stage.
-          </p>
         </div>
 
         <div
@@ -4017,23 +3594,23 @@ const CONTACTS = [
   {
     icon: "✉",
     label: "Email",
-    value: "QueenBirdNest598@gmail.com",
+    value: "queenwhitebirdnest@gmail.com",
     sub: "Reply within 1 business day",
-    href: "mailto:QueenBirdNest598@gmail.com",
+    href: "",
   },
   {
     icon: "✆",
     label: "Phone",
     value: "+855 69 272 211",
     sub: "Mon-Sun, 9am - 6pm (GMT+7)",
-    href: "tel:+85569272211",
+    href: "",
   },
   {
     icon: "⊕",
     label: "Location",
-    value: "Phnom Penh, Cambodia",
+    value: "សង្កាត់គោកឃ្លាង ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ",
     sub: "Showroom by appointment",
-    href: "https://maps.app.goo.gl/rWd1W2FRGbGQcbD4A",
+    href: "",
   },
 ];
 
@@ -4071,7 +3648,7 @@ function Contact() {
         >
           <iframe
             title="QUEEN Showroom Location"
-            src="https://maps.google.com/maps?q=Ly%20Brothers%20Group&ll=11.5860838,104.8881733&z=17&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d7817.318230214045!2d104.864979!3d11.576277!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTHCsDM0JzM0LjYiTiAxMDTCsDUxJzUzLjkiRQ!5e0!3m2!1sen!2skh!4v1794815196458!5m2!1sen!2skh"
             width="100%"
             height="100%"
             style={{ border: 0, display: "block", minHeight: 420 }}
@@ -4080,7 +3657,7 @@ function Contact() {
             referrerPolicy="no-referrer-when-downgrade"
           />
           <a
-            href="https://maps.app.goo.gl/rWd1W2FRGbGQcbD4A"
+            href="https://maps.app.goo.gl/Zq7mc2BtviGMzd2A9"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Open QUEEN location in Google Maps"
@@ -4334,7 +3911,7 @@ function CompanyIntro() {
   return (
     <section
       ref={ref}
-      style={{ background: C.ivory, padding: "96px 0" }}
+      style={{ background: C.ivory, padding: "28px 0" }}
       id="about"
     >
       <div
@@ -4531,7 +4108,7 @@ function CompanyJourney() {
   return (
     <section
       ref={ref}
-      style={{ background: C.cream, padding: "96px 0" }}
+      style={{ background: C.cream, padding: "28px 0" }}
       id="story"
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -4631,7 +4208,7 @@ function CompanyPillars() {
   return (
     <section
       ref={ref}
-      style={{ background: C.ivory, padding: "96px 0" }}
+      style={{ background: C.ivory, padding: "28px 0" }}
       id="what-we-do"
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -4763,7 +4340,7 @@ function CompanyCraft() {
   return (
     <section
       ref={ref}
-      style={{ background: C.cream, padding: "96px 0" }}
+      style={{ background: C.cream, padding: "28px 0" }}
       id="craft"
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -4789,7 +4366,7 @@ function CompanyCraft() {
                 margin: "20px 0 16px",
               }}
             >
-              Hands, Not Shortcuts
+              FROM FARM TO FACTORY
             </h2>
             <p
               style={{
@@ -4881,7 +4458,7 @@ function CompanyValues() {
   return (
     <section
       ref={ref}
-      style={{ background: C.ivory, padding: "96px 0" }}
+      style={{ background: C.ivory, padding: "28px 0" }}
       id="values"
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
@@ -4979,301 +4556,9 @@ function CompanyValues() {
   );
 }
 
-function CompanyPractice() {
-  const { ref, visible } = useFadeIn();
-  return (
-    <section
-      ref={ref}
-      style={{ background: C.brown, padding: "96px 0" }}
-      id="practices"
-    >
-      <div
-        style={{
-          maxWidth: 1280,
-          margin: "0 auto",
-          padding: "0 24px",
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 64,
-          alignItems: "center",
-        }}
-        className="practice-grid"
-      >
-        <div
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(24px)",
-            transition: "opacity .7s ease, transform .7s ease",
-          }}
-        >
-          <SectionLabel>
-            <span style={{ color: C.goldLight }}>OUR PROMISES</span>
-          </SectionLabel>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: "clamp(30px,3.5vw,42px)",
-              color: "#FAF7F2",
-              lineHeight: 1.2,
-              margin: "20px 0 20px",
-            }}
-          >
-            Every Commitment,
-            <br />
-            <span style={{ color: C.goldLight }}>Every Batch</span>
-          </h2>
-          <p
-            style={{
-              fontSize: 15,
-              color: "rgba(250,247,242,0.6)",
-              lineHeight: 1.85,
-              marginBottom: 32,
-            }}
-          >
-            These are not slogans on a wall. They are the checks we run before
-            anything leaves our facility, and the reasons we are comfortable
-            putting our name on it.
-          </p>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2,1fr)",
-              gap: 24,
-            }}
-            className="promise-grid"
-          >
-            {PROMISES.map((p) => (
-              <div key={p.title}>
-                <div
-                  style={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                    letterSpacing: "0.2em",
-                    color: C.goldLight,
-                    marginBottom: 8,
-                  }}
-                >
-                  {p.num}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "'Playfair Display',serif",
-                    fontSize: 17,
-                    color: "#FAF7F2",
-                    marginBottom: 8,
-                  }}
-                >
-                  {p.title}
-                </div>
-                <p
-                  style={{
-                    fontSize: 13,
-                    color: "rgba(250,247,242,0.5)",
-                    lineHeight: 1.7,
-                    margin: 0,
-                  }}
-                >
-                  {p.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(24px)",
-            transition: "opacity .7s ease .15s, transform .7s ease .15s",
-          }}
-        >
-          <div
-            style={{
-              background: "rgba(250,247,242,0.04)",
-              border: "1px solid rgba(184,134,11,0.25)",
-              padding: "40px 36px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: 10,
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                color: C.goldLight,
-                marginBottom: 24,
-              }}
-            >
-              OUR PRACTICES
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-              }}
-            >
-              {PRACTICES.map((item) => (
-                <div
-                  key={item}
-                  style={{ display: "flex", alignItems: "center", gap: 14 }}
-                >
-                  <div
-                    style={{
-                      width: 30,
-                      height: 30,
-                      borderRadius: "50%",
-                      border: "1px solid rgba(184,134,11,0.35)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                      color: C.goldLight,
-                    }}
-                  >
-                    <CheckIcon />
-                  </div>
-                  <span
-                    style={{
-                      fontSize: 14,
-                      color: "rgba(250,247,242,0.85)",
-                      fontWeight: 500,
-                    }}
-                  >
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <style>{`
-        @media(max-width:900px){.practice-grid{grid-template-columns:1fr!important;gap:40px!important}}
-        @media(max-width:480px){.promise-grid{grid-template-columns:1fr!important}}
-      `}</style>
-    </section>
-  );
-}
-
-function CompanyCta() {
-  const { ref, visible } = useFadeIn();
-  return (
-    <section
-      ref={ref}
-      style={{ background: C.ivory, padding: "96px 0" }}
-      id="get-in-touch"
-    >
-      <div
-        style={{
-          maxWidth: 900,
-          margin: "0 auto",
-          padding: "0 24px",
-          textAlign: "center",
-        }}
-      >
-        <SectionLabel>
-          <span style={{ color: C.gold }}>GET IN TOUCH</span>
-        </SectionLabel>
-        <h2
-          style={{
-            fontFamily: "'Playfair Display',serif",
-            fontSize: "clamp(30px,4vw,46px)",
-            color: C.brown,
-            lineHeight: 1.2,
-            margin: "20px 0 20px",
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity .7s ease, transform .7s ease",
-          }}
-        >
-          Come and See Us in <span style={{ color: C.gold }}>Phnom Penh</span>
-        </h2>
-        <p
-          style={{
-            fontSize: 16,
-            color: C.muted,
-            lineHeight: 1.85,
-            maxWidth: 620,
-            margin: "0 auto 36px",
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity .7s ease .1s, transform .7s ease .1s",
-          }}
-        >
-          Questions about grades, sourcing or which nest suits you? Talk to us
-          directly — we would rather answer honestly than sell you the wrong
-          thing.
-        </p>
-        <div
-          style={{
-            display: "flex",
-            gap: 16,
-            justifyContent: "center",
-            flexWrap: "wrap",
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity .7s ease .2s, transform .7s ease .2s",
-          }}
-        >
-          <GoldButton onClick={() => scrollToId("contact")}>
-            Contact us <ArrowRight size={14} />
-          </GoldButton>
-          <GoldButton
-            outline
-            onClick={() => {
-              window.location.href = "mailto:QueenBirdNest598@gmail.com";
-            }}
-          >
-            Email QUEEN
-          </GoldButton>
-        </div>
-      </div>
-    </section>
-  );
-}
 function CompanyAbout() {
   return (
     <>
-      <section
-        style={{
-          background: C.cream,
-          padding: "80px 0",
-          borderTop: "1px solid rgba(184,134,11,0.1)",
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
-          <SectionLabel>
-            <span style={{ color: C.gold }}>THE COMPANY BEHIND THE NEST</span>
-          </SectionLabel>
-          <h2
-            style={{
-              fontFamily: "'Playfair Display',serif",
-              fontSize: "clamp(32px,4vw,44px)",
-              fontWeight: 700,
-              color: C.brown,
-              margin: "20px 0 16px",
-            }}
-          >
-            More Than a Bird's Nest.
-            <br />
-            <span style={{ color: C.gold }}>A Tradition of Care.</span>
-          </h2>
-          <p
-            style={{
-              fontSize: 16,
-              color: C.muted,
-              lineHeight: 1.85,
-              maxWidth: 700,
-            }}
-          >
-            A Cambodian company built on careful sourcing, hand processing, and
-            the belief that quality begins long before the nest reaches your
-            kitchen.
-          </p>
-        </div>
-      </section>
       <CompanyIntro />
       <CompanyJourney />
       <CompanyCraft />
@@ -5281,12 +4566,273 @@ function CompanyAbout() {
   );
 }
 
+/* ── Certificate carousel slides ── */
+const CERTIFICATE_SLIDES = [
+  {
+    img: Certificate1,
+    fit: "cover" as const,
+    label: "Food Safety",
+    title: "Food Safety Standard",
+    desc: "Produced under strict food safety handling and hygiene protocols, verified through regular internal audits and external review.",
+    meta: "Maintained annually",
+  },
+  {
+    img: Certificate2,
+    fit: "cover" as const,
+    label: "Facility",
+    title: "Hygiene Certified Facility",
+    desc: "Our processing environment meets rigorous hygiene and sanitation requirements, so every product is handled in a clean, controlled setting.",
+    meta: "Certified production facility",
+  },
+  {
+    img: Certificate3,
+    fit: "cover" as const,
+    label: "Quality",
+    title: "AAA Grade Standard",
+    desc: "Every nest is assessed against our Premium AAA grading criteria — covering strand integrity, colour consistency, purity, and natural aroma.",
+    meta: "Applied to every batch",
+  },
+  {
+    img: Certificate4,
+    fit: "cover" as const,
+    label: "Quality",
+    title: "AAA Grade Standard",
+    desc: "Every nest is assessed against our Premium AAA grading criteria — covering strand integrity, colour consistency, purity, and natural aroma.",
+    meta: "Applied to every batch",
+  },
+];
+
+function CertificateSlider() {
+  const [preview, setPreview] = useState<(typeof CERTIFICATE_SLIDES)[0] | null>(
+    null,
+  );
+
+  useEffect(() => {
+    if (!preview) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPreview(null);
+    };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [preview]);
+
+  return (
+    <section
+      className="cert-section"
+      aria-label="Certifications gallery"
+      style={{
+        background: C.ivory,
+        padding: "28px 0 12px",
+        borderTop: "1px solid rgba(184,134,11,0.08)",
+        borderBottom: "1px solid rgba(184,134,11,0.08)",
+      }}
+    >
+      <div className="cert-marquee">
+        <div className="cert-marquee-track">
+          {[0, 1, 2].map((group) => (
+            <div
+              className="cert-marquee-group"
+              key={group}
+              aria-hidden={group !== 0}
+            >
+              {CERTIFICATE_SLIDES.map((slide, index) => (
+                <button
+                  type="button"
+                  className="cert-marquee-item"
+                  key={index}
+                  onClick={() => setPreview(slide)}
+                  aria-label={`Preview ${slide.title}`}
+                >
+                  <img
+                    src={slide.img}
+                    alt={group === 0 ? `${slide.title} certificate` : ""}
+                    loading="eager"
+                    decoding="async"
+                  />
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {preview && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={preview.title}
+          onClick={() => setPreview(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            background: "rgba(26,16,8,0.82)",
+            backdropFilter: "blur(4px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 24,
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              position: "relative",
+              width: "min(100%, 980px)",
+              maxHeight: "90vh",
+              background:
+                "linear-gradient(135deg,#F5ECD9 0%,#FAF7F2 50%,#F0E6C8 100%)",
+              border: "1px solid rgba(184,134,11,0.35)",
+              boxShadow: "0 30px 80px rgba(0,0,0,0.35)",
+              padding: 16,
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setPreview(null)}
+              aria-label="Close preview"
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 10,
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                border: "1px solid rgba(184,134,11,0.35)",
+                background: "rgba(250,247,242,0.96)",
+                color: C.brown,
+                cursor: "pointer",
+                fontSize: 20,
+                lineHeight: 1,
+                zIndex: 1,
+              }}
+            >
+              ×
+            </button>
+            <div
+              style={{
+                background: "#fffdf8",
+                border: "1px solid rgba(184,134,11,0.2)",
+                padding: 12,
+              }}
+            >
+              <img
+                src={preview.img}
+                alt={preview.title}
+                style={{
+                  width: "100%",
+                  maxHeight: "calc(90vh - 140px)",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </div>
+            <div style={{ padding: "14px 4px 2px" }}>
+              <div
+                style={{
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: "0.16em",
+                  color: C.gold,
+                  marginBottom: 4,
+                }}
+              >
+                {preview.label}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 20,
+                  color: C.brown,
+                }}
+              >
+                {preview.title}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        .cert-marquee {
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .cert-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: certMarquee 18s linear infinite;
+          will-change: transform;
+        }
+
+        .cert-marquee-group {
+          display: flex;
+          align-items: stretch;
+          gap: 20px;
+          padding-right: 20px;
+          flex: 0 0 auto;
+        }
+
+        .cert-marquee-item {
+          width: clamp(180px, 22vw, 300px);
+          aspect-ratio: 17 / 22;
+          flex: 0 0 auto;
+          overflow: hidden;
+          padding: 12px;
+          background: linear-gradient(135deg,#F5ECD9 0%,#FAF7F2 55%,#F0E6C8 100%);
+          border: 1px solid rgba(184,134,11,0.2);
+          box-shadow: 0 8px 24px rgba(44,26,14,0.06);
+          cursor: pointer;
+          appearance: none;
+          -webkit-appearance: none;
+        }
+
+        .cert-marquee-item img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          background: #fffdf8;
+          border: 1px solid rgba(184,134,11,0.12);
+        }
+
+        @keyframes certMarquee {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-33.333333%);
+          }
+        }
+
+        @media (max-width: 768px) {
+          .cert-marquee-item {
+            width: clamp(150px, 42vw, 220px);
+            padding: 8px;
+          }
+          .cert-marquee-group {
+            gap: 12px;
+            padding-right: 12px;
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
 export default function Home() {
   return (
     <>
       <Hero />
-      <Grades />
+      <CertificateSlider />
       <QueenVideo />
+      <Grades />
       <ProductArea />
       <Process />
       <ProcessSteps />

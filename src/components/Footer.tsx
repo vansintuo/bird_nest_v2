@@ -47,22 +47,22 @@ const SOCIALS = [
   {
     label: "Facebook",
     path: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z",
-    url: "https://www.facebook.com/queensbirdnestkh/",
+    url: "https://www.facebook.com/queensbirdnestkh/directory_links",
   },
   {
     label: "Instagram",
     path: "M16 2H8a6 6 0 00-6 6v8a6 6 0 006 6h8a6 6 0 006-6V8a6 6 0 00-6-6zM12 15a3 3 0 110-6 3 3 0 010 6z",
-    url: "https://www.instagram.com/queensbirdnest_official/",
+    url: "https://www.instagram.com/queenswhitebirdnest/",
   },
   {
     label: "Telegram",
     path: "M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z",
-    url: "",
+    url: "https://t.me/Salequeenwhitebirdnest",
   },
   {
-    label: "WhatsApp",
-    path: "M17.5 14.5c-.3-.2-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1s-1.3-.5-2.4-1.5c-.9-.8-1.5-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5s0-.4-.1-.6c-.1-.2-.7-1.6-1-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4C8 8 7 9 7 11c0 2 1.5 4 1.7 4.2.2.3 2.8 4.3 6.8 5.9 4 1.6 4 1.1 4.7 1 .7 0 2.1-.8 2.4-1.6.3-.8.3-1.4.2-1.6-.1-.1-.3-.2-.6-.4z",
-    url: "",
+    label: "TikTok",
+    path: "M9 22c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zM9 17.267c2.848 0 5.161-2.313 5.161-5.161s-2.313-5.161-5.161-5.161-5.161 2.313-5.161 5.161 2.313 5.161 5.161 5.161zM22.915 7.724c-.515-1.071-1.791-1.654-2.868-1.14-1.161.514-1.745 1.79-.631 2.955.515 1.072 1.791 1.655 2.868 1.141 1.161-.515 1.746-1.79 1.141-2.865zM22 4.011v4.129a3.333 3.333 0 01-2.655 3.265 4.129 4.129 0 00-.829 1.44 3.335 3.335 0 01-3.264 2.656v2.192a1.239 1.239 0 01-1.375 1.375 1.239 1.239 0 01-1.375-1.375v-2.192a3.334 3.334 0 01-2.655-3.265 4.124 4.124 0 00-.828-1.44 3.335 3.335 0 01-3.264-2.656v-2.655a1.238 1.238 0 011.375-1.375h5.405a1.238 1.238 0 011.374 1.374v1.745c0 .11.045.213.125.292.08.078.184.123.292.123h2.561c1.32 0 2.393-1.074 2.393-2.394V5.284a1.238 1.238 0 011.375-1.375h3.387a1.239 1.239 0 011.374 1.375z",
+    url: "https://www.tiktok.com/@queensbirdnest?is_from_webapp=1&sender_device=pc",
   },
 ];
 
@@ -271,10 +271,10 @@ export default function Footer() {
             {[
               {
                 icon: <PhoneIcon />,
-                lines: ["+855 12 345 678", "+855 98 765 432"],
+                lines: ["+855 69 27 22 11"],
               },
-              { icon: <EmailIcon />, lines: ["QueenBirdNest598@gmail.com"] },
-              { icon: <MapIcon />, lines: ["Phnom Penh, Cambodia"] },
+              { icon: <EmailIcon />, lines: ["queenwhitebirdnest@gmail.com"] },
+              { icon: <MapIcon />, lines: ["សង្កាត់គោកឃ្លាង ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ"] },
             ].map((c, i) => (
               <div
                 key={i}

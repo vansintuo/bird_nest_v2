@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import birdNestLogo from "./images/bird_logo.png"
+import { useEffect, useRef, useState } from "react";
+import birdNestLogo from "./images/bird_logo.png";
 
 /* ─── Color tokens ─── */
 export const C = {
@@ -13,89 +13,92 @@ export const C = {
   brownMid: "#5C3D1E",
   charcoal: "#3A2D20",
   muted: "#7A6553",
-}
+};
 
 /* ─── Hooks ─── */
 export function useScrolled(threshold = 60) {
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > threshold)
-    window.addEventListener("scroll", fn, { passive: true })
-    return () => window.removeEventListener("scroll", fn)
-  }, [threshold])
-  return scrolled
+    const fn = () => setScrolled(window.scrollY > threshold);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, [threshold]);
+  return scrolled;
 }
 
 export function useFadeIn(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
+    const el = ref.current;
+    if (!el) return;
     const obs = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) setVisible(true)
+        if (e.isIntersecting) setVisible(true);
       },
       { threshold },
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return { ref, visible }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [threshold]);
+  return { ref, visible };
 }
 
 /* ─── Scroll spy: returns the id of the section currently in view ─── */
 type ScrollSection = {
-  id: string
-  top: number
-}
+  id: string;
+  top: number;
+};
 
 export function useActiveSection(ids: string[], offset = 140) {
-  const key = ids.join(",")
-  const [active, setActive] = useState<string | null>(ids[0] ?? null)
+  const key = ids.join(",");
+  const [active, setActive] = useState<string | null>(ids[0] ?? null);
 
   useEffect(() => {
-    const list = key ? key.split(",") : []
-    if (!list.length) return
+    const list = key ? key.split(",") : [];
+    if (!list.length) return;
 
     const compute = () => {
-      const marker = window.scrollY + offset
+      const marker = window.scrollY + offset;
 
       // Collect sections and sort by document position so the result does not
       // depend on the order the ids are supplied in.
-      const found: ScrollSection[] = []
+      const found: ScrollSection[] = [];
       for (const id of list) {
-        const el = document.getElementById(id)
-        if (!el) continue
-        found.push({ id, top: el.getBoundingClientRect().top + window.scrollY })
+        const el = document.getElementById(id);
+        if (!el) continue;
+        found.push({
+          id,
+          top: el.getBoundingClientRect().top + window.scrollY,
+        });
       }
-      found.sort((a, b) => a.top - b.top)
+      found.sort((a, b) => a.top - b.top);
 
-      let current: string | null = null
+      let current: string | null = null;
       for (const item of found) {
-        if (item.top <= marker) current = item.id
+        if (item.top <= marker) current = item.id;
       }
 
       const atBottom =
         window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 4
+        document.documentElement.scrollHeight - 4;
       if (atBottom && found.length) {
-        current = found[found.length - 1].id
+        current = found[found.length - 1].id;
       }
 
-      setActive(current ?? (found[0] && found[0].id) ?? list[0])
-    }
+      setActive(current ?? (found[0] && found[0].id) ?? list[0]);
+    };
 
-    compute()
-    window.addEventListener("scroll", compute, { passive: true })
-    window.addEventListener("resize", compute)
+    compute();
+    window.addEventListener("scroll", compute, { passive: true });
+    window.addEventListener("resize", compute);
     return () => {
-      window.removeEventListener("scroll", compute)
-      window.removeEventListener("resize", compute)
-    }
-  }, [key, offset])
+      window.removeEventListener("scroll", compute);
+      window.removeEventListener("resize", compute);
+    };
+  }, [key, offset]);
 
-  return active
+  return active;
 }
 
 /* ─── Shared icons ─── */
@@ -103,18 +106,18 @@ export const BirdLogo = () => (
   <img
     src={birdNestLogo}
     alt="Bird Nest Logo"
-    width="150"
-    height="150"
+    width="170"
+    height="170"
     style={{ objectFit: "contain", borderRadius: "50%" }}
   />
-)
+);
 
 export const BirdDecor = ({
   size = 20,
   opacity = 0.35,
 }: {
-  size?: number
-  opacity?: number
+  size?: number;
+  opacity?: number;
 }) => (
   <svg
     width={size}
@@ -136,7 +139,7 @@ export const BirdDecor = ({
       strokeLinecap="round"
     />
   </svg>
-)
+);
 
 export const ArrowRight = ({ size = 16 }: { size?: number }) => (
   <svg
@@ -150,7 +153,7 @@ export const ArrowRight = ({ size = 16 }: { size?: number }) => (
   >
     <path d="M5 12h14M12 5l7 7-7 7" />
   </svg>
-)
+);
 
 export const SearchIcon = () => (
   <svg
@@ -165,7 +168,7 @@ export const SearchIcon = () => (
     <circle cx="11" cy="11" r="7" />
     <path d="M21 21l-4.35-4.35" />
   </svg>
-)
+);
 export const UserIcon = () => (
   <svg
     width="18"
@@ -179,7 +182,7 @@ export const UserIcon = () => (
     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
     <circle cx="12" cy="7" r="4" />
   </svg>
-)
+);
 export const CartIcon = () => (
   <svg
     width="18"
@@ -195,7 +198,7 @@ export const CartIcon = () => (
     <line x1="3" y1="6" x2="21" y2="6" />
     <path d="M16 10a4 4 0 01-8 0" />
   </svg>
-)
+);
 export const MenuIcon = () => (
   <svg
     width="22"
@@ -210,7 +213,7 @@ export const MenuIcon = () => (
     <line x1="3" y1="12" x2="21" y2="12" />
     <line x1="3" y1="18" x2="21" y2="18" />
   </svg>
-)
+);
 export const CloseIcon = () => (
   <svg
     width="22"
@@ -224,7 +227,7 @@ export const CloseIcon = () => (
     <line x1="18" y1="6" x2="6" y2="18" />
     <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
-)
+);
 export const CheckIcon = () => (
   <svg
     width="16"
@@ -238,7 +241,7 @@ export const CheckIcon = () => (
   >
     <polyline points="20 6 9 17 4 12" />
   </svg>
-)
+);
 export const ChevronDown = () => (
   <svg
     width="16"
@@ -251,7 +254,7 @@ export const ChevronDown = () => (
   >
     <polyline points="6 9 12 15 18 9" />
   </svg>
-)
+);
 
 /* ─── Reusable section divider ─── */
 export function GoldDivider({ className }: { className?: string }) {
@@ -264,7 +267,7 @@ export function GoldDivider({ className }: { className?: string }) {
       <BirdDecor size={16} opacity={0.5} />
       <div style={{ height: 1, width: 40, background: C.goldLight }} />
     </div>
-  )
+  );
 }
 
 /* ─── Gold button ─── */
@@ -274,12 +277,12 @@ export function GoldButton({
   onClick,
   style,
 }: {
-  children: React.ReactNode
-  outline?: boolean
-  onClick?: () => void
-  style?: React.CSSProperties
+  children: React.ReactNode;
+  outline?: boolean;
+  onClick?: () => void;
+  style?: React.CSSProperties;
 }) {
-  const [hov, setHov] = useState(false)
+  const [hov, setHov] = useState(false);
   return (
     <button
       onClick={onClick}
@@ -315,7 +318,7 @@ export function GoldButton({
     >
       {children}
     </button>
-  )
+  );
 }
 
 /* ─── Section label ─── */
@@ -336,7 +339,7 @@ export function SectionLabel({ children }: { children: React.ReactNode }) {
     >
       {children}
     </p>
-  )
+  );
 }
 
 /* ─── Page hero ─── */
@@ -348,12 +351,12 @@ export function PageHero({
   dimOverlay = 0.38,
   light = false,
 }: {
-  label?: string
-  title: string
-  subtitle?: string
-  img: string
-  dimOverlay?: number
-  light?: boolean
+  label?: string;
+  title: string;
+  subtitle?: string;
+  img: string;
+  dimOverlay?: number;
+  light?: boolean;
 }) {
   return (
     <section
@@ -435,5 +438,5 @@ export function PageHero({
         )}
       </div>
     </section>
-  )
+  );
 }
