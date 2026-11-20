@@ -363,6 +363,7 @@ export default function Footer() {
             <img
               src={isoVerify}
               alt="Bird Nest Logo"
+              loading="lazy"
               width="150"
               height="150"
               style={{ objectFit: "contain", borderRadius: "50%" }}

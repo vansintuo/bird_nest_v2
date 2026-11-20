@@ -574,6 +574,7 @@ function ProductCard({ p }: { p: Product }) {
         <img
           src={p.img}
           alt={p.alt}
+          loading="lazy"
           style={{
             display: "block",
             width: "100%",
@@ -945,6 +946,7 @@ function Grades() {
                     <img
                       src={p.img}
                       alt={p.alt}
+                      loading="lazy"
                       style={{
                         position: "absolute",
                         inset: 0,
@@ -1238,6 +1240,7 @@ function Grades() {
                       <img
                         src={p.img}
                         alt={p.alt}
+                        loading="lazy"
                         style={{
                           width: 40,
                           height: 40,
@@ -1631,6 +1634,7 @@ function CertificateCard({
           <img
             src={cert.img}
             alt={cert.alt}
+            loading="lazy"
             style={{
               width: "100%",
               height: "100%",
@@ -1980,6 +1984,7 @@ function Certificates() {
               <img
                 src={preview.img}
                 alt={preview.alt || preview.title}
+                loading="lazy"
                 style={{
                   width: "100%",
                   maxHeight: "calc(90vh - 140px)",
@@ -2050,6 +2055,7 @@ function OurStory() {
           <img
             src={storyImagePrim}
             alt="Bird's nest soup"
+            loading="lazy"
             style={{
               width: "100%",
               height: "100%",
@@ -2687,6 +2693,7 @@ function ProcessPreviewCard({
           <img
             src={step.img}
             alt={step.alt}
+            loading="lazy"
             style={{
               width: "100%",
               height: "100%",
@@ -2845,6 +2852,7 @@ function NestToNourishment() {
               <img
                 src={selectedNest}
                 alt="Raw bird's nest from nature"
+                loading="lazy"
                 style={{ width: "100%", height: 400, objectFit: "cover" }}
               />
               <div
@@ -2964,6 +2972,7 @@ function NestToNourishment() {
               <img
                 src={storyImagePrim}
                 alt="Premium cleaned bird's nest product"
+                loading="lazy"
                 style={{ width: "100%", height: 400, objectFit: "cover" }}
               />
               <div
@@ -3348,6 +3357,7 @@ function OurStoryTimeline() {
                     <img
                       src={item.img}
                       alt={item.title}
+                      loading="lazy"
                       style={{
                         width: "auto",
                         height: "auto",
@@ -3445,6 +3455,7 @@ function OurStoryTimeline() {
               <img
                 src={preview.img}
                 alt={preview.title}
+                loading="lazy"
                 style={{
                   width: "100%",
                   maxHeight: "calc(90vh - 140px)",
@@ -3537,6 +3548,7 @@ function AboutProducts() {
                 <img
                   src={product.image}
                   alt={product.title}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: 330,
@@ -3945,6 +3957,7 @@ function CompanyIntro() {
             <img
               src={storyImagePrim}
               alt="Natural premium ingredients"
+              loading="lazy"
               style={{
                 width: "100%",
                 height: 520,
@@ -4411,6 +4424,7 @@ function CompanyCraft() {
                 <img
                   src={s.img}
                   alt={s.label}
+                  loading="lazy"
                   style={{
                     width: "100%",
                     height: "100%",
@@ -4652,7 +4666,7 @@ function CertificateSlider() {
                   <img
                     src={slide.img}
                     alt={group === 0 ? `${slide.title} certificate` : ""}
-                    loading="eager"
+                    loading="lazy"
                     decoding="async"
                   />
                 </button>
@@ -4725,6 +4739,7 @@ function CertificateSlider() {
               <img
                 src={preview.img}
                 alt={preview.title}
+                loading="lazy"
                 style={{
                   width: "100%",
                   maxHeight: "calc(90vh - 140px)",
