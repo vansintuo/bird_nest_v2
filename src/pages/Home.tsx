@@ -1371,19 +1371,55 @@ const MYTHS = [
 function QueenVideo() {
   const { ref, visible } = useFadeIn();
   const [playing, setPlaying] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  const togglePlay = useCallback(() => {
+  // Lazy load video when it approaches the viewport
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      {
+        rootMargin: "300px",
+      },
+    );
+
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = useCallback(async () => {
     const v = videoRef.current;
     if (!v) return;
+
+    // Don't play until the video source is loaded
+    if (!shouldLoad) {
+      setShouldLoad(true);
+      return;
+    }
+
     if (v.paused) {
-      v.play();
-      setPlaying(true);
+      try {
+        await v.play();
+        setPlaying(true);
+      } catch (error) {
+        console.error("Video playback failed:", error);
+      }
     } else {
       v.pause();
       setPlaying(false);
     }
-  }, []);
+  }, [shouldLoad]);
 
   return (
     <section
@@ -1416,6 +1452,7 @@ function QueenVideo() {
           >
             QUEEN OF BIRD'S NEST
           </p>
+
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",
@@ -1443,10 +1480,12 @@ function QueenVideo() {
         >
           <video
             ref={videoRef}
-            src={birdNestHouseMp4}
+            src={shouldLoad ? birdNestHouseMp4 : undefined}
             poster={houseBird}
-            preload="metadata"
+            preload="none"
             playsInline
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
             onEnded={() => setPlaying(false)}
             style={{
               width: "100%",
@@ -1516,6 +1555,7 @@ function QueenVideo() {
             >
               QUEEN OF BIRD'S NEST
             </div>
+
             <div
               style={{
                 fontFamily: "'Playfair Display',serif",
@@ -1547,7 +1587,7 @@ const CERTIFICATES = [
     img: Certificate1,
     alt: "Hygiene certified facility certificate",
     badge: "FACILITY",
-    title:"",
+    title: "",
     desc: "Our processing environment meets rigorous hygiene and sanitation requirements in a clean, controlled setting.",
     year: "Certified production facility",
   },
@@ -4586,8 +4626,8 @@ const CERTIFICATE_SLIDES = [
   {
     img: Certificate1,
     fit: "cover" as const,
-    label: "Food Safety",
-    title: "Food Safety Standard",
+    label: "",
+    title: "",
     desc: "Produced under strict food safety handling and hygiene protocols, verified through regular internal audits and external review.",
     meta: "Maintained annually",
   },
@@ -4595,7 +4635,7 @@ const CERTIFICATE_SLIDES = [
     img: Certificate2,
     fit: "cover" as const,
     label: "Facility",
-    title: "Hygiene Certified Facility",
+    title: "",
     desc: "Our processing environment meets rigorous hygiene and sanitation requirements, so every product is handled in a clean, controlled setting.",
     meta: "Certified production facility",
   },
@@ -4603,7 +4643,7 @@ const CERTIFICATE_SLIDES = [
     img: Certificate3,
     fit: "cover" as const,
     label: "Quality",
-    title: "AAA Grade Standard",
+    title: "",
     desc: "Every nest is assessed against our Premium AAA grading criteria — covering strand integrity, colour consistency, purity, and natural aroma.",
     meta: "Applied to every batch",
   },
@@ -4611,7 +4651,7 @@ const CERTIFICATE_SLIDES = [
     img: Certificate4,
     fit: "cover" as const,
     label: "Quality",
-    title: "AAA Grade Standard",
+    title: "",
     desc: "Every nest is assessed against our Premium AAA grading criteria — covering strand integrity, colour consistency, purity, and natural aroma.",
     meta: "Applied to every batch",
   },
