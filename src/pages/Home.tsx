@@ -1578,34 +1578,34 @@ const CERTIFICATES = [
   {
     img: Certificate2,
     alt: "Food safety certificate",
-    badge: "FOOD SAFETY",
+    badge: "",
     title: "",
-    desc: "Produced under strict food safety handling and hygiene protocols, verified through regular audits and review.",
-    year: "Maintained annually",
+    desc: "Certificate of Conformity (CoC) is an official document confirming that a product or service meets required technical specifications, safety standards, or legal regulations.",
+    year: "Certificate of Conformity (CoC)",
   },
   {
     img: Certificate1,
     alt: "Hygiene certified facility certificate",
     badge: "FACILITY",
     title: "",
-    desc: "Our processing environment meets rigorous hygiene and sanitation requirements in a clean, controlled setting.",
-    year: "Certified production facility",
+    desc: "License for the Use of the Product Registration Mark (ច.ប.ផ.) is issued by the Institute of Standards of Cambodia (ISC) under the Ministry of Industry, Science, Technology and Innovation (MISTI).",
+    year: "Institute of standards of cambodia",
   },
   {
     img: Certificate3,
     alt: "AAA grade standard certificate",
     badge: "QUALITY",
     title: "",
-    desc: "Every nest is assessed against Premium AAA criteria for strand integrity, colour consistency, purity, and aroma.",
-    year: "Applied to every batch",
+    desc: "A Factory / Handicraft Operation Certificate (or Operating License) is official government approval confirming that a facility is properly registered, built to required standards, and legally allowed to manufacture or operate.",
+    year: "Factory / Handicraft Operation Certificate",
   },
   {
     img: Certificate4,
     alt: "Responsible and ethical sourcing certificate",
     badge: "ETHICAL",
     title: "",
-    desc: "We work with certified swiftlet farms committed to humane, sustainable harvesting practices.",
-    year: "Farm-audited supply chain",
+    desc: "Our bird's nest products is a member of GS1 CAMBODIA and has been allocated the company prefix.",
+    year: "GS1 CAMBODIA",
   },
 ];
 
@@ -2301,7 +2301,7 @@ const PROCESS_DETAIL = [
   },
   {
     num: "04",
-    label: "Final Inspection",
+    label: "Preparation",
     subtitle: "Every piece, verified",
     desc: "Before packaging, each nest undergoes a final quality review. Our team checks for consistency, cleanliness, and grade classification. Only products that pass every checkpoint are approved for the next stage.",
     detail:
@@ -2357,7 +2357,7 @@ const PROCESS_PRIM = [
   },
   {
     num: "04",
-    label: "Final Inspection",
+    label: "Preparation",
     subtitle: "Every piece, verified",
     desc: "Before packaging, each nest undergoes a final quality review. Our team checks for consistency, cleanliness, and grade classification. Only products that pass every checkpoint are approved for the next stage.",
     detail:
